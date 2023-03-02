@@ -9,7 +9,8 @@
   --brown: #9e7353;
   --tan: #d7c3a2;
   --gray: #b1b1b1;
-  --btnHover: #cde2e8;
+  --textHover: #a59994;
+  --btnHover: #e3d4bd;
 }
 
 body {
@@ -23,6 +24,7 @@ h1 {
   font-family: "Merriweather", serif;
   font-size: 3.815rem;
   color: var(--text);
+  margin: 0;
 }
 
 h2,
@@ -32,6 +34,7 @@ h5,
 h6 {
   font-family: "Libre Franklin", sans-serif;
   color: var(--text);
+  margin: 0;
 }
 
 h2 {
@@ -55,5 +58,33 @@ h6 {
 }
 
 p {
+  font-family: "Libre Franklin", sans-serif;
   font-size: 1rem;
+  color: var(--text);
+}
+
+button {
+  font-family: "Libre Franklin", sans-serif;
+  font-size: 1.25rem;
+  font-weight: 550;
+  color: var(--text);
+  border: none;
+  padding: 0.75rem 1rem;
+  cursor: pointer;
+}
+
+.primaryBtn {
+  background-color: var(--tan);
+  border-radius: 0.75rem;
+  box-shadow: 0px 0.3px 0.7px 0px rgb(0 0 0 / 12%),
+    0px 1.5px 2.8px 0px rgb(0 0 0 / 7%), 0px 4px 9px 0px rgb(0 0 0 / 5%);
+}
+
+.primaryBtn:hover {
+  background-color: var(--btnHover);
+}
+
+.secondaryBtn {
+  background-color: transparent;
+  border-radius: 0.75rem;
 }

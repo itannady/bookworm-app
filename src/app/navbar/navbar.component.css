@@ -1,0 +1,15 @@
+nav {
+  width: 100vw;
+}
+
+.navWrapper {
+  margin: 1% 5%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.btnWrapper {
+  display: flex;
+  gap: 1rem;
+}

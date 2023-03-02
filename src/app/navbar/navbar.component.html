@@ -1,9 +1,24 @@
 <nav>
   <div class="navWrapper">
-    <h6>Bookworm</h6>
-    <div class="btnWrapper">
-      <button class="secondaryBtn" (click)="onLogin()">Log in</button>
-      <button class="primaryBtn" (click)="onSignup()">Sign up</button>
-    </div>
+    <span>
+      <a routerLink="/"><h6>Bookworm</h6></a>
+    </span>
+    <span class="spacer"></span>
+    <ul class="btnWrapper">
+      <li>
+        <a routerLink="/list" routerLinkActive="">My Books</a>
+      </li>
+
+      <li>
+        <a routerLink="/list" routerLinkActive="">
+          <button class="secondaryBtn" (click)="onLogin()">Log in</button></a
+        >
+      </li>
+      <li>
+        <a routerLink="/list" routerLinkActive="">
+          <button class="primaryBtn" (click)="onSignup()">Sign up</button></a
+        >
+      </li>
+    </ul>
   </div>
 </nav>

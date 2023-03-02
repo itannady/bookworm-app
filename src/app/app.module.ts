@@ -6,6 +6,9 @@ import { NavbarComponent } from './navbar/navbar.component';
 import { HeroComponent } from './hero/hero.component';
 import { SignupComponent } from './auth/signup/signup.component';
 import { LoginComponent } from './auth/login/login.component';
+import { BookListComponent } from './book-list/book-list.component';
+import { UserBooksComponent } from './user-books/user-books.component';
+import { AppRoutingModule } from './app-routing.module';
 
 @NgModule({
   declarations: [
@@ -14,8 +17,10 @@ import { LoginComponent } from './auth/login/login.component';
     HeroComponent,
     SignupComponent,
     LoginComponent,
+    BookListComponent,
+    UserBooksComponent,
   ],
-  imports: [BrowserModule],
+  imports: [BrowserModule, AppRoutingModule],
   providers: [],
   bootstrap: [AppComponent],
 })

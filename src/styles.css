@@ -1,1 +1,59 @@
-/* You can add global styles to this file, and also import other style files */
+/* Merriweather and Libre Franklin fonts */
+@import url("https://fonts.googleapis.com/css2?family=Libre+Franklin:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800&family=Merriweather:wght@300;400;700;900&display=swap");
+
+/* Colors */
+:root {
+  --text: #5e4a43;
+  --white: #fffdfb;
+  --blue: #eff4f0;
+  --brown: #9e7353;
+  --tan: #d7c3a2;
+  --gray: #b1b1b1;
+  --btnHover: #cde2e8;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  background-color: var(--white);
+}
+
+/* Typography */
+h1 {
+  font-family: "Merriweather", serif;
+  font-size: 3.815rem;
+  color: var(--text);
+}
+
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: "Libre Franklin", sans-serif;
+  color: var(--text);
+}
+
+h2 {
+  font-size: 3.052rem;
+}
+
+h3 {
+  font-size: 2.441rem;
+}
+
+h4 {
+  font-size: 1.953rem;
+}
+
+h5 {
+  font-size: 1.563rem;
+}
+
+h6 {
+  font-size: 1.25rem;
+}
+
+p {
+  font-size: 1rem;
+}

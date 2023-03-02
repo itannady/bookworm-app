@@ -1,9 +1,27 @@
 const express = require("express");
-
+// const path = require("path");
+const cors = require("cors");
+const mongoose = require("mongoose");
 const app = express();
+require("dotenv").config();
 
-app.use((req, res, next) => {
-  res.send("hello from express");
-});
+const bookRoutes = require("./routes/books");
+
+app.use(express.json());
+app.use(cors());
+app.use(express.urlencoded({ extended: false }));
+app.use("/", bookRoutes);
+
+// connect to MongoDB
+const URL = process.env.MONGODB_URL;
+mongoose.set("strictQuery", false);
+mongoose
+  .connect(URL)
+  .then(() => {
+    console.log("Connected to database!");
+  })
+  .catch(() => {
+    console.log("Connection failed!");
+  });
 
 module.exports = app;

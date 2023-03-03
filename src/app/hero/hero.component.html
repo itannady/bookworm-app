@@ -1,5 +1,5 @@
 <section>
-  <div class="heroContainer">
+  <!-- <div class="heroContainer">
     <div class="textWrapper">
       <h2>Discover your next favorite read</h2>
       <p>
@@ -8,5 +8,17 @@
       <button class="primaryBtn">Get started</button>
     </div>
     <img src="assets/images/heroImg.png" alt="" />
+  </div> -->
+  <div class="userHero">
+    <div class="textWrapper">
+      <h2>Discover your next favorite read</h2>
+      <p>
+        Browse top-rated books and personalized recommendations with our app
+      </p>
+      <button class="primaryBtn">Get started</button>
+    </div>
+    <form (submit)="onSearch(searchBooks)" #searchBooks="ngForm">
+      <input type="search" name="searchbar" placeholder="Search books" />
+    </form>
   </div>
 </section>

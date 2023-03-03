@@ -9,6 +9,7 @@ import { LoginComponent } from './auth/login/login.component';
 import { BookListComponent } from './book-list/book-list.component';
 import { UserBooksComponent } from './user-books/user-books.component';
 import { AppRoutingModule } from './app-routing.module';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,7 @@ import { AppRoutingModule } from './app-routing.module';
     BookListComponent,
     UserBooksComponent,
   ],
-  imports: [BrowserModule, AppRoutingModule],
+  imports: [BrowserModule, AppRoutingModule, FormsModule],
   providers: [],
   bootstrap: [AppComponent],
 })

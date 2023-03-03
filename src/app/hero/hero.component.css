@@ -19,3 +19,19 @@ section {
 img {
   width: 80%;
 }
+
+.userHero {
+  margin: 0 10%;
+  padding: 3% 5%;
+  background-color: var(--blue);
+  border-radius: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 2rem;
+}
+
+.textWrapper {
+  text-align: center;
+}

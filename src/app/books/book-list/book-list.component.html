@@ -6,7 +6,7 @@
           <img src="{{ book.thumbnail }}" alt="" />
         </div>
         <div class="detailContainer">
-          <p class="title">{{ book.title }}</p>
+          <p class="title">{{ book.title | truncate : 25 }}</p>
           <p class="author">{{ book.author }}</p>
         </div>
       </div>

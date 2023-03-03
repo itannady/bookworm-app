@@ -7,7 +7,7 @@ section {
 }
 
 .heroContainer {
-  margin: 0 10%;
+  margin: 0 5%;
   padding: 0 5%;
   background-color: var(--blue);
   border-radius: 20px;
@@ -21,8 +21,13 @@ img {
 }
 
 .userHero {
-  margin: 0 10%;
-  padding: 3% 5%;
+  width: 100%;
+  max-width: 1400px;
+}
+
+.wrapper {
+  margin: 0 5%;
+  padding: 3%;
   background-color: var(--blue);
   border-radius: 20px;
   display: flex;

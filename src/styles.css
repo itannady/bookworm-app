@@ -9,6 +9,7 @@
   --brown: #9e7353;
   --tan: #d7c3a2;
   --gray: #b1b1b1;
+  --cardHover: #ececec;
   --textHover: #a59994;
   --btnHover: #e3d4bd;
 }
@@ -23,7 +24,8 @@ body {
 /* Typography */
 h1 {
   font-family: "Merriweather", serif;
-  font-size: 3.815rem;
+  font-size: 3.052rem;
+  font-weight: 500;
   color: var(--text);
   margin: 0;
 }

@@ -10,14 +10,16 @@
     <img src="assets/images/heroImg.png" alt="" />
   </div> -->
   <div class="userHero">
-    <div class="textWrapper">
-      <h2>Discover your next favorite read</h2>
-      <p>
-        Browse top-rated books and personalized recommendations with our app
-      </p>
+    <div class="wrapper">
+      <div class="textWrapper">
+        <h1>Discover your next <br />favorite read</h1>
+        <p>
+          Browse top-rated books and personalized recommendations with our app
+        </p>
+      </div>
+      <form (submit)="onSearch(searchBooks)" #searchBooks="ngForm">
+        <input type="search" name="searchbar" placeholder="Search books" />
+      </form>
     </div>
-    <form (submit)="onSearch(searchBooks)" #searchBooks="ngForm">
-      <input type="search" name="searchbar" placeholder="Search books" />
-    </form>
   </div>
 </section>

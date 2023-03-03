@@ -8,7 +8,7 @@
   --blue: #eff4f0;
   --brown: #9e7353;
   --tan: #d7c3a2;
-  --gray: #b1b1b1;
+  --gray: #dcdada;
   --cardHover: #ececec;
   --textHover: #a59994;
   --btnHover: #e3d4bd;
@@ -104,12 +104,11 @@ a {
 }
 
 input {
-  width: 100%;
-  border: 2px solid transparent;
+  border: 1px solid var(--gray);
   border-radius: 0.75rem;
   transition: 0.3s ease;
   outline: none;
-  padding: 0.75rem 2.5rem;
+  padding: 0.75rem 1.5rem;
   color: var(--text);
 }
 
@@ -122,4 +121,11 @@ input:focus {
   outline: none;
   border-color: var(--blue);
   box-shadow: 0 0 0 4px rgba(57, 109, 146, 0.1);
+}
+
+label {
+  font-weight: 500;
+  font-size: 1rem;
+  line-height: 1.6;
+  color: var(--text);
 }

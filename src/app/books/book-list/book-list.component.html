@@ -1,14 +1,18 @@
 <section>
   <div class="wrapper">
     <div class="row">
-      <div class="card" *ngFor="let book of books">
+      <div class="card" *ngFor="let book of visibleBooks">
         <div class="coverContainer">
           <img src="{{ book.thumbnail }}" alt="" />
         </div>
         <div class="detailContainer">
           <p class="title">{{ book.title | truncate : 25 }}</p>
-          <p class="author">{{ book.author }}</p>
+          <p class="author">{{ book.authors }}</p>
         </div>
+      </div>
+      <div class="pagination">
+        <button (click)="prevClick()">Previous</button>
+        <button (click)="nextClick()">Next</button>
       </div>
     </div>
   </div>

@@ -60,6 +60,7 @@ h6 {
 
 p {
   font-size: 1rem;
+  line-height: 1.6;
   color: var(--text);
 }
 
@@ -98,4 +99,25 @@ li {
 a {
   text-decoration: none;
   color: var(--text);
+}
+
+input {
+  width: 100%;
+  border: 2px solid transparent;
+  border-radius: 0.75rem;
+  transition: 0.3s ease;
+  outline: none;
+  padding: 0.75rem 2.5rem;
+  color: var(--text);
+}
+
+input:placeholder {
+  color: var(--gray);
+  font-weight: 500;
+}
+
+input:focus {
+  outline: none;
+  border-color: var(--blue);
+  box-shadow: 0 0 0 4px rgba(57, 109, 146, 0.1);
 }

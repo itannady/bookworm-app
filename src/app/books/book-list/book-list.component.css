@@ -62,6 +62,6 @@ section {
 }
 .detailContainer p.author {
   font-weight: 400;
-  color: var(--gray);
+  color: var(--text);
   margin: 0;
 }

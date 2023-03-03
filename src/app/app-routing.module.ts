@@ -7,6 +7,7 @@ import { UserBooksComponent } from './books/user-books/user-books.component';
 const routes: Routes = [
   { path: '', component: BookListComponent },
   { path: 'list', component: UserBooksComponent },
+  { path: 'login', component: LoginComponent },
 ];
 
 @NgModule({

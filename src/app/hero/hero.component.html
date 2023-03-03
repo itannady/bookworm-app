@@ -17,8 +17,12 @@
           Browse top-rated books and personalized recommendations with our app
         </p>
       </div>
-      <form (submit)="onSearch(searchBooks)" #searchBooks="ngForm">
-        <input type="search" name="searchbar" placeholder="Search books" />
+      <form [formGroup]="form" (submit)="onSearch()">
+        <input
+          type="search"
+          formControlName="searchbar"
+          placeholder="Search books"
+        />
       </form>
     </div>
   </div>

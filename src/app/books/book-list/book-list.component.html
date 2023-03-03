@@ -1,49 +1,13 @@
 <section>
   <div class="wrapper">
     <div class="row">
-      <div class="card">
+      <div class="card" *ngFor="let book of books">
         <div class="coverContainer">
-          <img src="/assets/images/bookCover.jpg" alt="" />
+          <img src="{{ book.thumbnail }}" alt="" />
         </div>
         <div class="detailContainer">
-          <p class="title">Title</p>
-          <p class="author">Author</p>
-        </div>
-      </div>
-      <div class="card">
-        <div class="coverContainer">
-          <img src="/assets/images/bookCover.jpg" alt="" />
-        </div>
-        <div class="detailContainer">
-          <p class="title">Title</p>
-          <p class="author">Author</p>
-        </div>
-      </div>
-      <div class="card">
-        <div class="coverContainer">
-          <img src="/assets/images/bookCover.jpg" alt="" />
-        </div>
-        <div class="detailContainer">
-          <p class="title">Title</p>
-          <p class="author">Author</p>
-        </div>
-      </div>
-      <div class="card">
-        <div class="coverContainer">
-          <img src="/assets/images/bookCover.jpg" alt="" />
-        </div>
-        <div class="detailContainer">
-          <p class="title">Title</p>
-          <p class="author">Author</p>
-        </div>
-      </div>
-      <div class="card">
-        <div class="coverContainer">
-          <img src="/assets/images/bookCover.jpg" alt="" />
-        </div>
-        <div class="detailContainer">
-          <p class="title">Title</p>
-          <p class="author">Author</p>
+          <p class="title">{{ book.title }}</p>
+          <p class="author">{{ book.author }}</p>
         </div>
       </div>
     </div>

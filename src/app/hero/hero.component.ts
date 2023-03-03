@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { NgForm } from '@angular/forms';
+import { FormControl, FormGroup } from '@angular/forms';
+import { Book } from '../books/book.model';
+import { BooksService } from '../books/books.service';
 
 @Component({
   selector: 'app-hero',
@@ -7,11 +9,20 @@ import { NgForm } from '@angular/forms';
   styleUrls: ['./hero.component.css'],
 })
 export class HeroComponent implements OnInit {
-  constructor() {}
+  form: FormGroup;
+
+  constructor(private booksService: BooksService) {
+    this.form = new FormGroup({
+      searchbar: new FormControl(''),
+    });
+  }
 
   ngOnInit(): void {}
 
-  onSearch(form: NgForm) {
-    console.log('hello');
+  onSearch() {
+    const query = this.form.get('searchbar')?.value;
+    this.booksService.populateBooks(query);
+
+    console.log(this.form.get('searchbar')?.value);
   }
 }

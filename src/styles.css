@@ -5,7 +5,7 @@
 :root {
   --text: #5e4a43;
   --white: #fffdfb;
-  --blue: #eff4f0;
+  --blue: #e9f2ec;
   --brown: #9e7353;
   --tan: #d7c3a2;
   --gray: #dcdada;
@@ -66,9 +66,11 @@ p {
   color: var(--text);
 }
 
+/* Buttons */
+
 button {
   font-family: "Libre Franklin", sans-serif;
-  font-size: 1.25rem;
+  font-size: 1rem;
   font-weight: 550;
   color: var(--text);
   border: none;
@@ -92,6 +94,8 @@ button {
   border-radius: 0.75rem;
 }
 
+/* Links */
+
 li {
   list-style: none;
   padding: 0;
@@ -100,8 +104,12 @@ li {
 
 a {
   text-decoration: none;
+  font-weight: 500;
+  font-size: 1rem;
   color: var(--text);
 }
+
+/* Input */
 
 input {
   border: 1px solid var(--gray);

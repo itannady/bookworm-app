@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { BookListComponent } from './book-list/book-list.component';
-import { UserBooksComponent } from './user-books/user-books.component';
+import { BookListComponent } from './books/book-list/book-list.component';
+import { UserBooksComponent } from './books/user-books/user-books.component';
 
 const routes: Routes = [
   { path: '', component: BookListComponent },

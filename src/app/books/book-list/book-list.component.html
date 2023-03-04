@@ -1,6 +1,7 @@
 <section>
   <div class="wrapper">
     <div class="row">
+      <button (click)="prevClick()">Previous</button>
       <div class="card" *ngFor="let book of visibleBooks">
         <div class="coverContainer">
           <img src="{{ book.thumbnail }}" alt="" />
@@ -10,10 +11,7 @@
           <p class="author">{{ book.authors }}</p>
         </div>
       </div>
-      <div class="pagination">
-        <button (click)="prevClick()">Previous</button>
-        <button (click)="nextClick()">Next</button>
-      </div>
+      <button (click)="nextClick()">Next</button>
     </div>
   </div>
 </section>

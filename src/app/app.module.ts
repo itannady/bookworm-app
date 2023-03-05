@@ -14,6 +14,7 @@ import { HomeComponent } from './home/home.component';
 import { HttpClientModule } from '@angular/common/http';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { MatIconModule } from '@angular/material/icon';
+import { BookModalComponent } from './books/book-modal/book-modal.component';
 
 @NgModule({
   declarations: [
@@ -24,6 +25,7 @@ import { MatIconModule } from '@angular/material/icon';
     BookListComponent,
     UserBooksComponent,
     HomeComponent,
+    BookModalComponent,
   ],
   imports: [
     BrowserModule,

@@ -1,0 +1,77 @@
+section {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.8);
+  opacity: 1;
+  overflow-y: hidden;
+  transform: translateY(0);
+  transition: transform 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+  z-index: 1000;
+}
+
+.overlayContent {
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+  background-color: pink;
+  z-index: 1;
+}
+
+.overlayContent mat-icon {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  color: var(--white);
+  cursor: pointer;
+}
+
+.modalContainer {
+  position: absolute;
+  width: 100%;
+  height: calc(100vh - 3.5rem);
+  bottom: 0;
+  border-radius: 20px 20px 0 0;
+  overflow-y: scroll;
+  overflow-x: hidden;
+  background-color: white;
+  display: flex;
+  justify-content: center;
+}
+
+.modalContent {
+  display: flex;
+  max-width: 1200px;
+  padding: 5rem 8rem;
+  max-width: 1200px;
+  gap: 2rem;
+}
+
+.coverContainer {
+  background-color: pink;
+}
+
+.coverContainer img {
+  width: 20rem;
+  border-radius: 5px;
+  box-shadow: 0 1px 2px 0 rgb(60 64 67 / 30%), 0 1px 3px 1px rgb(60 64 67 / 15%);
+}
+
+.addBook {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 0.5rem;
+}
+
+.addBook mat-icon {
+  color: var(--gray);
+}
+
+.detailsContainer {
+  width: 100%;
+  max-width: 700px;
+  background-color: aliceblue;
+}

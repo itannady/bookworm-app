@@ -60,7 +60,6 @@ form {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-
   gap: 1rem;
 }
 
@@ -84,4 +83,18 @@ input {
 .primaryBtn {
   margin: 0.5rem;
   width: 65%;
+}
+
+p {
+  text-align: center;
+  color: var(--textGray);
+}
+
+p span {
+  color: var(--brown);
+  cursor: pointer;
+}
+
+p span:hover {
+  text-decoration: underline;
 }

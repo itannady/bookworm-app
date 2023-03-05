@@ -1,23 +1,46 @@
 <section>
-  <form>
-    <h2>Sign up</h2>
-    <input
-      matInput
-      name="email"
-      type="email"
-      ngModel
-      placeholder="E-Mail"
-      required
-      email
-    />
-    <input
-      type="password"
-      name="password"
-      ngModel
-      matInput
-      placeholder="Password"
-      required
-    />
-    <button class="primaryBtn" type="submit">Login</button>
-  </form>
+  <div class="wrapper">
+    <div class="formContainer">
+      <h4>Let's create your account</h4>
+      <form>
+        <div class="column">
+          <label for="name">Full Name</label>
+          <input
+            matInput
+            name="name"
+            type="name"
+            ngModel
+            placeholder="John Doe"
+            required
+            email
+          />
+        </div>
+        <div class="column">
+          <label for="email">Email</label>
+          <input
+            matInput
+            name="email"
+            type="email"
+            ngModel
+            placeholder="E-Mail"
+            required
+            email
+          />
+        </div>
+        <div class="column">
+          <label for="passowrd">Password</label>
+          <input
+            type="password"
+            name="password"
+            ngModel
+            matInput
+            placeholder="Password"
+            required
+          />
+        </div>
+        <button class="primaryBtn" type="submit">Sign Up</button>
+      </form>
+      <p>Already have an account? <span>Log in</span></p>
+    </div>
+  </div>
 </section>

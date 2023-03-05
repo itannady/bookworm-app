@@ -12,6 +12,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { SharedModule } from './shared/shared.module';
 import { HomeComponent } from './home/home.component';
 import { HttpClientModule } from '@angular/common/http';
+import { NoopAnimationsModule } from '@angular/platform-browser/animations';
+import { MatIconModule } from '@angular/material/icon';
 
 @NgModule({
   declarations: [
@@ -30,6 +32,8 @@ import { HttpClientModule } from '@angular/common/http';
     ReactiveFormsModule,
     SharedModule,
     HttpClientModule,
+    NoopAnimationsModule,
+    MatIconModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

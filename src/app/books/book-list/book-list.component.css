@@ -13,19 +13,23 @@ section {
 }
 
 .row {
+  position: relative;
   margin: 0 5%;
   display: flex;
   justify-content: center;
-  align-items: flex-end;
+  align-items: center;
   gap: 1rem;
 }
 
 .card {
   border-radius: 10px;
   width: 14%;
+  height: 100%;
   min-width: 9rem;
   padding: 0.5rem 0;
   display: flex;
+  justify-self: flex-end;
+  align-self: flex-end;
   flex-direction: column;
   gap: 0.5rem;
   cursor: pointer;
@@ -38,6 +42,7 @@ section {
 .coverContainer {
   position: relative;
   width: 100%;
+  height: 100%;
   display: flex;
   justify-content: center;
 }
@@ -46,22 +51,28 @@ section {
   border-radius: 5px;
   width: 8rem;
   cursor: pointer;
-  box-shadow: 0 1px 2px 0 rgba(60, 64, 67, 0.152),
-    0 1px 3px 1px rgb(60 64 67 / 15%);
-  filter: drop-shadow(4px 0px 5px rgba(84, 68, 45, 0.136))
-    drop-shadow(1px 5px 5px rgba(80, 57, 25, 0.198));
+  box-shadow: 0 1px 2px 0 rgb(60 64 67 / 30%), 0 1px 3px 1px rgb(60 64 67 / 15%);
+  /* filter: drop-shadow(4px 0px 5px rgba(84, 68, 45, 0.136))
+    drop-shadow(1px 5px 5px rgba(80, 57, 25, 0.198)); */
 }
 
 .detailContainer {
-  margin: 0 15%;
+  height: 5rem;
+  margin: 0 1rem;
 }
 
 .detailContainer p.title {
-  font-weight: 600;
+  font-weight: 550;
+  color: var(--text);
   margin: 0;
 }
 .detailContainer p.author {
   font-weight: 400;
   color: var(--text);
   margin: 0;
+}
+
+mat-icon {
+  color: var(--text);
+  cursor: pointer;
 }

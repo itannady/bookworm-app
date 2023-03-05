@@ -63,6 +63,7 @@ h6 {
 p {
   font-size: 1rem;
   line-height: 1.6;
+  letter-spacing: 0.02em;
   color: var(--text);
 }
 
@@ -136,4 +137,13 @@ label {
   font-size: 1rem;
   line-height: 1.6;
   color: var(--text);
+}
+
+html,
+body {
+  height: 100%;
+}
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
 }

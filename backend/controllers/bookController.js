@@ -51,3 +51,25 @@ exports.getBooks = async (req, res, next) => {
       .json({ message: "An error occurred while searching for books." });
   }
 };
+
+// save added book
+exports.addBook = async (req, res, next) => {
+  const bookData = req.body;
+  const book = new Book(bookData);
+  book
+    .save()
+    .then((addedBook) => {
+      res.status(201).json({
+        message: "Book added successfully",
+        book: {
+          ...addedBook,
+          id: addedBook._id,
+        },
+      });
+    })
+    .catch((error) => {
+      res.status(500).json({
+        message: "Creating a post failed!",
+      });
+    });
+};

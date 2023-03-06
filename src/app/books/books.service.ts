@@ -30,8 +30,12 @@ export class BooksService {
   }
 
   addBook(book: Book) {
-    const currentValue = this.selectedBooks.getValue();
-    const updatedValue = [...currentValue, book];
-    this.selectedBooks.next(updatedValue);
+    this.http
+      .post<{ book: Book }>(`${this.API_URL}/library`, book)
+      .subscribe((responseData) => {
+        const currentValue = this.selectedBooks.getValue();
+        const updatedValue = [...currentValue, book];
+        this.selectedBooks.next(updatedValue);
+      });
   }
 }

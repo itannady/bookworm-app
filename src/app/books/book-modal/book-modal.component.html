@@ -7,7 +7,7 @@
       <div class="coverContainer">
         <img src="{{ bookData.thumbnail }}" alt="" />
         <div class="addBook">
-          <mat-icon>add_circle</mat-icon>
+          <mat-icon (click)="onAddBook()">add_circle</mat-icon>
           <p>Add to my books</p>
         </div>
       </div>

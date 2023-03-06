@@ -9,12 +9,12 @@
       <th>Status</th>
     </tr>
   </thead>
-  <tr class="bookRow">
+  <tr class="bookRow" *ngFor="let book of books">
     <td>
-      <img class="bookCover" src="/assets/images/bookCover.jpg" alt="" />
+      <img class="bookCover" src="{{ book.thumbnail }}" alt="" />
     </td>
-    <td>Harry Potter</td>
-    <td>Jk Rowling</td>
+    <td>{{ book.title }}</td>
+    <td>{{ book.authors ? book.authors[0] : "No authors listed" }}</td>
     <td>4.7</td>
     <td><mat-icon>notes</mat-icon></td>
     <td>tag</td>

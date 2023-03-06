@@ -1,0 +1,28 @@
+section {
+  width: 100vw;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.libContainer {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 5%;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 5% 0;
+}
+
+tr {
+  text-align: left;
+  border-bottom: 2px solid var(--tan);
+}
+
+th {
+  padding-bottom: 1rem;
+}

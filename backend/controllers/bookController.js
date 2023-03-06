@@ -32,6 +32,7 @@ exports.getBooks = async (req, res, next) => {
             authors: book.authors,
             description: book.description,
             thumbnail: book.imageLinks?.thumbnail,
+            categories: book.categories,
           });
         }
         // stop once enough books have been reached

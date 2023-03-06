@@ -7,32 +7,7 @@ section {
 }
 
 .libContainer {
-  width: 100%;
+  width: 100vw;
   max-width: 1200px;
   margin: 0 5%;
-}
-
-table {
-  width: 100%;
-  border-collapse: collapse;
-  margin: 5% 0;
-  color: var(--text);
-}
-
-tr {
-  text-align: left;
-  border-bottom: 1px solid var(--tan);
-}
-
-th {
-  padding-bottom: 1rem;
-  color: var(--text);
-}
-
-.bookRow td {
-  padding: 1rem 0;
-}
-
-.bookCover {
-  width: 4rem;
 }

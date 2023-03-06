@@ -5,10 +5,11 @@ import { SignupComponent } from './auth/signup/signup.component';
 import { BookListComponent } from './books/book-list/book-list.component';
 import { UserBooksComponent } from './books/user-books/user-books.component';
 import { HomeComponent } from './home/home.component';
+import { LibraryPageComponent } from './library-page/library-page.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
-  { path: 'list', component: UserBooksComponent },
+  { path: 'library', component: LibraryPageComponent },
   { path: 'login', component: LoginComponent },
   { path: 'signup', component: SignupComponent },
 ];

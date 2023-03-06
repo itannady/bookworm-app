@@ -2,7 +2,11 @@
   <div class="wrapper">
     <div class="row">
       <mat-icon (click)="prevClick()">arrow_back_ios</mat-icon>
-      <div class="card" *ngFor="let book of visibleBooks">
+      <div
+        class="card"
+        *ngFor="let book of visibleBooks"
+        (click)="onBookClick(book)"
+      >
         <div class="coverContainer">
           <img src="{{ book.thumbnail }}" alt="" />
         </div>

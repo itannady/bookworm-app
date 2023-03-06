@@ -1,29 +1,24 @@
 <section>
   <div class="overlayContent">
-    <mat-icon>close</mat-icon>
+    <mat-icon (click)="onCloseClick()">close</mat-icon>
   </div>
   <div class="modalContainer">
     <div class="modalContent">
       <div class="coverContainer">
-        <img src="/assets/images/bookCover.jpg" alt="" />
+        <img src="{{ bookData.thumbnail }}" alt="" />
         <div class="addBook">
           <mat-icon>add_circle</mat-icon>
           <p>Add to my books</p>
         </div>
       </div>
       <div class="detailsContainer">
-        <h1>Harry Potter and the Sorcerrer's Stone</h1>
-        <p>Author</p>
+        <h1>{{ bookData.title }}</h1>
+        <p>
+          {{ bookData.authors ? bookData.authors[0] : "No authors listed" }}
+        </p>
         <h6>Description</h6>
         <p>
-          From the #1 New York Times bestselling author of It Starts with Us and
-          All Your Perfects, a “brave and heartbreaking novel that digs its
-          claws into you and doesn’t let go, long after you’ve finished it”
-          (Anna Todd, New York Times bestselling author) about a workaholic with
-          a too-good-to-be-true romance can’t stop thinking about her first
-          love—soon to be a major motion picture starring Blake Lively and
-          Justin Baldoni.Lily hasn’t always had it easy, but that’s never
-          stopped her from working hard for the life she wants. She’s come a
+          {{ bookData.description }}
         </p>
       </div>
     </div>

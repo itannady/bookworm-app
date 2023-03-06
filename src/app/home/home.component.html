@@ -1,3 +1,7 @@
 <app-hero> </app-hero>
-<app-book-list></app-book-list>
-<app-book-modal></app-book-modal>
+<app-book-list (bookSelected)="selectedBook = $event"></app-book-list>
+<app-book-modal
+  *ngIf="selectedBook"
+  [bookData]="selectedBook"
+  (close)="selectedBook = null"
+></app-book-modal>

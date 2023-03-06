@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { Book } from '../book.model';
 import { BooksService } from '../books.service';
 
@@ -10,6 +10,7 @@ import { BooksService } from '../books.service';
 export class BookListComponent implements OnInit {
   currentGroup = 0;
   books: Book[] = [];
+  @Output() bookSelected = new EventEmitter<Book>();
 
   constructor(private booksService: BooksService) {}
 
@@ -30,5 +31,9 @@ export class BookListComponent implements OnInit {
 
   get visibleBooks() {
     return this.books.slice(this.currentGroup, this.currentGroup + 5);
+  }
+
+  onBookClick(book: Book) {
+    this.bookSelected.emit(book);
   }
 }

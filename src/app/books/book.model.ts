@@ -5,4 +5,6 @@ export interface Book {
   description?: string;
   thumbnail?: string;
   categories?: string[];
+  averageRating?: number;
+  ratingsCount?: number;
 }

@@ -22,6 +22,7 @@ export class BooksService {
         console.log(result);
       });
   }
+
   getBooksListener() {
     return this.searchBooks.asObservable();
   }
@@ -33,9 +34,9 @@ export class BooksService {
   addBook(book: Book) {
     this.http
       .post<{ book: Book }>(`${this.API_URL}/library`, book)
-      .subscribe((responseData) => {
-        const currentValue = this.selectedBooks.getValue();
-        const updatedValue = [...currentValue, book];
+      .subscribe(() => {
+        // const currentValue = this.selectedBooks.getValue();
+        // const updatedValue = [...currentValue, book];
         this.selectedBooks.next([...this.books]);
       });
   }

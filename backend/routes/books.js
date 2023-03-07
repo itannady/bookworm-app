@@ -3,8 +3,8 @@ const BookController = require("../controllers/bookController");
 
 const router = express.Router();
 
-router.get("/search/:query", BookController.getBooks);
+router.get("/library", BookController.getBooks);
+router.get("/search/:query", BookController.getSearchedBooks);
 router.post("/library/", BookController.addBook);
-router.get("/library", BookController.getBook);
 
 module.exports = router;

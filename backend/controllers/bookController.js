@@ -5,7 +5,7 @@ require("dotenv").config();
 const API_KEY = process.env.API_KEY;
 
 // search for books
-exports.getBooks = async (req, res, next) => {
+exports.getSearchedBooks = async (req, res, next) => {
   const { query } = req.params;
   try {
     let books = [];
@@ -74,7 +74,7 @@ exports.addBook = async (req, res, next) => {
     });
 };
 
-exports.getBook = (req, res, next) => {
+exports.getBooks = (req, res, next) => {
   Book.find()
     .then((savedBooks) => {
       console.log(savedBooks);

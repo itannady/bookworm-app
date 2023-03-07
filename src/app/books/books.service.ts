@@ -52,6 +52,7 @@ export class BooksService {
               title: book.title,
               authors: book.authors,
               thumbnail: book.thumbnail,
+              description: book.description,
             };
           });
         })

@@ -1,6 +1,11 @@
 <section>
   <div class="libContainer">
     <h1>My Library</h1>
-    <app-user-books></app-user-books>
+    <app-user-books (bookSelected)="selectedBook = $event"></app-user-books>
   </div>
+  <app-book-modal
+    *ngIf="selectedBook"
+    [bookData]="selectedBook"
+    (close)="selectedBook = null"
+  ></app-book-modal>
 </section>

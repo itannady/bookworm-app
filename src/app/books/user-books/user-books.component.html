@@ -11,7 +11,12 @@
   </thead>
   <tr class="bookRow" *ngFor="let book of books">
     <td>
-      <img class="bookCover" src="{{ book.thumbnail }}" alt="" />
+      <img
+        class="bookCover"
+        (click)="onBookClick(book)"
+        src="{{ book.thumbnail }}"
+        alt="{{ book.title }}"
+      />
     </td>
     <td>{{ book.title }}</td>
     <td>{{ book.authors ? book.authors[0] : "No authors listed" }}</td>

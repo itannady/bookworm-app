@@ -16,6 +16,7 @@ import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { MatIconModule } from '@angular/material/icon';
 import { BookModalComponent } from './books/book-modal/book-modal.component';
 import { LibraryPageComponent } from './library-page/library-page.component';
+import { NotesComponent } from './notes/notes.component';
 
 @NgModule({
   declarations: [
@@ -28,6 +29,7 @@ import { LibraryPageComponent } from './library-page/library-page.component';
     HomeComponent,
     BookModalComponent,
     LibraryPageComponent,
+    NotesComponent,
   ],
   imports: [
     BrowserModule,

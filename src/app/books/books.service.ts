@@ -6,7 +6,8 @@ import { BehaviorSubject, map, Subject } from 'rxjs';
 
 @Injectable({ providedIn: 'root' })
 export class BooksService {
-  private books = new BehaviorSubject<Book[]>([]);
+  private books: Book[] = [];
+  private searchBooks = new BehaviorSubject<Book[]>([]);
   private selectedBooks = new BehaviorSubject<Book[]>([]);
 
   API_URL = 'http://localhost:5040';
@@ -17,12 +18,12 @@ export class BooksService {
     this.http
       .get<Book[]>(`${this.API_URL}/search/${query}`)
       .subscribe((result) => {
-        this.books.next(result);
+        this.searchBooks.next(result);
         console.log(result);
       });
   }
   getBooksListener() {
-    return this.books.asObservable();
+    return this.searchBooks.asObservable();
   }
 
   getSelectedBooksListener() {
@@ -35,18 +36,18 @@ export class BooksService {
       .subscribe((responseData) => {
         const currentValue = this.selectedBooks.getValue();
         const updatedValue = [...currentValue, book];
-        this.selectedBooks.next(updatedValue);
+        this.selectedBooks.next([...this.books]);
       });
   }
 
   getUserBooks() {
     return this.http
-      .get<{ message: string; books: Book[] }>(`${this.API_URL}/library`)
+      .get<{ message: string; books: any }>(`${this.API_URL}/library`)
       .pipe(
         map((bookData) => {
-          console.log('book data', bookData);
-          return bookData.books.map((book) => {
+          return bookData.books.map((book: any) => {
             return {
+              id: book._id,
               title: book.title,
               authors: book.authors,
               thumbnail: book.thumbnail,
@@ -54,8 +55,17 @@ export class BooksService {
           });
         })
       )
-      .subscribe((books) => {
-        this.selectedBooks.next(books);
+      .subscribe((savedBooks) => {
+        this.books = savedBooks;
+        this.selectedBooks.next([...this.books]);
       });
+  }
+
+  deleteBook(bookId: string) {
+    this.http.delete(`${this.API_URL}/library/` + bookId).subscribe(() => {
+      const updatedList = this.books.filter((book) => book.id !== bookId);
+      this.books = updatedList;
+      this.selectedBooks.next([...this.books]);
+    });
   }
 }

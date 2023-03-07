@@ -90,3 +90,10 @@ exports.getBooks = (req, res, next) => {
       });
     });
 };
+
+exports.deleteBook = (req, res, next) => {
+  Book.deleteOne({ _id: req.params.id }).then((result) => {
+    console.log(result);
+    res.status(200).json({ message: "Post deleted" });
+  });
+};

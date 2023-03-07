@@ -15,6 +15,7 @@ export class UserBooksComponent implements OnInit, OnDestroy {
   constructor(private booksService: BooksService) {}
 
   ngOnInit(): void {
+    this.booksService.getUserBooks();
     this.booksSub = this.booksService
       .getSelectedBooksListener()
       .subscribe((books) => {

@@ -73,3 +73,20 @@ exports.addBook = async (req, res, next) => {
       });
     });
 };
+
+exports.getBook = (req, res, next) => {
+  Book.find()
+    .then((savedBooks) => {
+      console.log(savedBooks);
+      res.status(200).json({
+        message: "Books fetched successfully",
+        books: savedBooks,
+      });
+    })
+    .catch((error) => {
+      res.status(500).json({
+        message: "Fetching books failed!",
+        error: error,
+      });
+    });
+};

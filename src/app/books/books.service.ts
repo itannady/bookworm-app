@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
 import { Book } from './book.model';
-import { BehaviorSubject, Subject } from 'rxjs';
+import { BehaviorSubject, map, Subject } from 'rxjs';
 
 @Injectable({ providedIn: 'root' })
 export class BooksService {
@@ -36,6 +36,26 @@ export class BooksService {
         const currentValue = this.selectedBooks.getValue();
         const updatedValue = [...currentValue, book];
         this.selectedBooks.next(updatedValue);
+      });
+  }
+
+  getUserBooks() {
+    return this.http
+      .get<{ message: string; books: Book[] }>(`${this.API_URL}/library`)
+      .pipe(
+        map((bookData) => {
+          console.log('book data', bookData);
+          return bookData.books.map((book) => {
+            return {
+              title: book.title,
+              authors: book.authors,
+              thumbnail: book.thumbnail,
+            };
+          });
+        })
+      )
+      .subscribe((books) => {
+        this.selectedBooks.next(books);
       });
   }
 }

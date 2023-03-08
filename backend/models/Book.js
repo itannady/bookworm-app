@@ -26,6 +26,11 @@ const bookSchema = mongoose.Schema({
   ratingsCount: {
     type: Number,
   },
+  user: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: "User",
+    required: true,
+  },
 });
 
 module.exports = mongoose.model("Book", bookSchema);

@@ -55,7 +55,13 @@ exports.getSearchedBooks = async (req, res, next) => {
 // save added book
 exports.addBook = async (req, res, next) => {
   const bookData = req.body;
-  const book = new Book(bookData);
+  const book = new Book({
+    title: req.body.title,
+    authors: req.body.authors,
+    description: req.body.description,
+    thumbnail: req.body.thumbnail,
+    user: req.userData.userId,
+  });
   book
     .save()
     .then((addedBook) => {
@@ -92,8 +98,18 @@ exports.getBooks = (req, res, next) => {
 };
 
 exports.deleteBook = (req, res, next) => {
-  Book.deleteOne({ _id: req.params.id }).then((result) => {
-    console.log(result);
-    res.status(200).json({ message: "Post deleted" });
-  });
+  Book.deleteOne({ _id: req.params.id, user: req.userData.userId }).then(
+    (result) => {
+      console.log(result);
+      if (result.n > 0) {
+        res.status(200).json({
+          message: "Deletion successful",
+        });
+      } else {
+        res.status(200).json({
+          message: "Not authorized",
+        });
+      }
+    }
+  );
 };

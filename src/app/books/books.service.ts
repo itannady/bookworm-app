@@ -53,11 +53,13 @@ export class BooksService {
               authors: book.authors,
               thumbnail: book.thumbnail,
               description: book.description,
+              user: book.user,
             };
           });
         })
       )
       .subscribe((savedBooks) => {
+        console.log(savedBooks);
         this.books = savedBooks;
         this.selectedBooks.next([...this.books]);
       });

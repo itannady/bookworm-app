@@ -3,14 +3,14 @@
     <!-- <h6>Bookworm</h6> -->
     <div class="formContainer">
       <h4>Log in</h4>
-      <form>
+      <form (submit)="onLogin(loginForm)" #loginForm="ngForm">
         <div class="column">
           <label for="email">Email</label>
           <input
-            matInput
-            name="email"
             type="email"
+            name="email"
             ngModel
+            #emailInput="ngModel"
             placeholder="E-Mail"
             required
             email
@@ -22,7 +22,7 @@
             type="password"
             name="password"
             ngModel
-            matInput
+            #passwordInput="ngModel"
             placeholder="Password"
             required
           />

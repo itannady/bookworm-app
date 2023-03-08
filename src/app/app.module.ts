@@ -19,6 +19,8 @@ import { LibraryPageComponent } from './library-page/library-page.component';
 import { NotesComponent } from './notes/notes.component';
 import { AuthInterceptor } from './auth/auth-interceptor';
 
+import { MatInputModule } from '@angular/material/input';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -41,6 +43,7 @@ import { AuthInterceptor } from './auth/auth-interceptor';
     HttpClientModule,
     NoopAnimationsModule,
     MatIconModule,
+    MatInputModule,
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },

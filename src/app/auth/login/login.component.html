@@ -15,6 +15,9 @@
             required
             email
           />
+          <mat-error *ngIf="submitted && emailInput.invalid">
+            Please enter a valid email
+          </mat-error>
         </div>
         <div class="column">
           <label for="passowrd">Password</label>

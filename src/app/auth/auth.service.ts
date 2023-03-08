@@ -7,7 +7,7 @@ import { AuthData } from './auth-data.model';
 @Injectable({ providedIn: 'root' })
 export class AuthService {
   private isAuthenticated = false;
-  private token: string = '';
+  private token: string | null = null;
   private authStatusListener = new Subject<boolean>();
 
   API_URL = 'http://localhost:5040';
@@ -47,5 +47,11 @@ export class AuthService {
           this.authStatusListener.next(true);
         }
       });
+  }
+
+  logout() {
+    this.token = null;
+    this.isAuthenticated = false;
+    this.authStatusListener.next(false);
   }
 }

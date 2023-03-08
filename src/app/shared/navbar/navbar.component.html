@@ -19,8 +19,8 @@
           <button class="primaryBtn">Sign up</button></a
         >
       </li>
-      <li>
-        <button class="secondaryBtn" *ngIf="userIsAuthenticated">Logout</button>
+      <li *ngIf="userIsAuthenticated">
+        <button class="secondaryBtn" (click)="onLogout()">Logout</button>
       </li>
     </ul>
   </div>

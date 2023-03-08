@@ -6,11 +6,13 @@ const app = express();
 require("dotenv").config();
 
 const bookRoutes = require("./routes/books");
+const userRoutes = require("./routes/user");
 
 app.use(express.json());
 app.use(cors());
 app.use(express.urlencoded({ extended: false }));
 app.use("/", bookRoutes);
+app.use("/user", userRoutes);
 
 // connect to MongoDB
 const URL = process.env.MONGODB_URL;

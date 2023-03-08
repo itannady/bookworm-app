@@ -1,0 +1,53 @@
+section {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.8);
+  opacity: 1;
+  overflow-y: hidden;
+  transform: translateY(0);
+  transition: transform 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+  z-index: 1000;
+  display: none;
+}
+
+.modalContainer {
+  position: absolute;
+  width: 50%;
+
+  /* height: calc(100vh - 3.5rem); */
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border-radius: 20px;
+  overflow-y: scroll;
+  overflow-x: hidden;
+  background-color: white;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.noteContent {
+  padding: 10% 7%;
+}
+
+hr {
+  border: 0;
+  height: 1px;
+  background-color: var(--tan);
+  margin: 1rem 0;
+}
+
+textarea {
+  width: 100%;
+  resize: none;
+  border: none;
+  background-color: #f5f5f5;
+}
+
+.primaryBtn {
+  width: 100%;
+}

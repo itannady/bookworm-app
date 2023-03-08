@@ -74,10 +74,10 @@ exports.addBook = async (req, res, next) => {
     });
 };
 
+// get saved books
 exports.getBooks = (req, res, next) => {
   Book.find()
     .then((savedBooks) => {
-      console.log(savedBooks);
       res.status(200).json({
         message: "Books fetched successfully",
         books: savedBooks,
@@ -89,4 +89,11 @@ exports.getBooks = (req, res, next) => {
         error: error,
       });
     });
+};
+
+exports.deleteBook = (req, res, next) => {
+  Book.deleteOne({ _id: req.params.id }).then((result) => {
+    console.log(result);
+    res.status(200).json({ message: "Post deleted" });
+  });
 };

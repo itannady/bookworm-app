@@ -2,7 +2,7 @@
   <div class="wrapper">
     <div class="formContainer">
       <h4>Let's create your account</h4>
-      <form>
+      <form (submit)="onSignup(signupForm)" #signupForm="ngForm">
         <div class="column">
           <label for="name">Full Name</label>
           <input
@@ -10,9 +10,9 @@
             name="name"
             type="name"
             ngModel
+            #nameInput="ngModel"
             placeholder="John Doe"
             required
-            email
           />
         </div>
         <div class="column">
@@ -23,6 +23,7 @@
             type="email"
             ngModel
             placeholder="E-Mail"
+            #emailInput="ngModel"
             required
             email
           />
@@ -35,6 +36,7 @@
             ngModel
             matInput
             placeholder="Password"
+            #passwordInput="ngModel"
             required
           />
         </div>

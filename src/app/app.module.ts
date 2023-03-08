@@ -11,11 +11,13 @@ import { AppRoutingModule } from './app-routing.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { SharedModule } from './shared/shared.module';
 import { HomeComponent } from './home/home.component';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { MatIconModule } from '@angular/material/icon';
 import { BookModalComponent } from './books/book-modal/book-modal.component';
 import { LibraryPageComponent } from './library-page/library-page.component';
+import { NotesComponent } from './notes/notes.component';
+import { AuthInterceptor } from './auth/auth-interceptor';
 
 @NgModule({
   declarations: [
@@ -28,6 +30,7 @@ import { LibraryPageComponent } from './library-page/library-page.component';
     HomeComponent,
     BookModalComponent,
     LibraryPageComponent,
+    NotesComponent,
   ],
   imports: [
     BrowserModule,
@@ -39,7 +42,9 @@ import { LibraryPageComponent } from './library-page/library-page.component';
     NoopAnimationsModule,
     MatIconModule,
   ],
-  providers: [],
+  providers: [
+    { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },
+  ],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

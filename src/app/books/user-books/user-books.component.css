@@ -22,3 +22,7 @@ th {
 .bookCover {
   width: 4rem;
 }
+
+mat-icon {
+  cursor: pointer;
+}

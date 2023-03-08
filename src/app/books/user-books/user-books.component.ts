@@ -7,6 +7,7 @@ import {
   Output,
 } from '@angular/core';
 import { Subscription } from 'rxjs';
+import { AuthService } from 'src/app/auth/auth.service';
 import { Book } from '../book.model';
 import { BooksService } from '../books.service';
 
@@ -19,12 +20,19 @@ export class UserBooksComponent implements OnInit, OnDestroy {
   @Output() bookSelected = new EventEmitter<Book>();
   books: Book[] = [];
   isLoading = false;
+  userIsAuthenticated = false;
+  userId: string | null = null;
   private booksSub: Subscription = new Subscription();
+  private authStatusSub: Subscription = new Subscription();
 
-  constructor(private booksService: BooksService) {}
+  constructor(
+    private booksService: BooksService,
+    private authService: AuthService
+  ) {}
 
   ngOnInit(): void {
     this.isLoading = true;
+    this.userId = this.authService.getUserId();
     this.booksService.getUserBooks();
     this.booksSub = this.booksService
       .getSelectedBooksListener()
@@ -32,6 +40,12 @@ export class UserBooksComponent implements OnInit, OnDestroy {
         this.isLoading = false;
         this.books = books;
         console.log(this.books);
+      });
+    this.authStatusSub = this.authService
+      .getAuthStatusListener()
+      .subscribe((isAuthenticated) => {
+        this.userIsAuthenticated = isAuthenticated;
+        this.userId = this.authService.getUserId();
       });
   }
 

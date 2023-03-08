@@ -7,4 +7,5 @@ export interface Book {
   categories?: string[];
   averageRating?: number;
   ratingsCount?: number;
+  user?: string;
 }

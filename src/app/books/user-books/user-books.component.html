@@ -1,3 +1,4 @@
+<app-loader *ngIf="isLoading"></app-loader>
 <table>
   <thead>
     <tr>
@@ -26,3 +27,4 @@
     <td><mat-icon (click)="onDelete(book.id)">remove</mat-icon></td>
   </tr>
 </table>
+<p *ngIf="books.length <= 0 && !isLoading">No posts added yet!</p>

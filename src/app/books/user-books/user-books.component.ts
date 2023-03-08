@@ -18,15 +18,18 @@ import { BooksService } from '../books.service';
 export class UserBooksComponent implements OnInit, OnDestroy {
   @Output() bookSelected = new EventEmitter<Book>();
   books: Book[] = [];
+  isLoading = false;
   private booksSub: Subscription = new Subscription();
 
   constructor(private booksService: BooksService) {}
 
   ngOnInit(): void {
+    this.isLoading = true;
     this.booksService.getUserBooks();
     this.booksSub = this.booksService
       .getSelectedBooksListener()
       .subscribe((books) => {
+        this.isLoading = false;
         this.books = books;
         console.log(this.books);
       });

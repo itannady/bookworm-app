@@ -5,19 +5,22 @@
     </span>
     <span class="spacer"></span>
     <ul class="btnWrapper">
-      <li>
+      <li *ngIf="userIsAuthenticated">
         <a routerLink="/library" routerLinkActive="">My Library</a>
       </li>
 
-      <li>
+      <li *ngIf="!userIsAuthenticated">
         <a routerLink="/login" routerLinkActive="">
-          <button class="secondaryBtn" (click)="onLogin()">Log in</button></a
+          <button class="secondaryBtn">Log in</button></a
+        >
+      </li>
+      <li *ngIf="!userIsAuthenticated">
+        <a routerLink="/signup" routerLinkActive="">
+          <button class="primaryBtn">Sign up</button></a
         >
       </li>
       <li>
-        <a routerLink="/signup" routerLinkActive="">
-          <button class="primaryBtn" (click)="onSignup()">Sign up</button></a
-        >
+        <button class="secondaryBtn" *ngIf="userIsAuthenticated">Logout</button>
       </li>
     </ul>
   </div>

@@ -1,5 +1,6 @@
 <section>
-  <!-- <div class="heroContainer">
+  <!-- Public hero -->
+  <div class="heroContainer" *ngIf="!userIsAuthenticated">
     <div class="textWrapper">
       <h2>Discover your next favorite read</h2>
       <p>
@@ -8,8 +9,9 @@
       <button class="primaryBtn">Get started</button>
     </div>
     <img src="assets/images/heroImg.png" alt="" />
-  </div> -->
-  <div class="userHero">
+  </div>
+  <!-- User is authenticated hero -->
+  <div class="userHero" *ngIf="userIsAuthenticated">
     <div class="wrapper">
       <div class="textWrapper">
         <h1>Discover your next <br />favorite read</h1>

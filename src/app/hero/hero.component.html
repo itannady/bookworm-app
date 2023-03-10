@@ -1,12 +1,15 @@
 <section>
   <!-- Public hero -->
-  <div class="heroContainer" *ngIf="!userIsAuthenticated">
-    <div class="textWrapper">
-      <h2>Discover your next favorite read</h2>
+  <div class="publicHero" *ngIf="!userIsAuthenticated">
+    <div class="publicText">
+      <h1>Find and track all your book adventures</h1>
       <p>
-        Browse top-rated books and personalized recommendations with our app
+        Explore our vast collection of books and start tracking your reading
+        progress today
       </p>
-      <button class="primaryBtn">Get started</button>
+      <a routerLink="/signup" routerLinkActive="">
+        <button class="primaryBtn">Get started</button>
+      </a>
     </div>
     <img src="assets/images/heroImg.png" alt="" />
   </div>

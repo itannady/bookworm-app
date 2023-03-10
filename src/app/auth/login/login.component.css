@@ -47,15 +47,20 @@ section::before {
 }
 
 .formContainer {
-  border-radius: 20px;
   width: 100%;
   padding: 10% 7%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border-radius: 20px;
   background-color: white;
 }
 
 form {
   position: relative;
   width: 100%;
+  max-width: 22rem;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -81,8 +86,8 @@ input {
 }
 
 .primaryBtn {
+  width: 100%;
   margin: 0.5rem;
-  width: 65%;
 }
 
 p {
@@ -93,8 +98,5 @@ p {
 p span {
   color: var(--brown);
   cursor: pointer;
-}
-
-p span:hover {
   text-decoration: underline;
 }

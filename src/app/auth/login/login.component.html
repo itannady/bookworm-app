@@ -11,7 +11,7 @@
             name="email"
             ngModel
             #emailInput="ngModel"
-            placeholder="E-Mail"
+            placeholder="johndoe@gmail.com"
             required
             email
           />
@@ -32,7 +32,12 @@
         </div>
         <button class="primaryBtn" type="submit">Login</button>
       </form>
-      <p>Don't have an account? <span>Sign up for free</span></p>
+      <p>
+        Don't have an account?
+        <span>
+          <a routerLink="/signup" routerLinkActive="">Sign up for free</a></span
+        >
+      </p>
     </div>
   </div>
 </section>

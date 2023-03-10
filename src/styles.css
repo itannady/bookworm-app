@@ -9,7 +9,7 @@
   --brown: #9e7353;
   --tan: #d7c3a2;
   --gray: #dfe0df;
-  --linkColor: #90837e;
+  --linkColor: #8a7c77;
   --textGray: #939393;
   --cardHover: #ececec;
   --textHover: #a59994;
@@ -112,9 +112,9 @@ li {
 
 a {
   text-decoration: none;
-  font-weight: 500;
+  font-weight: 550;
   font-size: 1rem;
-  color: var(--linkColor);
+  color: var(--text);
 }
 
 /* Input */

@@ -121,15 +121,15 @@ a {
 
 input {
   border: 1px solid var(--gray);
-  border-radius: 0.75rem;
+  border-radius: 0.35rem;
   transition: 0.3s ease;
   outline: none;
-  padding: 0.75rem 2.5rem;
+  padding: 0.75rem;
   color: var(--text);
 }
 
-input:placeholder {
-  color: var(--gray);
+input::placeholder {
+  color: var(--textGray);
   font-weight: 500;
 }
 
@@ -139,10 +139,12 @@ input:focus {
   box-shadow: 0 0 0 4px rgba(57, 109, 146, 0.1);
 }
 
+/* Form */
+
 label {
   font-weight: 500;
   font-size: 1rem;
-  line-height: 1.6;
+  padding-bottom: 5px;
   color: var(--text);
 }
 
@@ -152,5 +154,5 @@ body {
 }
 body {
   margin: 0;
-  font-family: Roboto, "Helvetica Neue", sans-serif;
+  /* font-family: Roboto, "Helvetica Neue", sans-serif; */
 }

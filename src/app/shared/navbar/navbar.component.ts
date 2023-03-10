@@ -1,4 +1,5 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { AuthService } from 'src/app/auth/auth.service';
 
@@ -8,10 +9,15 @@ import { AuthService } from 'src/app/auth/auth.service';
   styleUrls: ['./navbar.component.css'],
 })
 export class NavbarComponent implements OnInit, OnDestroy {
+  currentPage: string = '';
   userIsAuthenticated = false;
   private authListenerSubs: Subscription = new Subscription();
 
-  constructor(private authService: AuthService) {}
+  constructor(private authService: AuthService, private router: Router) {
+    this.router.events.subscribe((val) => {
+      this.currentPage = this.router.url;
+    });
+  }
 
   ngOnInit(): void {
     this.userIsAuthenticated = this.authService.getIsAuth();

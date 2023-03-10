@@ -22,7 +22,7 @@
             name="email"
             type="email"
             ngModel
-            placeholder="E-Mail"
+            placeholder="johndoe@gmail.com"
             #emailInput="ngModel"
             required
             email
@@ -45,7 +45,10 @@
         </div>
         <button class="primaryBtn" type="submit">Sign Up</button>
       </form>
-      <p>Already have an account? <span>Log in</span></p>
+      <p>
+        Already have an account?
+        <span> <a routerLink="/login" routerLinkActive="">Log in</a></span>
+      </p>
     </div>
   </div>
 </section>

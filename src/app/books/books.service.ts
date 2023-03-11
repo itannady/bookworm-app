@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
 import { Book } from './book.model';
-import { BehaviorSubject, map, Subject } from 'rxjs';
+import { BehaviorSubject, map, Observable, Subject } from 'rxjs';
 
 @Injectable({ providedIn: 'root' })
 export class BooksService {
@@ -63,6 +63,10 @@ export class BooksService {
         this.books = savedBooks;
         this.selectedBooks.next([...this.books]);
       });
+  }
+
+  getBestsellerBooks(): Observable<Book[]> {
+    return this.http.get<Book[]>(`${this.API_URL}/bestsellers`);
   }
 
   deleteBook(bookId: string) {

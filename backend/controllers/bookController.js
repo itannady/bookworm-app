@@ -52,6 +52,31 @@ exports.getSearchedBooks = async (req, res, next) => {
   }
 };
 
+// get bestseller books
+exports.getBestsellerBooks = async (req, res, next) => {
+  try {
+    const result = await axios.get(
+      `${BASE_URL}?q=bestseller&orderBy=newest&maxResults=20&key=${API_KEY}`
+    );
+    const booksData = result.data.items;
+    const bestSellers = [];
+
+    for (let bookData of booksData) {
+      const book = new Book({
+        title: bookData.volumeInfo.title,
+        authors: bookData.volumeInfo.authors,
+        description: bookData.volumeInfo.description,
+        thumbnail: bookData.volumeInfo.imageLinks?.thumbnail,
+      });
+      bestSellers.push(book);
+    }
+    res.status(200).json(bestSellers);
+  } catch (error) {
+    console.log(error);
+    res.status(500).json({ message: "Failed to get bestsellers" });
+  }
+};
+
 // save added book
 exports.addBook = async (req, res, next) => {
   const bookData = req.body;

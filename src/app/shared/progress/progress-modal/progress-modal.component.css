@@ -15,8 +15,6 @@ section {
 .modalContainer {
   position: absolute;
   width: 50%;
-
-  /* height: calc(100vh - 3.5rem); */
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
@@ -38,4 +36,17 @@ hr {
   height: 1px;
   background-color: var(--tan);
   margin: 1rem 0;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+mat-icon {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  cursor: pointer;
 }

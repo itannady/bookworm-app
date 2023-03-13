@@ -1,6 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
+import { MatIconModule } from '@angular/material/icon';
 import { RouterModule } from '@angular/router';
 import { LoaderComponent } from './loader/loader.component';
 
@@ -17,7 +18,7 @@ import { ProgressModalComponent } from './progress/progress-modal/progress-modal
     ProgressBarComponent,
     ProgressModalComponent,
   ],
-  imports: [CommonModule, RouterModule, FormsModule],
+  imports: [CommonModule, RouterModule, FormsModule, MatIconModule],
   exports: [
     NavbarComponent,
     TruncatePipe,

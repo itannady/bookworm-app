@@ -20,4 +20,8 @@ export class ProgressModalComponent implements OnInit {
     }
     this.close.emit();
   }
+
+  onCloseClick() {
+    this.close.emit();
+  }
 }

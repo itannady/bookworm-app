@@ -1,12 +1,13 @@
 <section>
   <div class="modalContainer">
+    <mat-icon (click)="onCloseClick()">close</mat-icon>
     <div class="modalContent">
       <h4>Update Progress</h4>
       <hr />
       <form (submit)="onSubmit(pagesForm)" #pagesForm="ngForm">
         <label for="pages">Pages Read:</label>
         <input type="number" name="pages" ngModel #pagesInput="ngModel" />
-        <button type="submit">Update</button>
+        <button class="primaryBtn" type="submit">Update</button>
       </form>
     </div>
   </div>

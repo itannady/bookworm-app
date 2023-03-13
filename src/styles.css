@@ -38,6 +38,7 @@ h4,
 h5,
 h6 {
   font-family: "Libre Franklin", sans-serif;
+  font-weight: 550;
   color: var(--text);
   margin: 0;
 }

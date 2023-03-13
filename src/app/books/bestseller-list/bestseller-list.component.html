@@ -1,29 +1,37 @@
 <section>
   <div class="wrapper">
-    <h4>Best Sellers</h4>
+    <header>
+      <h5>Best Sellers</h5>
+    </header>
     <div class="row">
-      <mat-icon (click)="prevClick()">arrow_back_ios</mat-icon>
+      <mat-icon class="prevArrow" (click)="prevClick()"
+        >arrow_back_ios</mat-icon
+      >
       <div
         class="card"
         *ngFor="let book of visibleBooks"
         (click)="onBookClick(book)"
       >
-        <div class="coverContainer">
-          <img src="{{ book.thumbnail }}" alt="" />
-        </div>
-        <div class="detailContainer">
-          <p class="title">{{ book.title | truncate : 25 }}</p>
-          <p class="author">
-            {{
-              (book.authors && book.authors.length > 0
-                ? book.authors[0]
-                : "Unknown"
-              ) | truncate : 10
-            }}
-          </p>
+        <div class="bookContent">
+          <div class="coverContainer">
+            <img src="{{ book.thumbnail }}" alt="" />
+          </div>
+          <div class="detailContainer">
+            <p class="title">{{ book.title | truncate : 20 }}</p>
+            <p class="author">
+              {{
+                (book.authors && book.authors.length > 0
+                  ? book.authors[0]
+                  : "Unknown"
+                ) | truncate : 20
+              }}
+            </p>
+          </div>
         </div>
       </div>
-      <mat-icon (click)="nextClick()">arrow_forward_ios</mat-icon>
+      <mat-icon class="nextArrow" (click)="nextClick()"
+        >arrow_forward_ios</mat-icon
+      >
     </div>
   </div>
 </section>

@@ -1,0 +1,13 @@
+<div class="progressContainer">
+  <p>
+    Progress
+    <button (click)="showProgressModal = true">Update Progress</button>
+  </p>
+  <progress [max]="100" [value]="50">
+    <!-- {{ calculateProgress() }}% -->
+  </progress>
+</div>
+<app-progress-modal
+  *ngIf="showProgressModal"
+  (close)="showProgressModal = false"
+></app-progress-modal>

@@ -1,14 +1,29 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
+import { FormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { LoaderComponent } from './loader/loader.component';
 
 import { NavbarComponent } from './navbar/navbar.component';
 import { TruncatePipe } from './pipes/truncate.pipe';
+import { ProgressBarComponent } from './progress/progress-bar/progress-bar.component';
+import { ProgressModalComponent } from './progress/progress-modal/progress-modal.component';
 
 @NgModule({
-  declarations: [NavbarComponent, TruncatePipe, LoaderComponent],
-  imports: [CommonModule, RouterModule],
-  exports: [NavbarComponent, TruncatePipe, LoaderComponent],
+  declarations: [
+    NavbarComponent,
+    TruncatePipe,
+    LoaderComponent,
+    ProgressBarComponent,
+    ProgressModalComponent,
+  ],
+  imports: [CommonModule, RouterModule, FormsModule],
+  exports: [
+    NavbarComponent,
+    TruncatePipe,
+    LoaderComponent,
+    ProgressBarComponent,
+    ProgressModalComponent,
+  ],
 })
 export class SharedModule {}

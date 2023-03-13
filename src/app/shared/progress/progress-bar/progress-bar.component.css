@@ -1,0 +1,37 @@
+.progressContainer p {
+  display: flex;
+  align-self: center;
+  gap: 0.5rem;
+  color: var(--text);
+}
+
+.progressContainer span {
+  cursor: pointer;
+}
+
+progress {
+  width: 50%;
+  height: 1.5rem;
+  border: none;
+  margin-bottom: 0.5rem;
+}
+
+progress::-webkit-progress-bar {
+  border-radius: 50px;
+  background-color: var(--gray);
+}
+
+progress::-webkit-progress-value {
+  border-radius: 10px;
+  background-color: #bbe7c7;
+  box-shadow: 2px 0px 7px rgba(0, 0, 0, 0.08);
+}
+
+progress[data-content]::-webkit-progress-value::before {
+  content: attr(data-content); /* Use "data-content" attribute */
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: blue;
+}

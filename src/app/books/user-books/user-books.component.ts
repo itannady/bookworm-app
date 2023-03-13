@@ -22,6 +22,7 @@ export class UserBooksComponent implements OnInit, OnDestroy {
   isLoading = false;
   userIsAuthenticated = false;
   userId: string | null = null;
+  showProgressModal = false;
   private booksSub: Subscription = new Subscription();
   private authStatusSub: Subscription = new Subscription();
 

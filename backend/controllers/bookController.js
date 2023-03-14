@@ -95,7 +95,6 @@ exports.addBook = async (req, res, next) => {
     pagesRead: req.body.pagesRead,
     user: req.userData.userId,
   });
-  console.log(book.totalPages);
   book
     .save()
     .then((addedBook) => {

@@ -1,5 +1,4 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-
 import { BestsellerListComponent } from './bestseller-list.component';
 
 describe('BestsellerListComponent', () => {
@@ -8,9 +7,8 @@ describe('BestsellerListComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ BestsellerListComponent ]
-    })
-    .compileComponents();
+      declarations: [BestsellerListComponent],
+    }).compileComponents();
   });
 
   beforeEach(() => {

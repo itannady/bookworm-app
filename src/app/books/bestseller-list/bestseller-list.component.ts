@@ -15,6 +15,7 @@ import { BooksService } from '../books.service';
   styleUrls: ['./bestseller-list.component.css'],
 })
 export class BestsellerListComponent implements OnInit, OnDestroy {
+  isLoading = false;
   currentGroup = 0;
   bestsellers: Book[] = [];
   @Output() bookSelected = new EventEmitter<Book>();
@@ -22,9 +23,11 @@ export class BestsellerListComponent implements OnInit, OnDestroy {
   private booksSub: Subscription = new Subscription();
 
   ngOnInit(): void {
+    this.isLoading = true;
     this.booksSub = this.booksService
       .getBestsellerBooks()
       .subscribe((result) => {
+        this.isLoading = false;
         this.bestsellers = result;
         console.log(result);
       });

@@ -3,7 +3,8 @@
     <header>
       <h5>Best Sellers</h5>
     </header>
-    <div class="row">
+    <app-loader *ngIf="isLoading"></app-loader>
+    <div class="row" *ngIf="!isLoading">
       <mat-icon class="prevArrow" (click)="prevClick()"
         >arrow_back_ios</mat-icon
       >

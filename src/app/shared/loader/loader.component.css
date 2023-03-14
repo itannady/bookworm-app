@@ -5,6 +5,7 @@
   width: 3rem;
   height: 3rem;
   animation: spin89345 1s linear infinite;
+  margin: auto;
 }
 
 @keyframes spin89345 {

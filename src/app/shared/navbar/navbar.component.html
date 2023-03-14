@@ -8,6 +8,9 @@
       <li *ngIf="userIsAuthenticated">
         <a routerLink="/library" routerLinkActive="">My Library</a>
       </li>
+      <li *ngIf="userIsAuthenticated">
+        <a routerLink="/discover" routerLinkActive="">Discover</a>
+      </li>
 
       <li *ngIf="!userIsAuthenticated">
         <a routerLink="/login" routerLinkActive="">

@@ -1,5 +1,4 @@
 <app-hero></app-hero>
-<app-book-list (bookSelected)="selectedBook = $event"></app-book-list>
 <app-bestseller-list
   *ngIf="userIsAuthenticated"
   (bookSelected)="selectedBook = $event"

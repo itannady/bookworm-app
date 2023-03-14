@@ -1,0 +1,66 @@
+section {
+  width: 100vw;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.publicHero {
+  max-width: 1200px;
+  margin: 0 5%;
+  padding: 1% 5%;
+  background-color: var(--blue);
+  border-radius: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.publicText {
+  max-width: 40%;
+}
+
+img {
+  width: 60%;
+}
+
+.userHero {
+  width: 100%;
+  max-width: 1200px;
+}
+
+.wrapper {
+  margin: 0 5%;
+  padding: 3%;
+  background-color: var(--blue);
+  border-radius: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+}
+
+.textWrapper {
+  text-align: center;
+}
+
+form {
+  position: relative;
+}
+
+input {
+  width: 20rem;
+  box-shadow: 0px 0.3px 0.7px 0px rgba(0, 0, 0, 0.066),
+    0px 1.5px 2.8px 0px rgba(0, 0, 0, 0.033),
+    0px 4px 9px 0px rgba(0, 0, 0, 0.016);
+}
+
+mat-icon {
+  color: var(--gray);
+  position: absolute;
+  left: 1rem;
+  top: 50%;
+  transform: translateY(-50%);
+}

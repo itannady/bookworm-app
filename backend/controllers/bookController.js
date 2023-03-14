@@ -57,7 +57,7 @@ exports.getSearchedBooks = async (req, res, next) => {
 exports.getBestsellerBooks = async (req, res, next) => {
   try {
     const result = await axios.get(
-      `${BASE_URL}?q=bestseller&orderBy=newest&maxResults=30&key=${API_KEY}`
+      `${BASE_URL}?q=bestseller&orderBy=newest&maxResults=40&key=${API_KEY}`
     );
     const booksData = result.data.items;
     const bestSellers = [];

@@ -86,16 +86,16 @@ exports.getBestsellerBooks = async (req, res, next) => {
 // save added book
 exports.addBook = async (req, res, next) => {
   const bookData = req.body;
-  console.log(req.body);
   const book = new Book({
     title: req.body.title,
     authors: req.body.authors,
     description: req.body.description,
     thumbnail: req.body.thumbnail,
-    totalPages: req.body.pageCount,
+    totalPages: req.body.totalPages,
     pagesRead: req.body.pagesRead,
     user: req.userData.userId,
   });
+  console.log(book.totalPages);
   book
     .save()
     .then((addedBook) => {

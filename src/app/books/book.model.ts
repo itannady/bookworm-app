@@ -8,4 +8,6 @@ export interface Book {
   averageRating?: number;
   ratingsCount?: number;
   user?: string;
+  totalPages?: number;
+  pagesRead?: number;
 }

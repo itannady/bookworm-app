@@ -26,6 +26,13 @@ const bookSchema = mongoose.Schema({
   ratingsCount: {
     type: Number,
   },
+  totalPages: {
+    type: Number,
+  },
+  pagesRead: {
+    type: Number,
+    default: 0,
+  },
   user: {
     type: mongoose.Schema.Types.ObjectId,
     ref: "User",

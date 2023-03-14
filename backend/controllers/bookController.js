@@ -33,6 +33,7 @@ exports.getSearchedBooks = async (req, res, next) => {
             description: book.description,
             thumbnail: book.imageLinks?.thumbnail,
             categories: book.categories,
+            totalPages: book.pageCount,
           });
         }
         // stop once enough books have been reached
@@ -56,19 +57,23 @@ exports.getSearchedBooks = async (req, res, next) => {
 exports.getBestsellerBooks = async (req, res, next) => {
   try {
     const result = await axios.get(
-      `${BASE_URL}?q=bestseller&orderBy=newest&maxResults=20&key=${API_KEY}`
+      `${BASE_URL}?q=bestseller&orderBy=newest&maxResults=30&key=${API_KEY}`
     );
     const booksData = result.data.items;
     const bestSellers = [];
 
     for (let bookData of booksData) {
-      const book = new Book({
-        title: bookData.volumeInfo.title,
-        authors: bookData.volumeInfo.authors,
-        description: bookData.volumeInfo.description,
-        thumbnail: bookData.volumeInfo.imageLinks?.thumbnail,
-      });
-      bestSellers.push(book);
+      // Only add the book to the list if it has a pageCount property
+      if (bookData.volumeInfo.pageCount && bookData.volumeInfo.pageCount > 0) {
+        const book = new Book({
+          title: bookData.volumeInfo.title,
+          authors: bookData.volumeInfo.authors,
+          description: bookData.volumeInfo.description,
+          thumbnail: bookData.volumeInfo.imageLinks?.thumbnail,
+          totalPages: bookData.volumeInfo.pageCount,
+        });
+        bestSellers.push(book);
+      }
     }
     res.status(200).json(bestSellers);
   } catch (error) {
@@ -85,6 +90,7 @@ exports.addBook = async (req, res, next) => {
     authors: req.body.authors,
     description: req.body.description,
     thumbnail: req.body.thumbnail,
+    totalPages: req.body.pageCount,
     user: req.userData.userId,
   });
   book

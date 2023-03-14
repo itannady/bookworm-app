@@ -9,5 +9,8 @@ section {
 .libContainer {
   width: 100%;
   max-width: 1200px;
+}
+
+.wrapper {
   margin: 0 5%;
 }

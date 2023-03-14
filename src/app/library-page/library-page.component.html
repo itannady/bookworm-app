@@ -1,12 +1,14 @@
 <section>
   <div class="libContainer">
-    <h1>My Library</h1>
-    <app-user-books (bookSelected)="selectedBook = $event"></app-user-books>
+    <div class="wrapper">
+      <h1>My Library</h1>
+      <app-user-books (bookSelected)="selectedBook = $event"></app-user-books>
+    </div>
+    <app-book-modal
+      *ngIf="selectedBook"
+      [bookData]="selectedBook"
+      (close)="selectedBook = null"
+    ></app-book-modal>
+    <app-notes></app-notes>
   </div>
-  <app-book-modal
-    *ngIf="selectedBook"
-    [bookData]="selectedBook"
-    (close)="selectedBook = null"
-  ></app-book-modal>
-  <app-notes></app-notes>
 </section>

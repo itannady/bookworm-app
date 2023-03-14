@@ -3,6 +3,7 @@ section {
   display: flex;
   flex-direction: column;
   justify-content: center;
+  margin: 4rem 0;
 }
 
 .table {
@@ -15,8 +16,15 @@ section {
 
 header {
   width: 100%;
+  margin: 0 1rem;
   display: flex;
-  gap: 2rem;
+  gap: 4rem;
+}
+
+header h6 {
+  font-weight: 500;
+  opacity: 0.8;
+  cursor: pointer;
 }
 
 hr {
@@ -73,8 +81,9 @@ hr {
 .closeIcon {
   position: absolute;
   top: 0.5rem;
-  right: 0.5rem;
-  color: var(--text);
+  right: 1rem;
+  color: var(--textGray);
+  cursor: pointer;
 }
 
 .actionItems {

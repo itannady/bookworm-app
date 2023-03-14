@@ -1,4 +1,4 @@
-import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { NgForm } from '@angular/forms';
 
 @Component({
@@ -7,18 +7,27 @@ import { NgForm } from '@angular/forms';
   styleUrls: ['./progress-modal.component.css'],
 })
 export class ProgressModalComponent implements OnInit {
-  @Output() close = new EventEmitter<number>();
-  pagesRead: number = 0;
+  @Input() totalPages?: number;
+  @Input() pagesRead?: number;
+  @Output() close = new EventEmitter<void>();
+  @Output() progressUpdate = new EventEmitter<number>();
   constructor() {}
 
   ngOnInit(): void {}
 
-  onSubmit(form: NgForm) {
-    console.log('hello');
-    if (form.invalid) {
+  onSubmit(pagesForm: NgForm) {
+    if (pagesForm.invalid) {
       return;
+    } else {
+      const pagesRead = pagesForm.value.pages;
+      const totalPages = this.totalPages;
+      if (totalPages !== undefined) {
+        // calculate percentage
+        const progress = (pagesRead / totalPages) * 100;
+        this.progressUpdate.emit(progress);
+        this.close.emit();
+      }
     }
-    this.close.emit();
   }
 
   onCloseClick() {

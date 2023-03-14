@@ -3,11 +3,12 @@
     Progress
     <button class="actionBtn" (click)="showProgressModal = true">Update</button>
   </p>
-  <progress [max]="100" [value]="50">
-    <!-- {{ calculateProgress() }}% -->
-  </progress>
+  <progress [max]="100" [value]="progress.toFixed(0)"></progress>
 </div>
 <app-progress-modal
   *ngIf="showProgressModal"
+  [totalPages]="totalPages"
+  [pagesRead]="pagesRead"
+  (progressUpdate)="updateProgress($event)"
   (close)="showProgressModal = false"
 ></app-progress-modal>

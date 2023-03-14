@@ -26,7 +26,10 @@
                 {{ book.authors ? book.authors[0] : "No authors listed" }}
               </p>
             </div>
-            <app-progress-bar></app-progress-bar>
+            <app-progress-bar
+              [totalPages]="book.totalPages"
+              [pagesRead]="book.pagesRead"
+            ></app-progress-bar>
           </div>
           <div class="actionItems">
             <p class="reviews">4.7</p>

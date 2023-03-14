@@ -4,6 +4,7 @@ section {
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  margin-bottom: 5rem;
 }
 
 .publicHero {
@@ -25,42 +26,53 @@ img {
   width: 60%;
 }
 
-.userHero {
-  width: 100%;
-  max-width: 1200px;
-}
+/* User hero */
 
-.wrapper {
+.userHero {
+  position: relative;
+  max-width: 1200px;
   margin: 0 5%;
-  padding: 3%;
+  padding: 1% 5%;
   background-color: var(--blue);
   border-radius: 20px;
   display: flex;
-  flex-direction: column;
   justify-content: center;
   align-items: center;
-  gap: 1rem;
+  overflow-x: hidden;
+}
+
+.userHero:before {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 3rem;
+  background-image: url("/assets/images/shelf.png");
+  filter: drop-shadow(0px 10px 10px rgba(102, 76, 37, 0.81));
+  background-size: cover;
+  background-repeat: no-repeat;
+  bottom: 2rem;
 }
 
 .textWrapper {
-  text-align: center;
+  width: 65%;
+  min-width: 30rem;
+  text-align: left;
+  margin: 4rem 0;
 }
 
-form {
-  position: relative;
+.heroCovers {
+  width: 35%;
+  display: flex;
+  gap: 1rem;
 }
 
-input {
-  width: 20rem;
-  box-shadow: 0px 0.3px 0.7px 0px rgba(0, 0, 0, 0.066),
-    0px 1.5px 2.8px 0px rgba(0, 0, 0, 0.033),
-    0px 4px 9px 0px rgba(0, 0, 0, 0.016);
+.heroCovers img {
+  border-radius: 5px;
+  width: 10rem;
+  box-shadow: 0 1px 2px 0 rgb(60 64 67 / 30%), 0 1px 3px 1px rgb(60 64 67 / 15%);
+  z-index: 10;
 }
 
-mat-icon {
-  color: var(--gray);
-  position: absolute;
-  left: 1rem;
-  top: 50%;
-  transform: translateY(-50%);
+button {
+  margin: 1rem 0 2rem 0;
 }

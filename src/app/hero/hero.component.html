@@ -15,21 +15,16 @@
   </div>
   <!-- User is authenticated hero -->
   <div class="userHero" *ngIf="userIsAuthenticated">
-    <div class="wrapper">
-      <div class="textWrapper">
-        <h1>Discover your next <br />favorite read</h1>
-        <p>
-          Browse top-rated books and personalized recommendations with our app
-        </p>
-      </div>
-      <form [formGroup]="form" (submit)="onSearch()">
-        <mat-icon>search</mat-icon>
-        <input
-          type="search"
-          formControlName="searchbar"
-          placeholder="Search books"
-        />
-      </form>
+    <div class="textWrapper">
+      <h1>Explore the Award Winning Books of the Year</h1>
+      <a routerLink="/" routerLinkActive="">
+        <button class="primaryBtn">See more</button>
+      </a>
+    </div>
+    <div class="heroCovers">
+      <img src="/assets/images/bookCover.jpg" alt="" />
+      <img src="/assets/images/bookCover.jpg" alt="" />
+      <img src="/assets/images/bookCover.jpg" alt="" />
     </div>
   </div>
 </section>

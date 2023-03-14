@@ -32,6 +32,7 @@ export class BooksService {
   }
 
   addBook(book: Book) {
+    console.log('book before sending:', book);
     this.http
       .post<{ book: Book }>(`${this.API_URL}/library`, book)
       .subscribe(() => {
@@ -53,6 +54,8 @@ export class BooksService {
               authors: book.authors,
               thumbnail: book.thumbnail,
               description: book.description,
+              totalPages: book.totalPages,
+              currentPage: book.pagesRead,
               user: book.user,
             };
           });

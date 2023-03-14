@@ -71,6 +71,7 @@ exports.getBestsellerBooks = async (req, res, next) => {
           description: bookData.volumeInfo.description,
           thumbnail: bookData.volumeInfo.imageLinks?.thumbnail,
           totalPages: bookData.volumeInfo.pageCount,
+          pagesRead: bookData.volumeInfo.pagesRead,
         });
         bestSellers.push(book);
       }
@@ -85,12 +86,14 @@ exports.getBestsellerBooks = async (req, res, next) => {
 // save added book
 exports.addBook = async (req, res, next) => {
   const bookData = req.body;
+  console.log(req.body);
   const book = new Book({
     title: req.body.title,
     authors: req.body.authors,
     description: req.body.description,
     thumbnail: req.body.thumbnail,
     totalPages: req.body.pageCount,
+    pagesRead: req.body.pagesRead,
     user: req.userData.userId,
   });
   book

@@ -76,7 +76,7 @@ exports.getBestsellerBooks = async (req, res, next) => {
         bestSellers.push(book);
       }
     }
-    res.status(200).json(bestSellers);
+    res.status(200).json(bestSellers.slice(0, 20));
   } catch (error) {
     console.log(error);
     res.status(500).json({ message: "Failed to get bestsellers" });

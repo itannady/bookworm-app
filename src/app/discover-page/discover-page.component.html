@@ -18,3 +18,8 @@
   </div>
 </section>
 <app-book-list (bookSelected)="selectedBook = $event"></app-book-list>
+<app-book-modal
+  *ngIf="selectedBook"
+  [bookData]="selectedBook"
+  (close)="selectedBook = null"
+></app-book-modal>

@@ -28,7 +28,6 @@ export class ProgressBarComponent implements OnInit {
 
   updateProgress(progress: number) {
     this.progress = progress;
-    console.log(this.progress);
   }
 
   showModal() {

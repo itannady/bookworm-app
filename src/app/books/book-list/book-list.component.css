@@ -8,27 +8,28 @@ section {
 }
 
 .wrapper {
-  width: 100%;
+  width: 90%;
   max-width: 1200px;
+  margin: auto;
 }
 
 .bookGrid {
   display: grid;
   grid-template-columns: repeat(5, 1fr);
   grid-template-rows: repeat(4, 1fr);
-  grid-gap: 1rem;
+  grid-row-gap: 1rem;
+  place-items: end center;
 }
 
 .card {
   border-radius: 10px;
-  width: 100%;
-  min-width: 9rem;
-  padding: 0.5rem 0;
-  /* display: flex; */
-  justify-self: center;
-  align-self: flex-end;
-  flex-direction: column;
-
+  width: 20%;
+  min-width: 10rem;
+  padding: 1rem 0.5rem;
+  /* display: flex;
+  justify-content: center;
+  align-items: flex-end; */
+  /* flex-direction: column; */
   cursor: pointer;
 }
 
@@ -54,14 +55,13 @@ section {
 
 .coverContainer img {
   border-radius: 5px;
-  width: 10rem;
+  width: 9rem;
   cursor: pointer;
   box-shadow: 0 1px 2px 0 rgb(60 64 67 / 30%), 0 1px 3px 1px rgb(60 64 67 / 15%);
 }
 
 .detailContainer {
   height: 4rem;
-  margin: 0 1rem;
   justify-self: flex-end;
 }
 

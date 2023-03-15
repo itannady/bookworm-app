@@ -23,6 +23,10 @@ body {
   font-family: "Libre Franklin", sans-serif;
 }
 
+body.modalOpen {
+  overflow: hidden;
+}
+
 /* Typography */
 h1,
 h2,

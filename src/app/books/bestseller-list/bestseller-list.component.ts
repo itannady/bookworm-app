@@ -18,9 +18,9 @@ export class BestsellerListComponent implements OnInit, OnDestroy {
   isLoading = false;
   currentGroup = 0;
   bestsellers: Book[] = [];
+  private booksSub: Subscription = new Subscription();
   @Output() bookSelected = new EventEmitter<Book>();
   constructor(private booksService: BooksService) {}
-  private booksSub: Subscription = new Subscription();
 
   ngOnInit(): void {
     this.isLoading = true;
@@ -48,6 +48,7 @@ export class BestsellerListComponent implements OnInit, OnDestroy {
 
   onBookClick(book: Book) {
     this.bookSelected.emit(book);
+    document.body.classList.add('modalOpen'); // add the CSS class to the body
   }
 
   ngOnDestroy(): void {

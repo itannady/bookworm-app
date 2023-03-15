@@ -21,6 +21,7 @@ export class BookModalComponent implements OnInit {
   }
 
   onCloseClick() {
+    document.body.classList.remove('modalOpen'); // remove the CSS class from the body
     this.close.emit();
   }
 }

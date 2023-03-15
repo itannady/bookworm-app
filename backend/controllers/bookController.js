@@ -33,7 +33,10 @@ exports.getSearchedBooks = async (req, res, next) => {
             description: book.description,
             thumbnail: book.imageLinks?.thumbnail,
             categories: book.categories,
+            averageRating: book.averageRating,
+            ratingsCount: book.ratingsCount,
             totalPages: book.pageCount,
+            pagesRead: book.pagesRead,
           });
         }
         // stop once enough books have been reached
@@ -57,7 +60,7 @@ exports.getSearchedBooks = async (req, res, next) => {
 exports.getBestsellerBooks = async (req, res, next) => {
   try {
     const result = await axios.get(
-      `${BASE_URL}?q=bestseller&orderBy=newest&maxResults=40&key=${API_KEY}`
+      `${BASE_URL}?q=popularbooks&orderBy=relevance&maxResults=40&key=${API_KEY}&printType=books`
     );
     const booksData = result.data.items;
     const bestSellers = [];
@@ -71,6 +74,8 @@ exports.getBestsellerBooks = async (req, res, next) => {
           description: bookData.volumeInfo.description,
           thumbnail: bookData.volumeInfo.imageLinks?.thumbnail,
           categories: bookData.volumeInfo.categories,
+          averageRating: bookData.volumeInfo.averageRating,
+          ratingsCount: bookData.volumeInfo.ratingsCount,
           totalPages: bookData.volumeInfo.pageCount,
           pagesRead: bookData.volumeInfo.pagesRead,
         });
@@ -78,6 +83,39 @@ exports.getBestsellerBooks = async (req, res, next) => {
       }
     }
     res.status(200).json(bestSellers.slice(0, 20));
+  } catch (error) {
+    console.log(error);
+    res.status(500).json({ message: "Failed to get bestsellers" });
+  }
+};
+
+// get top rated fiction books
+exports.getFictionBooks = async (req, res, next) => {
+  try {
+    const result = await axios.get(
+      `${BASE_URL}?q=topratedfiction&orderBy=relevance&maxResults=40&key=${API_KEY}&printType=books`
+    );
+    const booksData = result.data.items;
+    const fictionBooks = [];
+
+    for (let bookData of booksData) {
+      // Only add the book to the list if it has a pageCount property
+      if (bookData.volumeInfo.pageCount && bookData.volumeInfo.pageCount > 0) {
+        const book = new Book({
+          title: bookData.volumeInfo.title,
+          authors: bookData.volumeInfo.authors,
+          description: bookData.volumeInfo.description,
+          thumbnail: bookData.volumeInfo.imageLinks?.thumbnail,
+          categories: bookData.volumeInfo.categories,
+          averageRating: bookData.volumeInfo.averageRating,
+          ratingsCount: bookData.volumeInfo.ratingsCount,
+          totalPages: bookData.volumeInfo.pageCount,
+          pagesRead: bookData.volumeInfo.pagesRead,
+        });
+        fictionBooks.push(book);
+      }
+    }
+    res.status(200).json(fictionBooks.slice(0, 20));
   } catch (error) {
     console.log(error);
     res.status(500).json({ message: "Failed to get bestsellers" });
@@ -102,6 +140,8 @@ exports.getRecommendations = async (req, res, next) => {
         description: bookData.volumeInfo.description,
         thumbnail: bookData.volumeInfo.imageLinks?.thumbnail,
         categories: bookData.volumeInfo.categories,
+        averageRating: bookData.volumeInfo.averageRating,
+        ratingsCount: bookData.volumeInfo.ratingsCount,
         totalPages: bookData.volumeInfo.pageCount,
         pagesRead: bookData.volumeInfo.pagesRead,
       });
@@ -123,6 +163,8 @@ exports.addBook = async (req, res, next) => {
     description: req.body.description,
     thumbnail: req.body.thumbnail,
     categories: req.body.categories,
+    averageRating: req.body.averageRating,
+    ratingsCount: req.body.ratingsCount,
     totalPages: req.body.totalPages,
     pagesRead: req.body.pagesRead,
     user: req.userData.userId,

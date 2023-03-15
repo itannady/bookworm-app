@@ -17,16 +17,28 @@
           <p>
             {{ bookData.authors ? bookData.authors[0] : "No authors listed" }}
           </p>
-          <p>{{ bookData.ratingsCount }}</p>
-          <p>Category</p>
-          <p>Ratings</p>
+          <p>
+            Category:
+            {{ bookData.categories ? bookData.categories[0] : "None" }}
+          </p>
+          <div
+            class="ratings"
+            *ngIf="bookData.averageRating || bookData.ratingsCount"
+          >
+            <p>{{ bookData.averageRating }}<mat-icon>star</mat-icon></p>
+            <p>{{ bookData.ratingsCount }} reviews</p>
+          </div>
+          <div *ngIf="!bookData.averageRating && !bookData.ratingsCount">
+            <p>No ratings or reviews available.</p>
+          </div>
+
           <h6>Description</h6>
           <p>
             {{ bookData.description }}
           </p>
         </div>
       </div>
-      <app-recommendations [bookData]="bookData"></app-recommendations>
+      <!-- <app-recommendations [bookData]="bookData"></app-recommendations> -->
     </div>
   </div>
 </section>

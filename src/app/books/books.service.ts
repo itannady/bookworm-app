@@ -67,6 +67,16 @@ export class BooksService {
       });
   }
 
+  getUpdatedBook(book: Book) {
+    return this.http.get<{ pagesRead: number }>(
+      `${this.API_URL}/library/update/${book.id}`
+    );
+  }
+
+  updateBook(book: Partial<Book>): Observable<any> {
+    return this.http.put(`${this.API_URL}/library/update/${book.id}`, book);
+  }
+
   getBestsellerBooks(): Observable<Book[]> {
     return this.http.get<Book[]>(`${this.API_URL}/bestsellers`);
   }

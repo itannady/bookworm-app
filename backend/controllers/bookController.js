@@ -85,7 +85,7 @@ exports.getBestsellerBooks = async (req, res, next) => {
 
 // save added book
 exports.addBook = async (req, res, next) => {
-  const bookData = req.body;
+  // const bookData = req.body;
   const book = new Book({
     title: req.body.title,
     authors: req.body.authors,
@@ -111,6 +111,33 @@ exports.addBook = async (req, res, next) => {
         message: "Creating a post failed!",
       });
     });
+};
+
+// update book
+exports.updateBook = (req, res, next) => {
+  const book = req.body;
+  const bookId = req.params.bookId;
+  Book.findByIdAndUpdate(bookId, book, { returnDocument: "after" })
+    .then((result) => {
+      res
+        .status(200)
+        .json({ message: "Book updated successfully", book: result });
+    })
+    .catch((error) => {
+      res.status(500).json({ message: "Update book failed", error: error });
+    });
+};
+
+// get updated book
+exports.getUpdatedBook = (req, res, next) => {
+  const bookId = req.params.bookId;
+  Book.findById(bookId).then((book) => {
+    if (book) {
+      res.status(200).json(book);
+    } else {
+      res.status(404).json({ message: "Book not found" });
+    }
+  });
 };
 
 // get saved books

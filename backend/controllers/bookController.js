@@ -70,6 +70,7 @@ exports.getBestsellerBooks = async (req, res, next) => {
           authors: bookData.volumeInfo.authors,
           description: bookData.volumeInfo.description,
           thumbnail: bookData.volumeInfo.imageLinks?.thumbnail,
+          categories: bookData.volumeInfo.categories,
           totalPages: bookData.volumeInfo.pageCount,
           pagesRead: bookData.volumeInfo.pagesRead,
         });
@@ -87,8 +88,9 @@ exports.getBestsellerBooks = async (req, res, next) => {
 exports.getRecommendations = async (req, res, next) => {
   try {
     const title = req.params.title;
+
     const result = await axios.get(
-      `${BASE_URL}?q=${title}&orderBy=relevance&key=${API_KEY}&maxResults=5&printType=books`
+      `${BASE_URL}?q=related:${title}&orderBy=relevance&newest&key=${API_KEY}&maxResults=5&printType=books`
     );
     const booksData = result.data.items;
     const recommendations = [];
@@ -99,6 +101,7 @@ exports.getRecommendations = async (req, res, next) => {
         authors: bookData.volumeInfo.authors,
         description: bookData.volumeInfo.description,
         thumbnail: bookData.volumeInfo.imageLinks?.thumbnail,
+        categories: bookData.volumeInfo.categories,
         totalPages: bookData.volumeInfo.pageCount,
         pagesRead: bookData.volumeInfo.pagesRead,
       });
@@ -119,6 +122,7 @@ exports.addBook = async (req, res, next) => {
     authors: req.body.authors,
     description: req.body.description,
     thumbnail: req.body.thumbnail,
+    categories: req.body.categories,
     totalPages: req.body.totalPages,
     pagesRead: req.body.pagesRead,
     user: req.userData.userId,

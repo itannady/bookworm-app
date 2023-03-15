@@ -91,9 +91,8 @@ export class BooksService {
 
   // get recommendations
   getRecommendedBooks(book: Book): Observable<Book[]> {
-    return this.http.post<Book[]>(
-      `${this.API_URL}/books/recommendations/${book.title}`,
-      book
+    return this.http.get<Book[]>(
+      `${this.API_URL}/recommendations/${book.title}`
     );
   }
 

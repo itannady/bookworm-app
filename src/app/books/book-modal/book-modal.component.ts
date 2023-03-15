@@ -9,11 +9,14 @@ import { BooksService } from '../books.service';
 })
 export class BookModalComponent implements OnInit {
   @Input() bookData!: Book;
+  selectedBook: any;
   @Output() close = new EventEmitter<void>();
 
   constructor(private booksService: BooksService) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    console.log('MODAL', this.bookData);
+  }
 
   onAddBook() {
     this.booksService.addBook(this.bookData);

@@ -14,6 +14,7 @@ export class BooksService {
 
   constructor(private http: HttpClient, private router: Router) {}
 
+  // search books
   populateBooks(query: string) {
     this.http
       .get<Book[]>(`${this.API_URL}/search/${query}`)
@@ -23,14 +24,17 @@ export class BooksService {
       });
   }
 
+  // search book observable
   getBooksListener() {
     return this.searchBooks.asObservable();
   }
 
+  // selected book observable
   getSelectedBooksListener() {
     return this.selectedBooks.asObservable();
   }
 
+  // add book
   addBook(book: Book) {
     this.http
       .post<{ book: Book }>(`${this.API_URL}/library`, book)
@@ -41,6 +45,7 @@ export class BooksService {
       });
   }
 
+  // get library list of books
   getUserBooks() {
     return this.http
       .get<{ message: string; books: any }>(`${this.API_URL}/library`)
@@ -67,20 +72,32 @@ export class BooksService {
       });
   }
 
+  // update book
+  updateBook(book: Partial<Book>): Observable<any> {
+    return this.http.put(`${this.API_URL}/library/update/${book.id}`, book);
+  }
+
+  // get updated book
   getUpdatedBook(book: Book) {
     return this.http.get<{ pagesRead: number }>(
       `${this.API_URL}/library/update/${book.id}`
     );
   }
 
-  updateBook(book: Partial<Book>): Observable<any> {
-    return this.http.put(`${this.API_URL}/library/update/${book.id}`, book);
-  }
-
+  // get bestseller list
   getBestsellerBooks(): Observable<Book[]> {
     return this.http.get<Book[]>(`${this.API_URL}/bestsellers`);
   }
 
+  // get recommendations
+  getRecommendedBooks(book: Book): Observable<Book[]> {
+    return this.http.post<Book[]>(
+      `${this.API_URL}/books/recommendations/${book.title}`,
+      book
+    );
+  }
+
+  // delete book
   deleteBook(bookId: string) {
     this.http.delete(`${this.API_URL}/library/` + bookId).subscribe(() => {
       const updatedList = this.books.filter((book) => book.id !== bookId);

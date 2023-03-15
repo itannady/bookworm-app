@@ -22,6 +22,7 @@ import { AuthInterceptor } from './auth/auth-interceptor';
 import { MatInputModule } from '@angular/material/input';
 import { BestsellerListComponent } from './books/bestseller-list/bestseller-list.component';
 import { DiscoverPageComponent } from './discover-page/discover-page.component';
+import { RecommendationsComponent } from './books/recommendations/recommendations.component';
 
 @NgModule({
   declarations: [
@@ -37,6 +38,7 @@ import { DiscoverPageComponent } from './discover-page/discover-page.component';
     NotesComponent,
     BestsellerListComponent,
     DiscoverPageComponent,
+    RecommendationsComponent,
   ],
   imports: [
     BrowserModule,

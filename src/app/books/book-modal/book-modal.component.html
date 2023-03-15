@@ -4,26 +4,29 @@
   </div>
   <div class="modalContainer">
     <div class="modalContent">
-      <div class="coverContainer">
-        <img src="{{ bookData.thumbnail }}" alt="" />
-        <div class="addBook">
-          <mat-icon (click)="onAddBook()">library_add</mat-icon>
-          <p>Add to my books</p>
+      <div class="bookWrapper">
+        <div class="coverContainer">
+          <img src="{{ bookData.thumbnail }}" alt="" />
+          <div class="addBook">
+            <mat-icon (click)="onAddBook()">library_add</mat-icon>
+            <p>Add to my books</p>
+          </div>
+        </div>
+        <div class="detailsContainer">
+          <h3>{{ bookData.title }}</h3>
+          <p>
+            {{ bookData.authors ? bookData.authors[0] : "No authors listed" }}
+          </p>
+          <p>{{ bookData.ratingsCount }}</p>
+          <p>Category</p>
+          <p>Ratings</p>
+          <h6>Description</h6>
+          <p>
+            {{ bookData.description }}
+          </p>
         </div>
       </div>
-      <div class="detailsContainer">
-        <h3>{{ bookData.title }}</h3>
-        <p>
-          {{ bookData.authors ? bookData.authors[0] : "No authors listed" }}
-        </p>
-        <p>{{ bookData.ratingsCount }}</p>
-        <p>Category</p>
-        <p>Ratings</p>
-        <h6>Description</h6>
-        <p>
-          {{ bookData.description }}
-        </p>
-      </div>
+      <app-recommendations></app-recommendations>
     </div>
   </div>
 </section>

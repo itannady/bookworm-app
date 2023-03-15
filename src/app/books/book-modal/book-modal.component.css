@@ -41,13 +41,15 @@ section {
 }
 
 .modalContent {
-  display: flex;
   max-width: 1200px;
-  padding: 6rem 8rem;
+  margin: 6rem 8rem;
   max-width: 1200px;
-  gap: 4rem;
 }
 
+.bookWrapper {
+  display: flex;
+  gap: 4rem;
+}
 .coverContainer {
   /* width: 100%; */
 }

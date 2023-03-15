@@ -24,7 +24,9 @@ body {
 }
 
 /* Typography */
-h1 {
+h1,
+h2,
+h3 {
   font-family: "Merriweather", serif;
   font-size: 3.052rem;
   font-weight: 500;
@@ -32,8 +34,6 @@ h1 {
   margin: 0;
 }
 
-h2,
-h3,
 h4,
 h5,
 h6 {

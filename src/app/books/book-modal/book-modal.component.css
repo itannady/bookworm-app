@@ -43,9 +43,9 @@ section {
 .modalContent {
   display: flex;
   max-width: 1200px;
-  padding: 5rem 8rem;
+  padding: 6rem 8rem;
   max-width: 1200px;
-  gap: 2rem;
+  gap: 4rem;
 }
 
 .coverContainer {

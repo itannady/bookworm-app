@@ -7,7 +7,7 @@
       <div class="coverContainer">
         <img src="{{ bookData.thumbnail }}" alt="" />
         <div class="addBook">
-          <mat-icon (click)="onAddBook()">add_circle</mat-icon>
+          <mat-icon (click)="onAddBook()">library_add</mat-icon>
           <p>Add to my books</p>
         </div>
       </div>
@@ -16,6 +16,7 @@
         <p>
           {{ bookData.authors ? bookData.authors[0] : "No authors listed" }}
         </p>
+        <p>{{ bookData.ratingsCount }}</p>
         <h6>Description</h6>
         <p>
           {{ bookData.description }}

@@ -6,26 +6,7 @@ section {
   justify-content: center;
 }
 
-.publicHero {
-  max-width: 1200px;
-  margin: 0 5%;
-  padding: 1% 5%;
-  background-color: var(--blue);
-  border-radius: 20px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.publicText {
-  max-width: 40%;
-}
-
-img {
-  width: 60%;
-}
-
-.userHero {
+.discoverHero {
   width: 100%;
   max-width: 1200px;
 }
@@ -51,6 +32,7 @@ form {
 }
 
 input {
+  padding-left: 2.5rem;
   width: 20rem;
   box-shadow: 0px 0.3px 0.7px 0px rgba(0, 0, 0, 0.066),
     0px 1.5px 2.8px 0px rgba(0, 0, 0, 0.033),

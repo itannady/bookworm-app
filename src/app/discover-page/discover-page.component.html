@@ -1,11 +1,10 @@
+<!-- Discover hero -->
 <section>
-  <div class="userHero" *ngIf="userIsAuthenticated">
+  <div class="discoverHero" *ngIf="userIsAuthenticated">
     <div class="wrapper">
       <div class="textWrapper">
         <h1>Discover your next <br />favorite read</h1>
-        <p>
-          Browse top-rated books and personalized recommendations with our app
-        </p>
+        <p>Browse top-rated books and personalized recommendations</p>
       </div>
       <form [formGroup]="form" (submit)="onSearch()">
         <mat-icon>search</mat-icon>

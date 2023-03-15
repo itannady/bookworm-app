@@ -9,34 +9,39 @@ section {
 
 .wrapper {
   width: 100%;
-  max-width: 1400px;
+  max-width: 1200px;
 }
 
-.row {
-  position: relative;
-  margin: 0 5%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 1rem;
+.bookGrid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  grid-template-rows: repeat(4, 1fr);
+  grid-gap: 1rem;
 }
 
 .card {
   border-radius: 10px;
-  width: 14%;
-  height: 100%;
+  width: 100%;
   min-width: 9rem;
   padding: 0.5rem 0;
-  display: flex;
-  justify-self: flex-end;
+  /* display: flex; */
+  justify-self: center;
   align-self: flex-end;
   flex-direction: column;
-  gap: 0.5rem;
+
   cursor: pointer;
 }
 
 .card:hover {
   background-color: var(--cardHover);
+}
+
+.bookContent {
+  display: flex;
+  justify-self: flex-end;
+  align-self: flex-end;
+  flex-direction: column;
+  gap: 0.5rem;
 }
 
 .coverContainer {
@@ -49,16 +54,15 @@ section {
 
 .coverContainer img {
   border-radius: 5px;
-  width: 8rem;
+  width: 10rem;
   cursor: pointer;
   box-shadow: 0 1px 2px 0 rgb(60 64 67 / 30%), 0 1px 3px 1px rgb(60 64 67 / 15%);
-  /* filter: drop-shadow(4px 0px 5px rgba(84, 68, 45, 0.136))
-    drop-shadow(1px 5px 5px rgba(80, 57, 25, 0.198)); */
 }
 
 .detailContainer {
-  height: 6rem;
+  height: 4rem;
   margin: 0 1rem;
+  justify-self: flex-end;
 }
 
 .detailContainer p.title {

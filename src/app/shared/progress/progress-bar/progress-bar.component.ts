@@ -1,5 +1,6 @@
 import { Component, OnInit, Input, Output } from '@angular/core';
 import { Book } from 'src/app/books/book.model';
+import { BooksService } from 'src/app/books/books.service';
 import { EventEmitter } from 'stream';
 
 @Component({
@@ -8,15 +9,22 @@ import { EventEmitter } from 'stream';
   styleUrls: ['./progress-bar.component.css'],
 })
 export class ProgressBarComponent implements OnInit {
-  @Input() totalPages?: number;
-  @Input() pagesRead?: number;
+  @Input() book!: Book;
   isModalOpen = false;
   showProgressModal = false;
   progress: number = 0;
 
-  constructor() {}
+  constructor(private booksService: BooksService) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    const { pagesRead, totalPages } = this.book;
+    if (pagesRead !== undefined && totalPages !== undefined) {
+      this.progress = (pagesRead / totalPages) * 100;
+    }
+    // this.booksService.getUpdatedBook(this.book).subscribe((bookData) => {
+    //   this.book = { ...this.book, pagesRead: bookData.pagesRead };
+    // });
+  }
 
   updateProgress(progress: number) {
     this.progress = progress;

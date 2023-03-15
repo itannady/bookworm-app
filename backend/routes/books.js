@@ -7,6 +7,8 @@ router.get("/library", checkAuth, BookController.getBooks);
 router.get("/search/:query", BookController.getSearchedBooks);
 router.get("/bestsellers", BookController.getBestsellerBooks);
 router.post("/library/", checkAuth, BookController.addBook);
+router.put("/library/update/:bookId", BookController.updateBook);
+router.get("/library/update/:bookId", BookController.getUpdatedBook);
 router.delete("/library/:id", checkAuth, BookController.deleteBook);
 
 module.exports = router;

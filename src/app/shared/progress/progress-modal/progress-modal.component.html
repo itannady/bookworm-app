@@ -6,7 +6,12 @@
       <hr />
       <form (submit)="onSubmit(pagesForm)" #pagesForm="ngForm">
         <label for="pages">Pages Read:</label>
-        <input type="number" name="pages" ngModel #pagesInput="ngModel" />
+        <input
+          type="number"
+          name="pages"
+          [ngModel]="book.pagesRead"
+          #pagesInput="ngModel"
+        />
         <button class="primaryBtn" type="submit">Update</button>
       </form>
     </div>

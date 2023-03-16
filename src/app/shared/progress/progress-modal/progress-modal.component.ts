@@ -39,6 +39,12 @@ export class ProgressModalComponent implements OnInit {
             pagesRead = res.book.pagesRead;
             // calculate percentage
             const progress = Math.min((pagesRead / totalPages) * 100, 100);
+            if (progress >= 100) {
+              this.book.status = 'Have Read';
+            } else {
+              this.book.status = 'Reading Now';
+            }
+
             this.progressUpdate.emit(progress);
             this.close.emit();
           });

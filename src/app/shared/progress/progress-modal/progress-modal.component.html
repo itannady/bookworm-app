@@ -2,16 +2,20 @@
   <div class="modalContainer">
     <mat-icon (click)="onCloseClick()">close</mat-icon>
     <div class="modalContent">
-      <h4>Update Progress</h4>
+      <h5>Update Progress</h5>
       <hr />
       <form (submit)="onSubmit(pagesForm)" #pagesForm="ngForm">
         <label for="pages">What page are you on:</label>
-        <input
-          type="number"
-          name="pages"
-          [ngModel]="book.pagesRead"
-          #pagesInput="ngModel"
-        />
+        <div class="wrapper">
+          <input
+            type="number"
+            name="pages"
+            [ngModel]="book.pagesRead"
+            #pagesInput="ngModel"
+          />
+          <p>/ {{ book.totalPages }}</p>
+        </div>
+        <hr />
         <button class="primaryBtn" type="submit">Update</button>
       </form>
     </div>

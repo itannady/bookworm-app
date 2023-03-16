@@ -29,6 +29,7 @@ ul {
 ul li {
   text-align: center;
   width: 10%;
+  padding-bottom: 1rem;
   font-weight: 500;
   opacity: 0.8;
   cursor: pointer;

@@ -48,3 +48,17 @@ progress:after {
   font-weight: 500;
   text-decoration: underline;
 }
+
+.tag {
+  display: flex;
+  justify-content: center;
+  margin: 0;
+  width: 50%;
+  border-radius: 5px;
+  background-color: #f2ecb6;
+}
+
+.tag p {
+  font-weight: 550;
+  color: #876b0b;
+}

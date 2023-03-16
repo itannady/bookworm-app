@@ -55,8 +55,21 @@ export class UserBooksComponent implements OnInit, OnDestroy {
   }
 
   getFilteredBooks(filter: string): Book[] {
+    let sortedBooks = this.books.sort((a, b) => {
+      if (a.status === 'Reading Now' && b.status !== 'Reading Now') {
+        return -1;
+      } else if (a.status !== 'Reading Now' && b.status === 'Reading Now') {
+        return 1;
+      } else if (a.status === 'To Read' && b.status !== 'To Read') {
+        return -1;
+      } else if (a.status !== 'To Read' && b.status === 'To Read') {
+        return 1;
+      } else {
+        return 0;
+      }
+    });
     if (filter === 'All') {
-      return this.books;
+      return sortedBooks;
     } else {
       return this.books.filter((book) => book.status === filter);
     }

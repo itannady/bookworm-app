@@ -14,23 +14,40 @@ section {
   margin: 0.3rem 0;
 }
 
+header {
+  position: relative;
+}
+
 ul {
   width: 100%;
-  margin: 0 1rem;
+  padding: 0;
   display: flex;
   gap: 4rem;
   color: var(--text);
 }
 
 ul li {
+  text-align: center;
+  width: 10%;
   font-weight: 500;
   opacity: 0.8;
   cursor: pointer;
 }
 
+ul .active {
+  font-weight: 600;
+  padding-bottom: 0.2rem;
+  opacity: 1;
+  border-bottom: 5px solid var(--tan);
+}
+
 hr {
+  position: absolute;
+  width: 100%;
+  bottom: -6px;
   border: 0;
   height: 1px;
+
   background-color: var(--tan);
 }
 
@@ -41,6 +58,7 @@ hr {
   background-color: var(--gray);
   padding: 1rem 2rem;
   border-radius: 5px;
+  margin-top: 2rem;
 }
 
 .bookRow {

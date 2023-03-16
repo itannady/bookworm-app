@@ -1,13 +1,33 @@
 <app-loader *ngIf="isLoading"></app-loader>
 <section>
   <div class="table">
-    <ul>
-      <li (click)="setFilter('All')">All</li>
-      <li (click)="setFilter('Reading Now')">Reading Now</li>
-      <li (click)="setFilter('To Read')">To Read</li>
-      <li (click)="setFilter('Have Read')">Have Read</li>
-    </ul>
-    <hr />
+    <header>
+      <ul>
+        <li [class.active]="filter === 'All'" (click)="setFilter('All')">
+          All
+        </li>
+        <li
+          [class.active]="filter === 'Reading Now'"
+          (click)="setFilter('Reading Now')"
+        >
+          Reading Now
+        </li>
+        <li
+          [class.active]="filter === 'To Read'"
+          (click)="setFilter('To Read')"
+        >
+          To Read
+        </li>
+        <li
+          [class.active]="filter === 'Have Read'"
+          (click)="setFilter('Have Read')"
+        >
+          Have Read
+        </li>
+      </ul>
+      <hr />
+    </header>
+
     <div class="tableContent">
       <div class="bookRow" *ngFor="let book of getFilteredBooks(filter)">
         <ng-container *ngIf="book.user === userId">

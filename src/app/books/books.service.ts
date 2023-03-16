@@ -63,6 +63,7 @@ export class BooksService {
               averageRating: book.averageRating,
               totalPages: book.totalPages,
               pagesRead: book.pagesRead,
+              status: book.status,
               user: book.user,
             };
           });

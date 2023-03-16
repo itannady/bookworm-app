@@ -30,12 +30,15 @@ export class ProgressModalComponent implements OnInit {
       let pagesRead = pagesForm.value.pages;
       const totalPages = this.book?.totalPages;
       if (totalPages !== undefined) {
+        if (pagesRead >= totalPages) {
+          console.log('all done');
+        }
         this.booksService
           .updateBook({ id: this.book.id, pagesRead: pagesRead })
           .subscribe((res) => {
             pagesRead = res.book.pagesRead;
             // calculate percentage
-            const progress = (pagesRead / totalPages) * 100;
+            const progress = Math.min((pagesRead / totalPages) * 100, 100);
             this.progressUpdate.emit(progress);
             this.close.emit();
           });

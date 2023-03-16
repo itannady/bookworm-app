@@ -23,6 +23,7 @@ export class UserBooksComponent implements OnInit, OnDestroy {
   userIsAuthenticated = false;
   userId: string | null = null;
   showProgressModal = false;
+  filter: string = 'All';
   private booksSub: Subscription = new Subscription();
   private authStatusSub: Subscription = new Subscription();
 
@@ -47,6 +48,18 @@ export class UserBooksComponent implements OnInit, OnDestroy {
         this.userIsAuthenticated = isAuthenticated;
         this.userId = this.authService.getUserId();
       });
+  }
+
+  setFilter(status: string) {
+    this.filter = status;
+  }
+
+  getFilteredBooks(filter: string): Book[] {
+    if (filter === 'All') {
+      return this.books;
+    } else {
+      return this.books.filter((book) => book.status === filter);
+    }
   }
 
   onDelete(bookId: string) {

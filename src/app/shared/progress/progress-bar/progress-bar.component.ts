@@ -18,9 +18,17 @@ export class ProgressBarComponent implements OnInit {
 
   ngOnInit(): void {
     const { pagesRead, totalPages } = this.book;
+    // if there's book progress
     if (pagesRead !== undefined && totalPages !== undefined) {
-      this.progress = (pagesRead / totalPages) * 100;
+      this.progress = Math.min((pagesRead / totalPages) * 100, 100);
+      if (this.progress >= 100) {
+        this.book.status = 'Have Read';
+      } else if (this.progress > 0) {
+        this.book.status = 'Reading Now';
+      }
     }
+
+    // if there's no progress
     // this.booksService.getUpdatedBook(this.book).subscribe((bookData) => {
     //   this.book = { ...this.book, pagesRead: bookData.pagesRead };
     // });

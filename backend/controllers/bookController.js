@@ -144,6 +144,7 @@ exports.getRecommendations = async (req, res, next) => {
         ratingsCount: bookData.volumeInfo.ratingsCount,
         totalPages: bookData.volumeInfo.pageCount,
         pagesRead: bookData.volumeInfo.pagesRead,
+        status: bookData.volumeInfo.status,
       });
       recommendations.push(book);
     }
@@ -167,6 +168,7 @@ exports.addBook = async (req, res, next) => {
     ratingsCount: req.body.ratingsCount,
     totalPages: req.body.totalPages,
     pagesRead: req.body.pagesRead,
+    status: req.body.status,
     user: req.userData.userId,
   });
   book
@@ -191,7 +193,7 @@ exports.addBook = async (req, res, next) => {
 exports.updateBook = (req, res, next) => {
   const book = req.body;
   const bookId = req.params.bookId;
-  Book.findByIdAndUpdate(bookId, book, { returnDocument: "after" })
+  Book.findByIdAndUpdate(bookId, book, { new: "true" })
     .then((result) => {
       res
         .status(200)

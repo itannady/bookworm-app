@@ -8,13 +8,13 @@
             <img src="{{ book.thumbnail }}" alt="" />
           </div>
           <div class="detailContainer">
-            <p class="title">{{ book.title | truncate : 20 }}</p>
+            <p class="title">{{ book.title | truncate : 15 }}</p>
             <p class="author">
               {{
                 (book.authors && book.authors.length > 0
                   ? book.authors[0]
                   : "Unknown"
-                ) | truncate : 20
+                ) | truncate : 15
               }}
             </p>
           </div>

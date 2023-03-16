@@ -1,13 +1,20 @@
 <div class="progressContainer">
-  <p>
-    Progress
-    <ng-container *ngIf="book">
-      <button class="actionBtn" (click)="showProgressModal = true">
-        Update
-      </button>
-    </ng-container>
-  </p>
-  <progress [max]="100" [value]="progress.toFixed(0)"></progress>
+  <ng-container *ngIf="book.pagesRead == 0">
+    <button class="actionBtn" (click)="showProgressModal = true">
+      Update progress
+    </button>
+  </ng-container>
+  <ng-container *ngIf="book.pagesRead != 0">
+    <p>
+      Progress
+      <ng-container *ngIf="book">
+        <button class="actionBtn" (click)="showProgressModal = true">
+          Update
+        </button>
+      </ng-container>
+    </p>
+    <progress [max]="100" [value]="progress.toFixed(0)"></progress>
+  </ng-container>
 </div>
 <app-progress-modal
   *ngIf="showProgressModal"

@@ -4,19 +4,29 @@
     <div class="noteContent">
       <h4>Notes for {{ book.title }}</h4>
       <hr />
-      <ng-container *ngIf="book.notes != undefined">
-        {{ book.notes }}
+      <ng-container *ngIf="book.notes != undefined && !editing">
+        <p>{{ book.notes }}</p>
+        <hr />
+        <div class="btnWrapper">
+          <button class="secondaryBtn" (click)="onCloseClick()">Cancel</button>
+          <button class="primaryBtn" (click)="onEdit()">Edit</button>
+        </div>
       </ng-container>
-      <ng-container *ngIf="book.notes == undefined">
+      <ng-container *ngIf="book.notes == undefined || editing">
         <form [formGroup]="notesForm" (submit)="onSavePost()">
           <textarea
             type="text"
-            rows="10"
+            rows="15"
             formControlName="notes"
             placeholder="Enter your thoughts or summary of the book"
           ></textarea>
           <hr />
-          <button class="primaryBtn" type="submit">Save note</button>
+          <div class="btnWrapper">
+            <button class="secondaryBtn" (click)="onCloseClick()">
+              Cancel
+            </button>
+            <button class="primaryBtn" type="submit">Save note</button>
+          </div>
         </form>
       </ng-container>
     </div>

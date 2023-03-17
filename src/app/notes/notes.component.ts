@@ -9,6 +9,7 @@ import { BooksService } from '../books/books.service';
 })
 export class NotesComponent implements OnInit {
   notesForm!: FormGroup;
+  editing: boolean = false;
   @Input() book!: Book;
   @Output() close = new EventEmitter<void>();
   constructor(private booksService: BooksService) {}
@@ -31,9 +32,14 @@ export class NotesComponent implements OnInit {
         .updateBook({ id: this.book.id, notes: notes })
         .subscribe((res) => {
           this.book.notes = res.book.notes;
+          this.editing = false;
           this.close.emit();
         });
     }
+  }
+
+  onEdit() {
+    this.editing = true;
   }
 
   onCloseClick() {

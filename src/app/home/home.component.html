@@ -3,6 +3,10 @@
   *ngIf="userIsAuthenticated"
   (bookSelected)="selectedBook = $event"
 ></app-bestseller-list>
+<app-category-list
+  *ngIf="userIsAuthenticated"
+  (bookSelected)="selectedBook = $event"
+></app-category-list>
 <app-book-modal
   *ngIf="selectedBook"
   [bookData]="selectedBook"

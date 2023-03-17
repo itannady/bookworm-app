@@ -1,17 +1,24 @@
 <section>
   <div class="modalContainer">
+    <mat-icon (click)="onCloseClick()">close</mat-icon>
     <div class="noteContent">
-      <h4>Notes for</h4>
+      <h4>Notes for {{ book.title }}</h4>
       <hr />
-      <form>
-        <!-- <textarea
-          rows="10"
-          formControlName="notes"
-          placeholder="Enter your thoughts or summary of the book"
-        ></textarea> -->
-        <hr />
-        <button class="primaryBtn" type="submit">Save note</button>
-      </form>
+      <ng-container *ngIf="book.notes != undefined">
+        {{ book.notes }}
+      </ng-container>
+      <ng-container *ngIf="book.notes == undefined">
+        <form [formGroup]="notesForm" (submit)="onSavePost()">
+          <textarea
+            type="text"
+            rows="10"
+            formControlName="notes"
+            placeholder="Enter your thoughts or summary of the book"
+          ></textarea>
+          <hr />
+          <button class="primaryBtn" type="submit">Save note</button>
+        </form>
+      </ng-container>
     </div>
   </div>
 </section>

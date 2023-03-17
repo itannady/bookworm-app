@@ -94,6 +94,11 @@ export class BooksService {
     return this.http.get<Book[]>(`${this.API_URL}/bestsellers`);
   }
 
+  // get books for second carousel
+  getCategoryBooks(): Observable<Book[]> {
+    return this.http.get<Book[]>(`${this.API_URL}/category`);
+  }
+
   // get recommendations
   getRecommendedBooks(book: Book): Observable<Book[]> {
     return this.http.get<Book[]>(

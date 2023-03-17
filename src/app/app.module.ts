@@ -23,6 +23,7 @@ import { MatInputModule } from '@angular/material/input';
 import { BestsellerListComponent } from './books/bestseller-list/bestseller-list.component';
 import { DiscoverPageComponent } from './discover-page/discover-page.component';
 import { RecommendationsComponent } from './books/recommendations/recommendations.component';
+import { CategoryListComponent } from './books/category-list/category-list.component';
 
 @NgModule({
   declarations: [
@@ -39,6 +40,7 @@ import { RecommendationsComponent } from './books/recommendations/recommendation
     BestsellerListComponent,
     DiscoverPageComponent,
     RecommendationsComponent,
+    CategoryListComponent,
   ],
   imports: [
     BrowserModule,

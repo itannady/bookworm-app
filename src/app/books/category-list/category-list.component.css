@@ -1,0 +1,105 @@
+section {
+  width: 100vw;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin: 1rem 0;
+}
+
+header {
+  line-height: 2;
+}
+
+.wrapper {
+  width: 90%;
+  max-width: 1350px;
+  margin: auto;
+}
+
+.row {
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+}
+
+.card {
+  border-radius: 10px;
+  width: calc(100% / 5);
+  height: 100%;
+  min-width: 12rem;
+  padding: 0.5rem 0;
+  display: flex;
+  justify-self: flex-end;
+  align-self: flex-end;
+  flex-direction: column;
+  cursor: pointer;
+}
+
+.card:hover {
+  background-color: var(--cardHover);
+}
+
+.bookContent {
+  margin: auto;
+}
+
+.coverContainer {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  margin: auto;
+}
+
+.coverContainer img {
+  border-radius: 5px;
+  width: 11rem;
+  cursor: pointer;
+  box-shadow: 0 1px 2px 0 rgb(60 64 67 / 30%), 0 1px 3px 1px rgb(60 64 67 / 15%);
+  /* filter: drop-shadow(4px 0px 5px rgba(84, 68, 45, 0.136))
+    drop-shadow(1px 5px 5px rgba(80, 57, 25, 0.198)); */
+}
+
+.detailContainer {
+  height: 4rem;
+  padding-top: 0.5rem;
+}
+
+.detailContainer p.title {
+  font-weight: 550;
+  color: var(--text);
+  margin: 0;
+}
+
+.detailContainer p.author {
+  font-weight: 400;
+  color: var(--text);
+  margin: 0;
+}
+
+mat-icon {
+  position: absolute;
+  padding: 1rem;
+  background-color: var(--blue);
+  border-radius: 20%;
+  box-shadow: 0px 0.3px 0.7px 0px rgb(0 0 0 / 12%),
+    0px 1.5px 2.8px 0px rgb(0 0 0 / 7%), 0px 4px 9px 0px rgb(0 0 0 / 5%);
+  opacity: 0.75;
+  z-index: 10;
+  color: var(--text);
+  cursor: pointer;
+}
+
+mat-icon:hover {
+  opacity: 1;
+}
+
+.nextArrow {
+  right: -1rem;
+}
+
+.prevArrow {
+  left: -1rem;
+}

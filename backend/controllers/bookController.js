@@ -90,10 +90,10 @@ exports.getBestsellerBooks = async (req, res, next) => {
 };
 
 // get top rated fiction books
-exports.getFictionBooks = async (req, res, next) => {
+exports.getCategoryBooks = async (req, res, next) => {
   try {
     const result = await axios.get(
-      `${BASE_URL}?q=topratedfiction&orderBy=relevance&maxResults=40&key=${API_KEY}&printType=books`
+      `${BASE_URL}?q=topsellingnonfiction&orderBy=relevance&maxResults=40&key=${API_KEY}&printType=books`
     );
     const booksData = result.data.items;
     const fictionBooks = [];
@@ -118,7 +118,7 @@ exports.getFictionBooks = async (req, res, next) => {
     res.status(200).json(fictionBooks.slice(0, 20));
   } catch (error) {
     console.log(error);
-    res.status(500).json({ message: "Failed to get bestsellers" });
+    res.status(500).json({ message: "Failed to get fiction" });
   }
 };
 

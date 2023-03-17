@@ -29,27 +29,29 @@
     <app-loader *ngIf="isLoading"></app-loader>
     <div *ngIf="!isLoading" class="tableContent">
       <p *ngIf="books.length <= 0 && !isLoading">No posts added yet!</p>
-      <div class="bookRow" *ngFor="let book of getFilteredBooks(filter)">
+      <div *ngFor="let book of getFilteredBooks(filter)">
         <ng-container *ngIf="book.user === userId">
-          <div class="coverContainer">
-            <img
-              class="bookCover"
-              (click)="onBookClick(book)"
-              src="{{ book.thumbnail }}"
-              alt="{{ book.title }}"
-            />
-          </div>
-          <div class="detailsContainer">
-            <div>
-              <p class="title">{{ book.title }}</p>
-              <p class="author">
-                {{ book.authors ? book.authors[0] : "No authors listed" }}
-              </p>
+          <div class="bookRow">
+            <div class="coverContainer">
+              <img
+                class="bookCover"
+                (click)="onBookClick(book)"
+                src="{{ book.thumbnail }}"
+                alt="{{ book.title }}"
+              />
             </div>
-            <app-progress-bar [book]="book"></app-progress-bar>
-          </div>
-          <div class="actionItems">
-            <p class="actionBtn" (click)="onNotesClick(book)">Notes</p>
+            <div class="detailsContainer">
+              <div>
+                <p class="title">{{ book.title }}</p>
+                <p class="author">
+                  {{ book.authors ? book.authors[0] : "No authors listed" }}
+                </p>
+              </div>
+              <app-progress-bar [book]="book"></app-progress-bar>
+            </div>
+            <div class="actionItems">
+              <p class="actionBtn" (click)="onNotesClick(book)">Notes</p>
+            </div>
           </div>
         </ng-container>
         <mat-icon class="closeIcon" (click)="onDelete(book.id)"

@@ -1,0 +1,11 @@
+footer {
+  margin-top: 5rem;
+  height: 10vh;
+  background-color: var(--tan);
+  display: flex;
+  justify-content: center;
+
+  bottom: 0;
+  width: 100%;
+  bottom: 0;
+}

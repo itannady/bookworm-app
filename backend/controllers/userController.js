@@ -12,6 +12,7 @@ exports.createUser = async (req, res, next) => {
     const user = new User({
       email: req.body.email,
       password: hash,
+      name: req.body.name,
     });
     user
       .save()
@@ -59,6 +60,7 @@ exports.userLogin = async (req, res, next) => {
         token: token,
         expiresIn: 3600,
         userId: fetchedUser._id,
+        name: fetchedUser.name,
       });
     })
     .catch((err) => {

@@ -10,7 +10,7 @@ import { EventEmitter } from 'stream';
 })
 export class ProgressBarComponent implements OnInit {
   @Input() book!: Book;
-  isModalOpen = false;
+  // isModalOpen = false;
   showProgressModal = false;
   progress: number = 0;
 
@@ -38,7 +38,7 @@ export class ProgressBarComponent implements OnInit {
     this.progress = progress;
   }
 
-  showModal() {
-    this.showProgressModal = true;
-  }
+  // showModal() {
+  //   this.showProgressModal = true;
+  // }
 }

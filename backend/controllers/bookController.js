@@ -144,7 +144,6 @@ exports.getRecommendations = async (req, res, next) => {
         ratingsCount: bookData.volumeInfo.ratingsCount,
         totalPages: bookData.volumeInfo.pageCount,
         pagesRead: bookData.volumeInfo.pagesRead,
-        status: bookData.volumeInfo.status,
       });
       recommendations.push(book);
     }
@@ -169,6 +168,7 @@ exports.addBook = async (req, res, next) => {
     totalPages: req.body.totalPages,
     pagesRead: req.body.pagesRead,
     status: req.body.status,
+    notes: req.body.notes,
     user: req.userData.userId,
   });
   book

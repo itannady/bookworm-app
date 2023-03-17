@@ -108,6 +108,18 @@ button {
   background-color: var(--cardHover);
 }
 
+.actionBtn {
+  background-color: transparent;
+  padding: 0;
+  font-weight: 500;
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+.actionBtn:hover {
+  opacity: 0.9;
+}
+
 /* Links */
 
 li {

@@ -19,10 +19,12 @@ import { BooksService } from '../books.service';
 export class UserBooksComponent implements OnInit, OnDestroy {
   @Output() bookSelected = new EventEmitter<Book>();
   books: Book[] = [];
+  selectedBook: Book | null = null;
   isLoading = false;
   userIsAuthenticated = false;
   userId: string | null = null;
   showProgressModal = false;
+  showNotesModal = false;
   filter: string = 'All';
   private booksSub: Subscription = new Subscription();
   private authStatusSub: Subscription = new Subscription();
@@ -33,6 +35,7 @@ export class UserBooksComponent implements OnInit, OnDestroy {
   ) {}
 
   ngOnInit(): void {
+    console.log(this.showNotesModal);
     this.isLoading = true;
     this.userId = this.authService.getUserId();
     this.booksService.getUserBooks();
@@ -84,6 +87,10 @@ export class UserBooksComponent implements OnInit, OnDestroy {
     this.bookSelected.emit(book);
   }
 
+  onNotesClick(book: Book) {
+    this.selectedBook = book;
+    this.showNotesModal = true;
+  }
   ngOnDestroy(): void {
     this.booksSub.unsubscribe();
   }

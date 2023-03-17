@@ -1,4 +1,5 @@
 <app-loader *ngIf="isLoading"></app-loader>
+
 <section>
   <div class="table">
     <header>
@@ -50,7 +51,7 @@
           </div>
           <div class="actionItems">
             <p class="reviews">4.7</p>
-            <p class="notes">Notes</p>
+            <p class="actionBtn" (click)="onNotesClick(book)">Notes</p>
           </div>
         </ng-container>
         <mat-icon class="closeIcon" (click)="onDelete(book.id)"
@@ -60,4 +61,13 @@
     </div>
   </div>
 </section>
+<ng-container *ngIf="selectedBook">
+  <app-notes
+    [book]="selectedBook"
+    *ngIf="showNotesModal"
+    [book]="selectedBook"
+    (close)="showNotesModal = false"
+  ></app-notes>
+</ng-container>
+
 <p *ngIf="books.length <= 0 && !isLoading">No posts added yet!</p>

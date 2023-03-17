@@ -64,6 +64,7 @@ export class BooksService {
               totalPages: book.totalPages,
               pagesRead: book.pagesRead,
               status: book.status,
+              notes: book.notes,
               user: book.user,
             };
           });

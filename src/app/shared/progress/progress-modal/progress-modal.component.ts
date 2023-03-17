@@ -44,7 +44,6 @@ export class ProgressModalComponent implements OnInit {
             } else {
               this.book.status = 'Reading Now';
             }
-
             this.progressUpdate.emit(progress);
             this.close.emit();
           });

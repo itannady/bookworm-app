@@ -9,8 +9,8 @@ router.get("/bestsellers", BookController.getBestsellerBooks);
 router.get("/category", BookController.getCategoryBooks);
 router.get("/recommendations/:title", BookController.getRecommendations);
 router.post("/library/", checkAuth, BookController.addBook);
-router.put("/library/update/:bookId", BookController.updateBook);
-router.get("/library/update/:bookId", BookController.getUpdatedBook);
+router.put("/library/update/:bookId", checkAuth, BookController.updateBook);
+router.get("/library/update/:bookId", checkAuth, BookController.getUpdatedBook);
 router.delete("/library/:id", checkAuth, BookController.deleteBook);
 
 module.exports = router;

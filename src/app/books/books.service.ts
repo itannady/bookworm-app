@@ -71,7 +71,6 @@ export class BooksService {
         })
       )
       .subscribe((savedBooks) => {
-        console.log('saved books', savedBooks);
         this.books = savedBooks;
         this.selectedBooks.next([...this.books]);
       });

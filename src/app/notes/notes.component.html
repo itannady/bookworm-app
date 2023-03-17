@@ -5,7 +5,7 @@
       <h4>Notes for {{ book.title }}</h4>
       <hr />
       <ng-container *ngIf="book.notes != undefined && !editing">
-        <p>{{ book.notes }}</p>
+        <p class="noteField">{{ book.notes }}</p>
         <hr />
         <div class="btnWrapper">
           <button class="secondaryBtn" (click)="onCloseClick()">Cancel</button>

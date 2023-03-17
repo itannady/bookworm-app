@@ -11,4 +11,5 @@ export interface Book {
   totalPages?: number;
   pagesRead?: number;
   status?: string;
+  notes?: string;
 }

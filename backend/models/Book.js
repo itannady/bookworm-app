@@ -38,6 +38,9 @@ const bookSchema = mongoose.Schema({
     enum: ["To Read", "Reading Now", "Have Read"],
     default: "To Read",
   },
+  notes: {
+    type: String,
+  },
   user: {
     type: mongoose.Schema.Types.ObjectId,
     ref: "User",

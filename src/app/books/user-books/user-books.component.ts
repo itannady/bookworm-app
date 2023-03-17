@@ -35,15 +35,14 @@ export class UserBooksComponent implements OnInit, OnDestroy {
   ) {}
 
   ngOnInit(): void {
-    console.log(this.showNotesModal);
     this.isLoading = true;
     this.userId = this.authService.getUserId();
     this.booksService.getUserBooks();
     this.booksSub = this.booksService
       .getSelectedBooksListener()
       .subscribe((books) => {
-        this.isLoading = false;
         this.books = books;
+        this.isLoading = false;
       });
     this.authStatusSub = this.authService
       .getAuthStatusListener()
@@ -58,21 +57,21 @@ export class UserBooksComponent implements OnInit, OnDestroy {
   }
 
   getFilteredBooks(filter: string): Book[] {
-    let sortedBooks = this.books.sort((a, b) => {
-      if (a.status === 'Reading Now' && b.status !== 'Reading Now') {
-        return -1;
-      } else if (a.status !== 'Reading Now' && b.status === 'Reading Now') {
-        return 1;
-      } else if (a.status === 'To Read' && b.status !== 'To Read') {
-        return -1;
-      } else if (a.status !== 'To Read' && b.status === 'To Read') {
-        return 1;
-      } else {
-        return 0;
-      }
-    });
+    // let sortedBooks = this.books.sort((a, b) => {
+    //   if (a.status === 'Reading Now' && b.status !== 'Reading Now') {
+    //     return -1;
+    //   } else if (a.status !== 'Reading Now' && b.status === 'Reading Now') {
+    //     return 1;
+    //   } else if (a.status === 'To Read' && b.status !== 'To Read') {
+    //     return -1;
+    //   } else if (a.status !== 'To Read' && b.status === 'To Read') {
+    //     return 1;
+    //   } else {
+    //     return 0;
+    //   }
+    // });
     if (filter === 'All') {
-      return sortedBooks;
+      return this.books;
     } else {
       return this.books.filter((book) => book.status === filter);
     }

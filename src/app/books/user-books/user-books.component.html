@@ -1,5 +1,3 @@
-<app-loader *ngIf="isLoading"></app-loader>
-
 <section>
   <div class="table">
     <header>
@@ -28,8 +26,9 @@
       </ul>
       <hr />
     </header>
-
-    <div class="tableContent">
+    <app-loader *ngIf="isLoading"></app-loader>
+    <div *ngIf="!isLoading" class="tableContent">
+      <p *ngIf="books.length <= 0 && !isLoading">No posts added yet!</p>
       <div class="bookRow" *ngFor="let book of getFilteredBooks(filter)">
         <ng-container *ngIf="book.user === userId">
           <div class="coverContainer">
@@ -50,7 +49,6 @@
             <app-progress-bar [book]="book"></app-progress-bar>
           </div>
           <div class="actionItems">
-            <p class="reviews">4.7</p>
             <p class="actionBtn" (click)="onNotesClick(book)">Notes</p>
           </div>
         </ng-container>
@@ -69,5 +67,3 @@
     (close)="showNotesModal = false"
   ></app-notes>
 </ng-container>
-
-<p *ngIf="books.length <= 0 && !isLoading">No posts added yet!</p>

@@ -27,9 +27,9 @@ header {
 
 .card {
   border-radius: 10px;
-  width: 20%;
+  width: calc(100% / 5);
   height: 100%;
-  min-width: 13rem;
+  min-width: 12rem;
   padding: 0.5rem 0;
   display: flex;
   justify-self: flex-end;
@@ -50,11 +50,12 @@ header {
   position: relative;
   width: 100%;
   height: 100%;
+  margin: auto;
 }
 
 .coverContainer img {
   border-radius: 5px;
-  width: 12rem;
+  width: 11rem;
   cursor: pointer;
   box-shadow: 0 1px 2px 0 rgb(60 64 67 / 30%), 0 1px 3px 1px rgb(60 64 67 / 15%);
   /* filter: drop-shadow(4px 0px 5px rgba(84, 68, 45, 0.136))

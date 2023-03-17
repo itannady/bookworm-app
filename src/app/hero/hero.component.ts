@@ -11,6 +11,7 @@ import { BooksService } from '../books/books.service';
   styleUrls: ['./hero.component.css'],
 })
 export class HeroComponent implements OnInit, OnDestroy {
+  name: string | null = null;
   form: FormGroup;
   userIsAuthenticated = false;
   private authStatusSub: Subscription = new Subscription();
@@ -31,6 +32,8 @@ export class HeroComponent implements OnInit, OnDestroy {
       .subscribe((isAuthenticated) => {
         this.userIsAuthenticated = isAuthenticated;
       });
+    this.name = this.authService.getName();
+    console.log('hero', this.name);
   }
 
   onSearch() {

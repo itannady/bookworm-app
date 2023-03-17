@@ -14,7 +14,12 @@
     <img src="assets/images/heroImg.png" alt="" />
   </div>
   <!-- User is authenticated hero -->
-  <div class="userHero" *ngIf="userIsAuthenticated">
+
+  <div class="userHero">
+    <h1>Welcome back, {{ name }}</h1>
+  </div>
+
+  <!-- <div class="userHero" *ngIf="userIsAuthenticated">
     <div class="textWrapper">
       <h1>Explore the Award Winning Books of the Year</h1>
       <a routerLink="/" routerLinkActive="">
@@ -26,5 +31,5 @@
       <img src="/assets/images/bookCover.jpg" alt="" />
       <img src="/assets/images/bookCover.jpg" alt="" />
     </div>
-  </div>
+  </div> -->
 </section>

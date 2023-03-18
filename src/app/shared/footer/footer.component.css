@@ -4,8 +4,7 @@ footer {
   background-color: var(--tan);
   display: flex;
   justify-content: center;
-
+  position: relative;
   bottom: 0;
   width: 100%;
-  bottom: 0;
 }

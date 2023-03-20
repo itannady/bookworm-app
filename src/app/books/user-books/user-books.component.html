@@ -52,11 +52,11 @@
             <div class="actionItems">
               <p class="actionBtn" (click)="onNotesClick(book)">Notes</p>
             </div>
+            <mat-icon class="closeIcon" (click)="onDelete(book.id)"
+              >remove</mat-icon
+            >
           </div>
         </ng-container>
-        <mat-icon class="closeIcon" (click)="onDelete(book.id)"
-          >remove</mat-icon
-        >
       </div>
     </div>
   </div>

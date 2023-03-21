@@ -29,29 +29,49 @@ img {
 /* User hero */
 
 .userHero {
+  width: 80%;
   position: relative;
   max-width: 1200px;
   margin: 0 5%;
-  padding: 1% 5%;
-  /* background-color: var(--blue); */
+  padding: 3% 5%;
+  background-color: #d1dcda;
   border-radius: 20px;
   display: flex;
+  flex-direction: column;
   justify-content: flex-start;
   align-items: center;
-  overflow-x: hidden;
+  overflow: hidden;
 }
-/*
+
 .userHero:before {
   content: "";
   position: absolute;
   width: 100%;
-  height: 3rem;
-  background-image: url("/assets/images/shelf.png");
-  filter: drop-shadow(0px 10px 10px rgba(102, 76, 37, 0.81));
-  background-size: cover;
+  height: 80%;
+  background-image: url("/assets/images/bookLineArt.png");
+  background-size: contain;
   background-repeat: no-repeat;
-  bottom: 2rem;
-} */
+  mix-blend-mode: overlay;
+  transform: rotate(-15.15deg);
+  top: -9rem;
+  left: -3rem;
+  opacity: 0.3;
+}
+
+.userHero:after {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 80%;
+  background-image: url("/assets/images/bookLineArt.png");
+  background-size: contain;
+  background-repeat: no-repeat;
+  mix-blend-mode: overlay;
+  transform: matrix(-0.95, -0.32, -0.32, 0.95, 0, 0);
+  bottom: 3rem;
+  right: -8rem;
+  opacity: 0.3;
+}
 
 .textWrapper {
   width: 65%;
@@ -75,4 +95,24 @@ img {
 
 button {
   margin: 1rem 0 2rem 0;
+}
+
+form {
+  position: relative;
+}
+
+input {
+  padding-left: 2.5rem;
+  width: 25rem;
+  box-shadow: 0px 0.3px 0.7px 0px rgba(0, 0, 0, 0.066),
+    0px 1.5px 2.8px 0px rgba(0, 0, 0, 0.033),
+    0px 4px 9px 0px rgba(0, 0, 0, 0.016);
+}
+
+mat-icon {
+  color: var(--gray);
+  position: absolute;
+  left: 1rem;
+  top: 50%;
+  transform: translateY(-50%);
 }

@@ -1,4 +1,11 @@
-<app-hero></app-hero>
+<app-hero (query)="onSearch($event)"></app-hero>
+
+<app-book-list
+  [query]="query"
+  *ngIf="showSearchResults"
+  (bookSelected)="selectedBook = $event"
+  (close)="showSearchResults = false"
+></app-book-list>
 <app-bestseller-list
   *ngIf="userIsAuthenticated"
   (bookSelected)="selectedBook = $event"

@@ -1,14 +1,61 @@
-section {
+/* section {
   width: 100vw;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   margin: 2rem 0;
+} */
+
+section {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.8);
+  opacity: 1;
+  overflow-y: hidden;
+  transform: translateY(0);
+  transition: transform 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+  z-index: 1000;
+}
+
+.overlayContent {
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+  z-index: 1;
+}
+
+.overlayContent mat-icon {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  color: var(--white);
+  cursor: pointer;
+}
+
+.modalContainer {
+  position: absolute;
+  width: 100%;
+  height: calc(100vh - 3.5rem);
+  bottom: 0;
+  border-radius: 20px 20px 0 0;
+  overflow-y: scroll;
+  overflow-x: hidden;
+  background-color: white;
+  display: flex;
+  justify-content: center;
+}
+
+.modalContent {
+  max-width: 1200px;
+  margin: 6rem 8rem;
+  max-width: 1200px;
 }
 
 .wrapper {
-  width: 90%;
   max-width: 1200px;
   margin: auto;
 }
@@ -26,10 +73,6 @@ section {
   width: 20%;
   min-width: 10rem;
   padding: 1rem 0.5rem;
-  /* display: flex;
-  justify-content: center;
-  align-items: flex-end; */
-  /* flex-direction: column; */
   cursor: pointer;
 }
 

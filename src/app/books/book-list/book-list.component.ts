@@ -1,4 +1,11 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import {
+  Component,
+  EventEmitter,
+  Input,
+  OnInit,
+  Output,
+  SimpleChanges,
+} from '@angular/core';
 import { Book } from '../book.model';
 import { BooksService } from '../books.service';
 
@@ -8,14 +15,18 @@ import { BooksService } from '../books.service';
   styleUrls: ['./book-list.component.css'],
 })
 export class BookListComponent implements OnInit {
+  isLoading = true;
   currentGroup = 0;
   books: Book[] = [];
   @Output() bookSelected = new EventEmitter<Book>();
-
+  @Output() close = new EventEmitter<void>();
+  @Input() query: string = '';
   constructor(private booksService: BooksService) {}
 
   ngOnInit(): void {
+    this.isLoading = true;
     this.booksService.getBooksListener().subscribe((books) => {
+      this.isLoading = false;
       this.books = books;
     });
   }
@@ -35,5 +46,10 @@ export class BookListComponent implements OnInit {
 
   onBookClick(book: Book) {
     this.bookSelected.emit(book);
+  }
+
+  onCloseClick() {
+    document.body.classList.remove('modalOpen'); // remove the CSS class from the body
+    this.close.emit();
   }
 }

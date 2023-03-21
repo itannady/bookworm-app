@@ -5,7 +5,6 @@ import { LoginComponent } from './auth/login/login.component';
 import { SignupComponent } from './auth/signup/signup.component';
 import { BookListComponent } from './books/book-list/book-list.component';
 import { UserBooksComponent } from './books/user-books/user-books.component';
-import { DiscoverPageComponent } from './discover-page/discover-page.component';
 import { HomeComponent } from './home/home.component';
 import { LibraryPageComponent } from './library-page/library-page.component';
 import { ProgressModalComponent } from './shared/progress/progress-modal/progress-modal.component';
@@ -15,16 +14,6 @@ const routes: Routes = [
   {
     path: 'library',
     component: LibraryPageComponent,
-    canActivate: [AuthGuard],
-  },
-  // {
-  //   path: 'library/update/:bookId',
-  //   component: ProgressModalComponent,
-  //   canActivate: [AuthGuard],
-  // },
-  {
-    path: 'discover',
-    component: DiscoverPageComponent,
     canActivate: [AuthGuard],
   },
   { path: 'login', component: LoginComponent },

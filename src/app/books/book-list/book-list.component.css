@@ -56,7 +56,6 @@ section {
 }
 
 .wrapper {
-  width: 90%;
   max-width: 1200px;
   margin: auto;
 }
@@ -74,10 +73,6 @@ section {
   width: 20%;
   min-width: 10rem;
   padding: 1rem 0.5rem;
-  /* display: flex;
-  justify-content: center;
-  align-items: flex-end; */
-  /* flex-direction: column; */
   cursor: pointer;
 }
 

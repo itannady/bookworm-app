@@ -9,8 +9,14 @@
           <img src="{{ bookData.thumbnail }}" alt="" />
           <div class="addBook">
             <button class="primaryBtn" (click)="onAddBook()">
-              <span><mat-icon>add_box</mat-icon></span
-              >Add to my books
+              <span>
+                <mat-icon *ngIf="!bookAdded">add_box</mat-icon>
+                <mat-icon *ngIf="bookAdded">check</mat-icon>
+              </span>
+              <ng-container *ngIf="!bookAdded; else added"
+                >Add to my books</ng-container
+              >
+              <ng-template #added>Book added!</ng-template>
             </button>
           </div>
         </div>

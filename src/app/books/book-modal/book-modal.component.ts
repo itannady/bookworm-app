@@ -10,6 +10,7 @@ import { BooksService } from '../books.service';
 export class BookModalComponent implements OnInit {
   @Input() bookData!: Book;
   selectedBook: any;
+  bookAdded = false;
   @Output() close = new EventEmitter<void>();
 
   constructor(private booksService: BooksService) {}
@@ -20,7 +21,7 @@ export class BookModalComponent implements OnInit {
 
   onAddBook() {
     this.booksService.addBook(this.bookData);
-    console.log('on add book', this.bookData);
+    this.bookAdded = true;
   }
 
   onCloseClick() {

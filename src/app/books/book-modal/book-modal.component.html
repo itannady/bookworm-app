@@ -8,8 +8,10 @@
         <div class="coverContainer">
           <img src="{{ bookData.thumbnail }}" alt="" />
           <div class="addBook">
-            <mat-icon (click)="onAddBook()">library_add</mat-icon>
-            <p>Add to my books</p>
+            <button class="primaryBtn" (click)="onAddBook()">
+              <span><mat-icon>add_box</mat-icon></span
+              >Add to my books
+            </button>
           </div>
         </div>
         <div class="detailsContainer">
@@ -17,7 +19,7 @@
           <p>
             {{ bookData.authors ? bookData.authors[0] : "No authors listed" }}
           </p>
-          <p>
+          <p class="author">
             Category:
             {{ bookData.categories ? bookData.categories[0] : "None" }}
           </p>
@@ -26,12 +28,12 @@
             *ngIf="bookData.averageRating || bookData.ratingsCount"
           >
             <p>{{ bookData.averageRating }}<mat-icon>star</mat-icon></p>
+            |
             <p>{{ bookData.ratingsCount }} reviews</p>
           </div>
           <div *ngIf="!bookData.averageRating && !bookData.ratingsCount">
             <p>No ratings or reviews available.</p>
           </div>
-
           <h6>Description</h6>
           <p>
             {{ bookData.description }}

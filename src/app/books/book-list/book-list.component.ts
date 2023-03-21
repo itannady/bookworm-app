@@ -25,9 +25,7 @@ export class BookListComponent implements OnInit {
   ngOnInit(): void {
     this.booksService.getBooksListener().subscribe((books) => {
       this.books = books;
-      console.log(this.query);
     });
-    // Call your search method here with the updated query
   }
 
   prevClick() {

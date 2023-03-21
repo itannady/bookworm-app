@@ -45,7 +45,6 @@ export class HomeComponent implements OnInit, OnDestroy {
     this.query = this.form.get('searchbar')?.value;
     this.booksService.populateBooks(this.query);
     this.showSearchResults = true;
-    console.log(this.query);
   }
 
   ngOnDestroy(): void {

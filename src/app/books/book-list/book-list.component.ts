@@ -1,4 +1,11 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import {
+  Component,
+  EventEmitter,
+  Input,
+  OnInit,
+  Output,
+  SimpleChanges,
+} from '@angular/core';
 import { Book } from '../book.model';
 import { BooksService } from '../books.service';
 
@@ -12,12 +19,13 @@ export class BookListComponent implements OnInit {
   books: Book[] = [];
   @Output() bookSelected = new EventEmitter<Book>();
   @Output() close = new EventEmitter<void>();
-  @Input() searchQuery: string = '';
+  @Input() query: string = '';
   constructor(private booksService: BooksService) {}
 
   ngOnInit(): void {
     this.booksService.getBooksListener().subscribe((books) => {
       this.books = books;
+      console.log(this.query);
     });
     // Call your search method here with the updated query
   }

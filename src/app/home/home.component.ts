@@ -18,9 +18,9 @@ import { BooksService } from '../books/books.service';
 export class HomeComponent implements OnInit, OnDestroy {
   selectedBook: any;
   form: FormGroup;
+  query: string = '';
   showSearchResults = false;
   userIsAuthenticated = false;
-  @Output() searchQuery = new EventEmitter<string>();
   private authStatusSub: Subscription = new Subscription();
 
   constructor(
@@ -42,11 +42,10 @@ export class HomeComponent implements OnInit, OnDestroy {
   }
 
   onSearch() {
-    const query = this.form.get('searchbar')?.value;
-    this.booksService.populateBooks(query);
+    this.query = this.form.get('searchbar')?.value;
+    this.booksService.populateBooks(this.query);
     this.showSearchResults = true;
-    console.log(this.form.get('searchbar')?.value);
-    this.searchQuery.emit(query);
+    console.log(this.query);
   }
 
   ngOnDestroy(): void {

@@ -4,6 +4,7 @@
   <input type="search" formControlName="searchbar" placeholder="Search books" />
 </form>
 <app-book-list
+  [query]="query"
   *ngIf="showSearchResults"
   (bookSelected)="selectedBook = $event"
   (close)="showSearchResults = false"

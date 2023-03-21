@@ -1,8 +1,5 @@
-<app-hero></app-hero>
-<form [formGroup]="form" (submit)="onSearch()">
-  <mat-icon>search</mat-icon>
-  <input type="search" formControlName="searchbar" placeholder="Search books" />
-</form>
+<app-hero (query)="onSearch($event)"></app-hero>
+
 <app-book-list
   [query]="query"
   *ngIf="showSearchResults"

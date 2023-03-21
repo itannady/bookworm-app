@@ -41,9 +41,9 @@ export class HomeComponent implements OnInit, OnDestroy {
       });
   }
 
-  onSearch() {
-    this.query = this.form.get('searchbar')?.value;
-    this.booksService.populateBooks(this.query);
+  onSearch(query: string) {
+    this.query = query;
+    this.booksService.populateBooks(query);
     this.showSearchResults = true;
   }
 

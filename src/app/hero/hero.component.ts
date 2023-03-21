@@ -1,4 +1,10 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import {
+  Component,
+  EventEmitter,
+  OnDestroy,
+  OnInit,
+  Output,
+} from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { Subscription } from 'rxjs';
 import { AuthService } from '../auth/auth.service';
@@ -13,6 +19,8 @@ import { BooksService } from '../books/books.service';
 export class HeroComponent implements OnInit, OnDestroy {
   name: string | null = null;
   form: FormGroup;
+  @Output() query = new EventEmitter<string>();
+  showSearchResults = false;
   userIsAuthenticated = false;
   private authStatusSub: Subscription = new Subscription();
 
@@ -39,8 +47,7 @@ export class HeroComponent implements OnInit, OnDestroy {
   onSearch() {
     const query = this.form.get('searchbar')?.value;
     this.booksService.populateBooks(query);
-
-    console.log(this.form.get('searchbar')?.value);
+    this.query.emit(query);
   }
 
   ngOnDestroy(): void {

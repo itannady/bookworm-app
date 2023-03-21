@@ -17,6 +17,15 @@
 
   <div class="userHero">
     <h1>Welcome back, {{ name }}</h1>
+    <p>Discover your next favorite read</p>
+    <form [formGroup]="form" (submit)="onSearch()">
+      <mat-icon>search</mat-icon>
+      <input
+        type="search"
+        formControlName="searchbar"
+        placeholder="Search books"
+      />
+    </form>
   </div>
 
   <!-- <div class="userHero" *ngIf="userIsAuthenticated">

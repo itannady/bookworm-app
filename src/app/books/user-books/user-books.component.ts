@@ -37,18 +37,21 @@ export class UserBooksComponent implements OnInit, OnDestroy {
   ngOnInit(): void {
     this.isLoading = true;
     this.userId = this.authService.getUserId();
-    this.booksService.getUserBooks();
-    this.booksSub = this.booksService
-      .getSelectedBooksListener()
-      .subscribe((books) => {
-        this.books = books;
-        this.isLoading = false;
-      });
     this.authStatusSub = this.authService
       .getAuthStatusListener()
       .subscribe((isAuthenticated) => {
         this.userIsAuthenticated = isAuthenticated;
         this.userId = this.authService.getUserId();
+      });
+    if (this.userId !== null) {
+      this.booksService.getUserBooks(this.userId);
+    }
+    this.booksSub = this.booksService
+      .getSelectedBooksListener()
+      .subscribe((books) => {
+        this.isLoading = false;
+        this.books = books;
+        console.log('user', this.books);
       });
   }
 

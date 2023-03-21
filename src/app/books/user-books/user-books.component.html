@@ -31,7 +31,7 @@
       <p *ngIf="books.length <= 0 && !isLoading">No posts added yet!</p>
       <div *ngFor="let book of getFilteredBooks(filter)">
         <ng-container *ngIf="book.user === userId">
-          <div class="bookRow">
+          <div class="bookRow" [class.hidden]="book.user !== userId">
             <div class="coverContainer">
               <img
                 class="bookCover"

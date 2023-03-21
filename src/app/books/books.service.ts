@@ -46,28 +46,30 @@ export class BooksService {
   }
 
   // get library list of books
-  getUserBooks() {
+  getUserBooks(userId: string) {
     return this.http
       .get<{ message: string; books: any }>(`${this.API_URL}/library`)
       .pipe(
         map((bookData) => {
-          return bookData.books.map((book: any) => {
-            return {
-              id: book._id,
-              title: book.title,
-              authors: book.authors,
-              thumbnail: book.thumbnail,
-              description: book.description,
-              categories: book.categories,
-              ratingsCount: book.ratingsCount,
-              averageRating: book.averageRating,
-              totalPages: book.totalPages,
-              pagesRead: book.pagesRead,
-              status: book.status,
-              notes: book.notes,
-              user: book.user,
-            };
-          });
+          return bookData.books
+            .filter((book: any) => book.user === userId)
+            .map((book: any) => {
+              return {
+                id: book._id,
+                title: book.title,
+                authors: book.authors,
+                thumbnail: book.thumbnail,
+                description: book.description,
+                categories: book.categories,
+                ratingsCount: book.ratingsCount,
+                averageRating: book.averageRating,
+                totalPages: book.totalPages,
+                pagesRead: book.pagesRead,
+                status: book.status,
+                notes: book.notes,
+                user: book.user,
+              };
+            });
         })
       )
       .subscribe((savedBooks) => {

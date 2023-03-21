@@ -47,6 +47,7 @@ textarea {
 }
 
 .noteField {
+  min-height: 15rem;
   max-height: 20rem;
   overflow-y: scroll;
 }
@@ -55,7 +56,7 @@ textarea {
   width: 100%;
   display: flex;
   justify-content: flex-end;
-  gap: 1rem;
+  gap: 0.5rem;
 }
 
 mat-icon {

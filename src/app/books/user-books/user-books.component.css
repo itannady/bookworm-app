@@ -116,3 +116,7 @@ hr {
   align-self: flex-end;
   gap: 1rem;
 }
+
+.hidden {
+  display: none;
+}

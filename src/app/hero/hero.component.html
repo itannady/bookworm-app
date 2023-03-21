@@ -1,17 +1,19 @@
 <section>
   <!-- Public hero -->
-  <ng-container class="publicHero" *ngIf="!userIsAuthenticated">
-    <div class="publicText">
-      <h1>Find and track all your book adventures</h1>
-      <p>
-        Explore our vast collection of books and start tracking your reading
-        progress today
-      </p>
-      <a routerLink="/signup" routerLinkActive="">
-        <button class="primaryBtn">Get started</button>
-      </a>
+  <ng-container *ngIf="!userIsAuthenticated">
+    <div class="publicHero">
+      <div class="publicText">
+        <h1>Find and track all your book adventures</h1>
+        <p>
+          Explore our vast collection of books and start tracking your reading
+          progress today
+        </p>
+        <a routerLink="/signup" routerLinkActive="">
+          <button class="primaryBtn">Get started</button>
+        </a>
+      </div>
+      <img src="assets/images/heroImg.png" alt="" />
     </div>
-    <img src="assets/images/heroImg.png" alt="" />
   </ng-container>
   <!-- User is authenticated hero -->
   <ng-container *ngIf="userIsAuthenticated">

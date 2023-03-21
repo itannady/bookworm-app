@@ -1,26 +1,37 @@
 <section>
-  <div class="wrapper">
-    <div class="bookGrid">
-      <!-- <mat-icon (click)="prevClick()">arrow_back_ios</mat-icon> -->
-      <div class="card" *ngFor="let book of books" (click)="onBookClick(book)">
-        <div class="bookContent">
-          <div class="coverContainer">
-            <img src="{{ book.thumbnail }}" alt="" />
+  <div class="overlayContent">
+    <mat-icon (click)="onCloseClick()">close</mat-icon>
+  </div>
+  <div class="modalContainer">
+    <div class="modalContent">
+      <div class="wrapper">
+        <div class="bookGrid">
+          <!-- <mat-icon (click)="prevClick()">arrow_back_ios</mat-icon> -->
+          <div
+            class="card"
+            *ngFor="let book of books"
+            (click)="onBookClick(book)"
+          >
+            <div class="bookContent">
+              <div class="coverContainer">
+                <img src="{{ book.thumbnail }}" alt="" />
+              </div>
+              <div class="detailContainer">
+                <p class="title">{{ book.title | truncate : 15 }}</p>
+                <p class="author">
+                  {{
+                    (book.authors && book.authors.length > 0
+                      ? book.authors[0]
+                      : "Unknown"
+                    ) | truncate : 15
+                  }}
+                </p>
+              </div>
+            </div>
           </div>
-          <div class="detailContainer">
-            <p class="title">{{ book.title | truncate : 15 }}</p>
-            <p class="author">
-              {{
-                (book.authors && book.authors.length > 0
-                  ? book.authors[0]
-                  : "Unknown"
-                ) | truncate : 15
-              }}
-            </p>
-          </div>
+          <!-- <mat-icon (click)="nextClick()">arrow_forward_ios</mat-icon> -->
         </div>
       </div>
-      <!-- <mat-icon (click)="nextClick()">arrow_forward_ios</mat-icon> -->
     </div>
   </div>
 </section>

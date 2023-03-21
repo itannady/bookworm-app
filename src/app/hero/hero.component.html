@@ -1,6 +1,6 @@
 <section>
   <!-- Public hero -->
-  <div class="publicHero" *ngIf="!userIsAuthenticated">
+  <ng-container class="publicHero" *ngIf="!userIsAuthenticated">
     <div class="publicText">
       <h1>Find and track all your book adventures</h1>
       <p>
@@ -12,33 +12,20 @@
       </a>
     </div>
     <img src="assets/images/heroImg.png" alt="" />
-  </div>
+  </ng-container>
   <!-- User is authenticated hero -->
-
-  <div class="userHero">
-    <h1>Welcome back, {{ name }}</h1>
-    <p>Discover your next favorite read</p>
-    <form [formGroup]="form" (submit)="onSearch()">
-      <mat-icon>search</mat-icon>
-      <input
-        type="search"
-        formControlName="searchbar"
-        placeholder="Search books"
-      />
-    </form>
-  </div>
-
-  <!-- <div class="userHero" *ngIf="userIsAuthenticated">
-    <div class="textWrapper">
-      <h1>Explore the Award Winning Books of the Year</h1>
-      <a routerLink="/" routerLinkActive="">
-        <button class="primaryBtn">See more</button>
-      </a>
+  <ng-container *ngIf="userIsAuthenticated">
+    <div class="userHero">
+      <h1>Welcome back, {{ name }}</h1>
+      <p>Discover your next favorite book</p>
+      <form [formGroup]="form" (submit)="onSearch()">
+        <mat-icon>search</mat-icon>
+        <input
+          type="search"
+          formControlName="searchbar"
+          placeholder="Search books"
+        />
+      </form>
     </div>
-    <div class="heroCovers">
-      <img src="/assets/images/bookCover.jpg" alt="" />
-      <img src="/assets/images/bookCover.jpg" alt="" />
-      <img src="/assets/images/bookCover.jpg" alt="" />
-    </div>
-  </div> -->
+  </ng-container>
 </section>

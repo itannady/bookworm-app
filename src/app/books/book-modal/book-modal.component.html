@@ -23,7 +23,11 @@
         <div class="detailsContainer">
           <h3>{{ bookData.title }}</h3>
           <p>
-            {{ bookData.authors ? bookData.authors[0] : "No authors listed" }}
+            {{
+              bookData.authors && bookData.authors.length > 0
+                ? bookData.authors.slice(0, 2).join(", ")
+                : "No authors listed"
+            }}
           </p>
           <p class="author">
             Category:

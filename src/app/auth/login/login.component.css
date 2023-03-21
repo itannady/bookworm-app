@@ -36,16 +36,6 @@ section::before {
   gap: 1rem;
 }
 
-.wrapper:before {
-  content: "Bookworm";
-  position: absolute;
-  top: -3rem;
-  left: auto;
-  font-size: 1.25rem;
-  font-weight: 550;
-  color: var(--text);
-}
-
 .formContainer {
   width: 100%;
   padding: 10% 7%;

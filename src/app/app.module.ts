@@ -21,7 +21,6 @@ import { AuthInterceptor } from './auth/auth-interceptor';
 
 import { MatInputModule } from '@angular/material/input';
 import { BestsellerListComponent } from './books/bestseller-list/bestseller-list.component';
-import { DiscoverPageComponent } from './discover-page/discover-page.component';
 import { RecommendationsComponent } from './books/recommendations/recommendations.component';
 import { CategoryListComponent } from './books/category-list/category-list.component';
 
@@ -38,7 +37,6 @@ import { CategoryListComponent } from './books/category-list/category-list.compo
     LibraryPageComponent,
     NotesComponent,
     BestsellerListComponent,
-    DiscoverPageComponent,
     RecommendationsComponent,
     CategoryListComponent,
   ],

@@ -34,7 +34,7 @@ img {
   max-width: 1200px;
   margin: 0 5%;
   padding: 3% 5%;
-  background-color: var(--blue);
+  background-color: #d1dcda;
   border-radius: 20px;
   display: flex;
   flex-direction: column;

@@ -15,6 +15,7 @@ import { BooksService } from '../books.service';
   styleUrls: ['./book-list.component.css'],
 })
 export class BookListComponent implements OnInit {
+  isLoading = true;
   currentGroup = 0;
   books: Book[] = [];
   @Output() bookSelected = new EventEmitter<Book>();
@@ -23,7 +24,9 @@ export class BookListComponent implements OnInit {
   constructor(private booksService: BooksService) {}
 
   ngOnInit(): void {
+    this.isLoading = true;
     this.booksService.getBooksListener().subscribe((books) => {
+      this.isLoading = false;
       this.books = books;
     });
   }

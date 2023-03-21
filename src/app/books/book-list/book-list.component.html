@@ -6,8 +6,8 @@
     <div class="modalContent">
       <div class="wrapper">
         <h3>Search results for "{{ query }}"</h3>
-        <div class="bookGrid">
-          <!-- <mat-icon (click)="prevClick()">arrow_back_ios</mat-icon> -->
+        <app-loader *ngIf="isLoading"></app-loader>
+        <div class="bookGrid" *ngIf="!isLoading">
           <div
             class="card"
             *ngFor="let book of books"
@@ -30,7 +30,6 @@
               </div>
             </div>
           </div>
-          <!-- <mat-icon (click)="nextClick()">arrow_forward_ios</mat-icon> -->
         </div>
       </div>
     </div>

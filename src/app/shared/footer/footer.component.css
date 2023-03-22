@@ -4,6 +4,7 @@ footer {
   background-color: var(--tan);
   display: flex;
   justify-content: center;
+  align-items: center;
   position: relative;
   bottom: 0;
   width: 100%;

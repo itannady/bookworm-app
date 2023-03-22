@@ -97,6 +97,11 @@ hr {
   justify-content: space-between;
 }
 
+.title {
+  font-weight: 500;
+  cursor: pointer;
+}
+
 .author {
   color: var(--gray-dark);
 }
@@ -113,7 +118,7 @@ hr {
   grid-area: 1 / 5 / 2 / 7;
   display: flex;
   justify-content: space-around;
-  align-self: flex-end;
+  align-self: center;
   gap: 1rem;
 }
 

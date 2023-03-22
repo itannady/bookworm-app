@@ -35,7 +35,7 @@ body.modalOpen {
 }
 
 main {
-  min-height: calc(100vh - 10vh); /* subtract footer height */
+  min-height: calc(100vh - 5vh); /* subtract footer height */
   flex: 1 0 auto;
 }
 
@@ -142,6 +142,10 @@ a {
   font-weight: 550;
   font-size: 1rem;
   color: var(--brown);
+}
+
+a:hover {
+  color: var(--brown-light);
 }
 
 /* Input */

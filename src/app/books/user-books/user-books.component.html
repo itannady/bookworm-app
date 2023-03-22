@@ -42,7 +42,9 @@
             </div>
             <div class="detailsContainer">
               <div>
-                <p class="title">{{ book.title }}</p>
+                <p class="title" (click)="onBookClick(book)">
+                  {{ book.title }}
+                </p>
                 <p class="author">
                   {{ book.authors ? book.authors[0] : "No authors listed" }}
                 </p>

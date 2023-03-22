@@ -22,14 +22,14 @@
         </div>
         <div class="detailsContainer">
           <h1>{{ bookData.title }}</h1>
-          <p>
+          <h4 class="author">
             {{
               bookData.authors && bookData.authors.length > 0
                 ? bookData.authors.slice(0, 2).join(", ")
                 : "No authors listed"
             }}
-          </p>
-          <p class="author">
+          </h4>
+          <p class="category">
             Category:
             {{ bookData.categories ? bookData.categories[0] : "None" }}
           </p>
@@ -41,7 +41,10 @@
             |
             <p>{{ bookData.ratingsCount }} reviews</p>
           </div>
-          <div *ngIf="!bookData.averageRating && !bookData.ratingsCount">
+          <div
+            class="ratings"
+            *ngIf="!bookData.averageRating && !bookData.ratingsCount"
+          >
             <p>No ratings or reviews available.</p>
           </div>
           <h4>Description</h4>

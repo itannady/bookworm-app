@@ -84,6 +84,17 @@ section {
   overflow-y: auto;
 }
 
+h4.author {
+  font-weight: 400;
+  line-height: 2;
+}
+
+p.category,
+.ratings p {
+  font-weight: 400;
+  color: var(--gray-dark);
+}
+
 .ratings {
   display: flex;
   align-items: center;

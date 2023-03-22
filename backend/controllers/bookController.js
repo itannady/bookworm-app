@@ -46,10 +46,8 @@ exports.getSearchedBooks = async (req, res, next) => {
       }
       counter++;
     }
-
     res.status(200).json(books);
   } catch (error) {
-    console.log(error);
     res
       .status(500)
       .json({ message: "An error occurred while searching for books." });
@@ -84,7 +82,6 @@ exports.getBestsellerBooks = async (req, res, next) => {
     }
     res.status(200).json(bestSellers.slice(0, 20));
   } catch (error) {
-    console.log(error);
     res.status(500).json({ message: "Failed to get bestsellers" });
   }
 };
@@ -117,7 +114,6 @@ exports.getCategoryBooks = async (req, res, next) => {
     }
     res.status(200).json(fictionBooks.slice(0, 20));
   } catch (error) {
-    console.log(error);
     res.status(500).json({ message: "Failed to get fiction" });
   }
 };
@@ -152,7 +148,7 @@ exports.addBook = async (req, res, next) => {
     })
     .catch((error) => {
       res.status(500).json({
-        message: "Creating a post failed!",
+        message: "An error occurred while adding book",
       });
     });
 };
@@ -168,7 +164,10 @@ exports.updateBook = (req, res, next) => {
         .json({ message: "Book updated successfully", book: result });
     })
     .catch((error) => {
-      res.status(500).json({ message: "Update book failed", error: error });
+      res.status(500).json({
+        message: "An error occurred while updating book",
+        error: error,
+      });
     });
 };
 
@@ -183,7 +182,7 @@ exports.getBooks = (req, res, next) => {
     })
     .catch((error) => {
       res.status(500).json({
-        message: "Fetching books failed!",
+        message: "Fetching books failed",
         error: error,
       });
     });
@@ -191,8 +190,8 @@ exports.getBooks = (req, res, next) => {
 
 // delete book
 exports.deleteBook = (req, res, next) => {
-  Book.deleteOne({ _id: req.params.id, user: req.userData.userId }).then(
-    (result) => {
+  Book.deleteOne({ _id: req.params.id, user: req.userData.userId })
+    .then((result) => {
       console.log(result);
       if (result.n > 0) {
         res.status(200).json({
@@ -203,6 +202,10 @@ exports.deleteBook = (req, res, next) => {
           message: "Not authorized",
         });
       }
-    }
-  );
+    })
+    .catch((error) => {
+      res.status(500).json({
+        message: "An error occurred while deleting book",
+      });
+    });
 };

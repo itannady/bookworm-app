@@ -15,6 +15,9 @@
             placeholder="John Doe"
             required
           />
+          <mat-error *ngIf="submitted && nameInput.invalid">
+            Please enter your name
+          </mat-error>
         </div>
         <div class="column">
           <label for="email">Email</label>
@@ -43,6 +46,9 @@
             #passwordInput="ngModel"
             required
           />
+          <mat-error *ngIf="submitted && passwordInput.invalid">
+            Please enter a password
+          </mat-error>
         </div>
         <button class="primaryBtn" type="submit">Sign Up</button>
       </form>

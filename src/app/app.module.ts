@@ -22,6 +22,7 @@ import { AuthInterceptor } from './auth/auth-interceptor';
 import { MatInputModule } from '@angular/material/input';
 import { BestsellerListComponent } from './books/bestseller-list/bestseller-list.component';
 import { CategoryListComponent } from './books/category-list/category-list.component';
+import { ErrorInterceptor } from './error-interceptor';
 
 @NgModule({
   declarations: [
@@ -51,6 +52,7 @@ import { CategoryListComponent } from './books/category-list/category-list.compo
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },
+    { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },
   ],
   bootstrap: [AppComponent],
 })

@@ -31,9 +31,9 @@ export class AuthService {
   }
 
   getName() {
-    console.log('AUTH SERVICE', this.name);
     return this.name;
   }
+
   getAuthStatusListener() {
     return this.authStatusListener.asObservable();
   }

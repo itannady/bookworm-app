@@ -21,7 +21,7 @@
           </div>
         </div>
         <div class="detailsContainer">
-          <h3>{{ bookData.title }}</h3>
+          <h1>{{ bookData.title }}</h1>
           <p>
             {{
               bookData.authors && bookData.authors.length > 0
@@ -44,7 +44,7 @@
           <div *ngIf="!bookData.averageRating && !bookData.ratingsCount">
             <p>No ratings or reviews available.</p>
           </div>
-          <h6>Description</h6>
+          <h4>Description</h4>
           <p>
             {{ bookData.description }}
           </p>

@@ -2,7 +2,7 @@
   <div class="modalContainer">
     <mat-icon (click)="onCloseClick()">close</mat-icon>
     <div class="noteContent">
-      <h4>Notes for {{ book.title }}</h4>
+      <h2>Notes for {{ book.title }}</h2>
       <hr />
       <ng-container *ngIf="book.notes != undefined && !editing">
         <p class="noteField">{{ book.notes }}</p>

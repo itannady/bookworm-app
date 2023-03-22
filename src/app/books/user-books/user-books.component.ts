@@ -85,11 +85,12 @@ export class UserBooksComponent implements OnInit, OnDestroy {
   }
 
   onBookClick(book: Book) {
-    console.log(book);
+    document.body.classList.add('modalOpen');
     this.bookSelected.emit(book);
   }
 
   onNotesClick(book: Book) {
+    document.body.classList.add('modalOpen');
     this.selectedBook = book;
     this.showNotesModal = true;
   }

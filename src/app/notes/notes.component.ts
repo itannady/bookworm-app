@@ -43,6 +43,7 @@ export class NotesComponent implements OnInit {
   }
 
   onCloseClick() {
+    document.body.classList.remove('modalOpen');
     this.close.emit();
   }
 }

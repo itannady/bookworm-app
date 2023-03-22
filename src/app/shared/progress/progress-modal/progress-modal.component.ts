@@ -21,7 +21,9 @@ export class ProgressModalComponent implements OnInit {
     public route: ActivatedRoute
   ) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    document.body.classList.add('modalOpen');
+  }
 
   onSubmit(pagesForm: NgForm) {
     if (pagesForm.invalid) {
@@ -45,6 +47,7 @@ export class ProgressModalComponent implements OnInit {
               this.book.status = 'Reading Now';
             }
             this.progressUpdate.emit(progress);
+            document.body.classList.remove('modalOpen');
             this.close.emit();
           });
       }
@@ -52,6 +55,7 @@ export class ProgressModalComponent implements OnInit {
   }
 
   onCloseClick() {
+    document.body.classList.remove('modalOpen');
     this.close.emit();
   }
 }

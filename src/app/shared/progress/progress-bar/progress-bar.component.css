@@ -27,7 +27,7 @@ progress::-webkit-progress-bar {
 progress::-webkit-progress-value {
   position: relative;
   border-radius: 10px;
-  background-color: #bbe7c7;
+  background-color: var(--green);
   box-shadow: 2px 0px 7px rgba(0, 0, 0, 0.08);
 }
 
@@ -39,7 +39,7 @@ progress:after {
   transform: translate(-50%, -50%);
   font-size: 0.8em;
   font-weight: 550;
-  color: #509961;
+  color: var(--green-dark);
 }
 
 .tag {

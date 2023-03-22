@@ -15,6 +15,8 @@
   --gray: #bcbcbc;
   --gray-dark: #707070;
   --red: #e02b1d;
+  --green: #bbe7c7;
+  --green-dark: #509961;
 }
 
 body {
@@ -164,7 +166,7 @@ label {
   font-weight: 500;
   font-size: 1rem;
   padding-bottom: 5px;
-  color: var(--text);
+  color: var(--brown);
 }
 
 html,

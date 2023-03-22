@@ -9,9 +9,10 @@ import { AuthService } from '../auth.service';
   styleUrls: ['./signup.component.css'],
 })
 export class SignupComponent implements OnInit, OnDestroy {
+  isLoading = false;
   name: string | null = null;
   submitted = false;
-  isLoading = false;
+
   private authStatusSub: Subscription = new Subscription();
   constructor(public authService: AuthService) {}
 

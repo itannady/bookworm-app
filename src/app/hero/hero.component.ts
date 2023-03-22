@@ -8,7 +8,6 @@ import {
 import { FormControl, FormGroup } from '@angular/forms';
 import { Subscription } from 'rxjs';
 import { AuthService } from '../auth/auth.service';
-import { Book } from '../books/book.model';
 import { BooksService } from '../books/books.service';
 
 @Component({
@@ -19,9 +18,9 @@ import { BooksService } from '../books/books.service';
 export class HeroComponent implements OnInit, OnDestroy {
   name: string | null = null;
   form: FormGroup;
-  @Output() query = new EventEmitter<string>();
   showSearchResults = false;
   userIsAuthenticated = false;
+  @Output() query = new EventEmitter<string>();
   private authStatusSub: Subscription = new Subscription();
 
   constructor(
@@ -41,7 +40,6 @@ export class HeroComponent implements OnInit, OnDestroy {
         this.userIsAuthenticated = isAuthenticated;
       });
     this.name = this.authService.getName();
-    console.log('hero', this.name);
   }
 
   onSearch() {

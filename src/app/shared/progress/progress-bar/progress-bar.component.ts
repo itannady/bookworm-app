@@ -1,7 +1,6 @@
-import { Component, OnInit, Input, Output } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { Book } from 'src/app/books/book.model';
 import { BooksService } from 'src/app/books/books.service';
-import { EventEmitter } from 'stream';
 
 @Component({
   selector: 'app-progress-bar',
@@ -9,10 +8,9 @@ import { EventEmitter } from 'stream';
   styleUrls: ['./progress-bar.component.css'],
 })
 export class ProgressBarComponent implements OnInit {
-  @Input() book!: Book;
-  // isModalOpen = false;
   showProgressModal = false;
   progress: number = 0;
+  @Input() book!: Book;
 
   constructor(private booksService: BooksService) {}
 
@@ -27,18 +25,9 @@ export class ProgressBarComponent implements OnInit {
         this.book.status = 'Reading Now';
       }
     }
-
-    // if there's no progress
-    // this.booksService.getUpdatedBook(this.book).subscribe((bookData) => {
-    //   this.book = { ...this.book, pagesRead: bookData.pagesRead };
-    // });
   }
 
   updateProgress(progress: number) {
     this.progress = progress;
   }
-
-  // showModal() {
-  //   this.showProgressModal = true;
-  // }
 }

@@ -45,7 +45,7 @@ export class BooksService {
       });
   }
 
-  // get library list of books
+  // get user's library list of books
   getUserBooks(userId: string) {
     return this.http
       .get<{ message: string; books: any }>(`${this.API_URL}/library`)
@@ -83,28 +83,14 @@ export class BooksService {
     return this.http.put(`${this.API_URL}/library/update/${book.id}`, book);
   }
 
-  // get updated book
-  getUpdatedBook(book: Book) {
-    return this.http.get<{ pagesRead: number }>(
-      `${this.API_URL}/library/update/${book.id}`
-    );
-  }
-
   // get bestseller list
   getBestsellerBooks(): Observable<Book[]> {
     return this.http.get<Book[]>(`${this.API_URL}/bestsellers`);
   }
 
-  // get books for second carousel
+  // get non-fiction books for second carousel
   getCategoryBooks(): Observable<Book[]> {
     return this.http.get<Book[]>(`${this.API_URL}/category`);
-  }
-
-  // get recommendations
-  getRecommendedBooks(book: Book): Observable<Book[]> {
-    return this.http.get<Book[]>(
-      `${this.API_URL}/recommendations/${book.title}`
-    );
   }
 
   // delete book

@@ -1,6 +1,6 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { NgForm } from '@angular/forms';
-import { ActivatedRoute, ParamMap } from '@angular/router';
+import { ActivatedRoute } from '@angular/router';
 import { Book } from 'src/app/books/book.model';
 import { BooksService } from 'src/app/books/books.service';
 
@@ -13,8 +13,6 @@ export class ProgressModalComponent implements OnInit {
   @Input() book!: Book;
   @Output() close = new EventEmitter<void>();
   @Output() progressUpdate = new EventEmitter<number>();
-  // private mode = 'view';
-  // private bookId: string = '';
 
   constructor(
     private booksService: BooksService,

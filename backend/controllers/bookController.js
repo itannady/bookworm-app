@@ -89,7 +89,7 @@ exports.getBestsellerBooks = async (req, res, next) => {
   }
 };
 
-// get top rated fiction books
+// get top rated non-fiction books
 exports.getCategoryBooks = async (req, res, next) => {
   try {
     const result = await axios.get(
@@ -122,39 +122,7 @@ exports.getCategoryBooks = async (req, res, next) => {
   }
 };
 
-// get book recommendations
-exports.getRecommendations = async (req, res, next) => {
-  try {
-    const title = req.params.title;
-
-    const result = await axios.get(
-      `${BASE_URL}?q=related:${title}&orderBy=relevance&newest&key=${API_KEY}&maxResults=5&printType=books`
-    );
-    const booksData = result.data.items;
-    const recommendations = [];
-
-    for (let bookData of booksData) {
-      const book = new Book({
-        title: bookData.volumeInfo.title,
-        authors: bookData.volumeInfo.authors,
-        description: bookData.volumeInfo.description,
-        thumbnail: bookData.volumeInfo.imageLinks?.thumbnail,
-        categories: bookData.volumeInfo.categories,
-        averageRating: bookData.volumeInfo.averageRating,
-        ratingsCount: bookData.volumeInfo.ratingsCount,
-        totalPages: bookData.volumeInfo.pageCount,
-        pagesRead: bookData.volumeInfo.pagesRead,
-      });
-      recommendations.push(book);
-    }
-    res.status(200).json(recommendations);
-  } catch (error) {
-    console.log(error);
-    res.status(500).json({ message: "Failed to get recommendations" });
-  }
-};
-
-// save added book
+// add book
 exports.addBook = async (req, res, next) => {
   // const bookData = req.body;
   const book = new Book({
@@ -189,7 +157,7 @@ exports.addBook = async (req, res, next) => {
     });
 };
 
-// update book
+// update book (for notes or progress)
 exports.updateBook = (req, res, next) => {
   const book = req.body;
   const bookId = req.params.bookId;
@@ -204,19 +172,7 @@ exports.updateBook = (req, res, next) => {
     });
 };
 
-// get updated book
-exports.getUpdatedBook = (req, res, next) => {
-  const bookId = req.params.bookId;
-  Book.findById(bookId).then((book) => {
-    if (book) {
-      res.status(200).json(book);
-    } else {
-      res.status(404).json({ message: "Book not found" });
-    }
-  });
-};
-
-// get saved books
+// get user books
 exports.getBooks = (req, res, next) => {
   Book.find()
     .then((savedBooks) => {
@@ -233,6 +189,7 @@ exports.getBooks = (req, res, next) => {
     });
 };
 
+// delete book
 exports.deleteBook = (req, res, next) => {
   Book.deleteOne({ _id: req.params.id, user: req.userData.userId }).then(
     (result) => {

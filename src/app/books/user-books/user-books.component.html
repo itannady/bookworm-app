@@ -28,7 +28,7 @@
     </header>
     <app-loader *ngIf="isLoading"></app-loader>
     <div *ngIf="!isLoading" class="tableContent">
-      <p *ngIf="books.length <= 0 && !isLoading">No posts added yet!</p>
+      <p *ngIf="books.length <= 0 && !isLoading">No books added yet</p>
       <div *ngFor="let book of getFilteredBooks(filter)">
         <ng-container *ngIf="book.user === userId">
           <div class="bookRow" [class.hidden]="book.user !== userId">

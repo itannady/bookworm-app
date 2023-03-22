@@ -1,5 +1,6 @@
 .progressContainer {
   width: 50%;
+  margin-bottom: 0.5rem;
 }
 
 .progressContainer p {
@@ -16,7 +17,6 @@ progress {
   width: 100%;
   height: 1.5rem;
   border: none;
-  margin-bottom: 0.5rem;
 }
 
 progress::-webkit-progress-bar {

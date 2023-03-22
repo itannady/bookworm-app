@@ -1,11 +1,4 @@
-import {
-  Component,
-  EventEmitter,
-  Input,
-  OnInit,
-  Output,
-  SimpleChanges,
-} from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { Book } from '../book.model';
 import { BooksService } from '../books.service';
 
@@ -18,9 +11,10 @@ export class BookListComponent implements OnInit {
   isLoading = true;
   currentGroup = 0;
   books: Book[] = [];
+  @Input() query: string = '';
   @Output() bookSelected = new EventEmitter<Book>();
   @Output() close = new EventEmitter<void>();
-  @Input() query: string = '';
+
   constructor(private booksService: BooksService) {}
 
   ngOnInit(): void {
@@ -31,25 +25,12 @@ export class BookListComponent implements OnInit {
     });
   }
 
-  prevClick() {
-    const nextIndex = this.currentGroup - 5;
-    this.currentGroup = nextIndex < 0 ? this.books.length - 5 : nextIndex;
-  }
-
-  nextClick() {
-    this.currentGroup = (this.currentGroup + 5) % this.books.length;
-  }
-
-  get visibleBooks() {
-    return this.books.slice(this.currentGroup, this.currentGroup + 5);
-  }
-
   onBookClick(book: Book) {
     this.bookSelected.emit(book);
   }
 
   onCloseClick() {
-    document.body.classList.remove('modalOpen'); // remove the CSS class from the body
+    document.body.classList.remove('modalOpen');
     this.close.emit();
   }
 }

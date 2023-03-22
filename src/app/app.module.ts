@@ -21,7 +21,6 @@ import { AuthInterceptor } from './auth/auth-interceptor';
 
 import { MatInputModule } from '@angular/material/input';
 import { BestsellerListComponent } from './books/bestseller-list/bestseller-list.component';
-import { RecommendationsComponent } from './books/recommendations/recommendations.component';
 import { CategoryListComponent } from './books/category-list/category-list.component';
 
 @NgModule({
@@ -37,7 +36,6 @@ import { CategoryListComponent } from './books/category-list/category-list.compo
     LibraryPageComponent,
     NotesComponent,
     BestsellerListComponent,
-    RecommendationsComponent,
     CategoryListComponent,
   ],
   imports: [

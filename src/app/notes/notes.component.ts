@@ -15,7 +15,6 @@ export class NotesComponent implements OnInit {
   constructor(private booksService: BooksService) {}
 
   ngOnInit(): void {
-    console.log(this.book);
     this.notesForm = new FormGroup({
       notes: new FormControl(this.book.notes, {
         validators: [Validators.required],

@@ -63,6 +63,6 @@ mat-icon {
   position: absolute;
   top: 1rem;
   right: 1rem;
-  color: var(--textGray);
+  color: var(--gray-dark);
   cursor: pointer;
 }

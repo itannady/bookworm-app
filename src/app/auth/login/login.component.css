@@ -82,7 +82,7 @@ input {
 
 p {
   text-align: center;
-  color: var(--textGray);
+  color: var(--gray-dark);
 }
 
 p span {

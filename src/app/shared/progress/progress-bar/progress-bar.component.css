@@ -7,7 +7,7 @@
   align-self: center;
   justify-content: space-between;
   font-weight: 550;
-  color: var(--text);
+  color: var(--brown);
   margin: 0.5rem 0;
 }
 
@@ -21,7 +21,7 @@ progress {
 
 progress::-webkit-progress-bar {
   border-radius: 50px;
-  background-color: var(--gray);
+  background-color: var(--gray-light);
 }
 
 progress::-webkit-progress-value {

@@ -77,7 +77,7 @@ section {
 }
 
 .card:hover {
-  background-color: var(--cardHover);
+  background-color: var(--gray-light);
 }
 
 .bookContent {
@@ -110,16 +110,16 @@ section {
 
 .detailContainer p.title {
   font-weight: 550;
-  color: var(--text);
+  color: var(--brown);
   margin: 0;
 }
 .detailContainer p.author {
   font-weight: 400;
-  color: var(--text);
+  color: var(--brown);
   margin: 0;
 }
 
 mat-icon {
-  color: var(--text);
+  color: var(--brown);
   cursor: pointer;
 }

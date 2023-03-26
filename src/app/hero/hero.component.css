@@ -22,8 +22,38 @@ section {
   max-width: 40%;
 }
 
-img {
+.publicHero img {
   width: 60%;
+}
+
+.featuresContainer {
+  width: 100%;
+  max-width: 1200px;
+  margin: 5%;
+  display: flex;
+  justify-content: space-between;
+}
+
+.featureContent {
+  width: calc(100% / 3);
+  display: flex;
+  padding: 0 3rem;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 1rem;
+  text-align: center;
+  border-right: 1px solid var(--tan);
+}
+
+.featureContent:nth-child(3) {
+  border-right: 0px;
+}
+
+.featureContent img {
+  width: 8rem;
+  aspect-ratio: 3/2;
+  object-fit: contain;
 }
 
 /* User hero */

@@ -58,7 +58,7 @@ exports.getSearchedBooks = async (req, res, next) => {
 exports.getBestsellerBooks = async (req, res, next) => {
   try {
     const result = await axios.get(
-      `${BASE_URL}?q=popularbooks&orderBy=relevance&maxResults=40&key=${API_KEY}&printType=books`
+      `${BASE_URL}?q=popular+books&orderBy=relevance&maxResults=40&key=${API_KEY}&printType=books`
     );
     const booksData = result.data.items;
     const bestSellers = [];
@@ -90,7 +90,7 @@ exports.getBestsellerBooks = async (req, res, next) => {
 exports.getCategoryBooks = async (req, res, next) => {
   try {
     const result = await axios.get(
-      `${BASE_URL}?q=topsellingnonfiction&orderBy=relevance&maxResults=40&key=${API_KEY}&printType=books`
+      `${BASE_URL}?q=best+selling+nonfiction&orderBy=relevance&maxResults=40&key=${API_KEY}&printType=books`
     );
     const booksData = result.data.items;
     const fictionBooks = [];

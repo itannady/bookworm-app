@@ -19,6 +19,8 @@ header {
 
 .row {
   position: relative;
+  height: 24rem;
+  max-height: 25rem;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -28,7 +30,6 @@ header {
 .card {
   border-radius: 10px;
   width: calc(100% / 5);
-  height: 100%;
   min-width: 12rem;
   padding: 0.5rem 0;
   display: flex;

@@ -20,6 +20,7 @@ import { NotesComponent } from './notes/notes.component';
 import { AuthInterceptor } from './auth/auth-interceptor';
 
 import { MatInputModule } from '@angular/material/input';
+import { MatTooltipModule } from '@angular/material/tooltip';
 import { BestsellerListComponent } from './books/bestseller-list/bestseller-list.component';
 import { CategoryListComponent } from './books/category-list/category-list.component';
 import { ErrorInterceptor } from './error-interceptor';
@@ -49,6 +50,7 @@ import { ErrorInterceptor } from './error-interceptor';
     NoopAnimationsModule,
     MatIconModule,
     MatInputModule,
+    MatTooltipModule,
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },

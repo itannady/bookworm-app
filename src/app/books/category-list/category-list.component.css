@@ -22,7 +22,7 @@ header {
   height: 24rem;
   max-height: 25rem;
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   align-items: center;
   gap: 1rem;
 }

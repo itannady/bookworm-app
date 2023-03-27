@@ -51,7 +51,7 @@ section {
 }
 
 .featureContent img {
-  width: 8rem;
+  width: 7rem;
   aspect-ratio: 3/2;
   object-fit: contain;
 }

@@ -15,6 +15,7 @@ section {
 .modalContainer {
   position: absolute;
   width: 25%;
+  min-width: 18rem;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);

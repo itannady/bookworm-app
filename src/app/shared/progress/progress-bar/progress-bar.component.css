@@ -48,10 +48,18 @@ progress:after {
   margin: 0;
   width: 50%;
   border-radius: 5px;
-  background-color: #f2ecb6;
+  background-color: var(--yellow);
 }
 
 .tag p {
+  text-align: center;
   font-weight: 550;
-  color: #876b0b;
+  color: var(--yellow-dark);
+}
+
+/* For screens with a max width of 900px */
+@media (max-width: 900px) {
+  .progressContainer {
+    width: 100%;
+  }
 }

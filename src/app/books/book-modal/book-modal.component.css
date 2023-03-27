@@ -108,3 +108,19 @@ p.category,
   display: flex;
   align-items: center;
 }
+
+/* For screens with a max width of 900px */
+@media (max-width: 900px) {
+  .bookWrapper {
+    flex-direction: column;
+  }
+
+  .modalContainer {
+    overflow-y: scroll;
+  }
+
+  .detailsContainer {
+    overflow-y: hidden;
+    max-height: 100%;
+  }
+}

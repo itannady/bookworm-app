@@ -32,7 +32,7 @@
   <!-- User is authenticated hero -->
   <ng-container *ngIf="userIsAuthenticated">
     <div class="userHero">
-      <h1>Welcome back, {{ name }}</h1>
+      <h1>{{ greeting }}, {{ name }}</h1>
       <p>Discover your next favorite book</p>
       <form [formGroup]="form" (submit)="onSearch()">
         <mat-icon>search</mat-icon>

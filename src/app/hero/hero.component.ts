@@ -17,6 +17,7 @@ import { BooksService } from '../books/books.service';
 })
 export class HeroComponent implements OnInit, OnDestroy {
   name: string | null = null;
+  greeting: string = 'Welcome back';
   form: FormGroup;
   showSearchResults = false;
   userIsAuthenticated = false;
@@ -40,6 +41,18 @@ export class HeroComponent implements OnInit, OnDestroy {
         this.userIsAuthenticated = isAuthenticated;
       });
     this.name = this.authService.getName();
+    // Update the message based on the current time
+    const currentHour = new Date().getHours();
+
+    if (currentHour >= 5 && currentHour < 12) {
+      this.greeting = 'Good morning';
+    } else if (currentHour >= 12 && currentHour < 18) {
+      this.greeting = 'Good afternoon';
+    } else if (currentHour >= 18 && currentHour < 22) {
+      this.greeting = 'Good evening';
+    } else {
+      this.greeting = 'Welcome back';
+    }
   }
 
   onSearch() {

@@ -20,8 +20,9 @@ export class BookListComponent implements OnInit {
   ngOnInit(): void {
     this.isLoading = true;
     this.booksService.getBooksListener().subscribe((books) => {
-      this.isLoading = false;
       this.books = books;
+      document.body.classList.add('modalOpen');
+      this.isLoading = false;
     });
   }
 

@@ -30,9 +30,6 @@ export class ProgressModalComponent implements OnInit {
       let pagesRead = pagesForm.value.pages;
       const totalPages = this.book?.totalPages;
       if (totalPages !== undefined) {
-        if (pagesRead >= totalPages) {
-          console.log('all done');
-        }
         this.booksService
           .updateBook({ id: this.book.id, pagesRead: pagesRead })
           .subscribe((res) => {

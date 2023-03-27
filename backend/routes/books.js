@@ -6,11 +6,9 @@ const router = express.Router();
 router.get("/library", checkAuth, BookController.getBooks);
 router.get("/search/:query", BookController.getSearchedBooks);
 router.get("/bestsellers", BookController.getBestsellerBooks);
-router.get("/fiction", BookController.getFictionBooks);
-router.get("/recommendations/:title", BookController.getRecommendations);
+router.get("/category", BookController.getCategoryBooks);
 router.post("/library/", checkAuth, BookController.addBook);
-router.put("/library/update/:bookId", BookController.updateBook);
-router.get("/library/update/:bookId", BookController.getUpdatedBook);
+router.put("/library/update/:bookId", checkAuth, BookController.updateBook);
 router.delete("/library/:id", checkAuth, BookController.deleteBook);
 
 module.exports = router;

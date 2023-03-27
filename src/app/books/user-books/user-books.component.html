@@ -1,44 +1,74 @@
-<app-loader *ngIf="isLoading"></app-loader>
 <section>
   <div class="table">
     <header>
-      <h6>All</h6>
-      <h6>Reading</h6>
-      <h6>To Start</h6>
-      <h6>Finished</h6>
+      <ul>
+        <li [class.active]="filter === 'All'" (click)="setFilter('All')">
+          All
+        </li>
+        <li
+          [class.active]="filter === 'Reading Now'"
+          (click)="setFilter('Reading Now')"
+        >
+          Reading Now
+        </li>
+        <li
+          [class.active]="filter === 'To Read'"
+          (click)="setFilter('To Read')"
+        >
+          To Read
+        </li>
+        <li
+          [class.active]="filter === 'Have Read'"
+          (click)="setFilter('Have Read')"
+        >
+          Have Read
+        </li>
+      </ul>
+      <hr />
     </header>
-    <hr />
-    <div class="tableContent">
-      <div class="bookRow" *ngFor="let book of books">
+
+    <div *ngIf="!isLoading" class="tableContent">
+      <app-loader *ngIf="isLoading"></app-loader>
+      <p *ngIf="books.length <= 0 && !isLoading">No books added yet</p>
+      <div *ngFor="let book of getFilteredBooks(filter)">
         <ng-container *ngIf="book.user === userId">
-          <div class="coverContainer">
-            <img
-              class="bookCover"
-              (click)="onBookClick(book)"
-              src="{{ book.thumbnail }}"
-              alt="{{ book.title }}"
-            />
-          </div>
-          <div class="detailsContainer">
-            <div>
-              <p class="title">{{ book.title }}</p>
-              <p class="author">
-                {{ book.authors ? book.authors[0] : "No authors listed" }}
-              </p>
+          <div class="bookRow" [class.hidden]="book.user !== userId">
+            <div class="coverContainer">
+              <img
+                class="bookCover"
+                (click)="onBookClick(book)"
+                src="{{ book.thumbnail }}"
+                alt="{{ book.title }}"
+              />
             </div>
-            <app-progress-bar [book]="book"></app-progress-bar>
-          </div>
-          <div class="actionItems">
-            <p class="reviews">4.7</p>
-            <p class="notes">Notes</p>
+            <div class="detailsContainer">
+              <div>
+                <p class="title" (click)="onBookClick(book)">
+                  {{ book.title }}
+                </p>
+                <p class="author">
+                  {{ book.authors ? book.authors[0] : "No authors listed" }}
+                </p>
+              </div>
+              <app-progress-bar [book]="book"></app-progress-bar>
+            </div>
+            <div class="actionItems">
+              <p class="actionBtn" (click)="onNotesClick(book)">Notes</p>
+            </div>
+            <mat-icon class="closeIcon" (click)="onDelete(book.id)"
+              >remove</mat-icon
+            >
           </div>
         </ng-container>
-        <mat-icon class="closeIcon" (click)="onDelete(book.id)"
-          >remove</mat-icon
-        >
       </div>
     </div>
   </div>
 </section>
-
-<p *ngIf="books.length <= 0 && !isLoading">No posts added yet!</p>
+<ng-container *ngIf="selectedBook">
+  <app-notes
+    [book]="selectedBook"
+    *ngIf="showNotesModal"
+    [book]="selectedBook"
+    (close)="showNotesModal = false"
+  ></app-notes>
+</ng-container>

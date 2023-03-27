@@ -11,6 +11,7 @@ import { AuthService } from '../auth.service';
 export class LoginComponent implements OnInit, OnDestroy {
   submitted = false;
   isLoading = false;
+  name: string = '';
   private authStatusSub: Subscription = new Subscription();
   constructor(public authService: AuthService) {}
 

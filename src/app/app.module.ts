@@ -21,8 +21,8 @@ import { AuthInterceptor } from './auth/auth-interceptor';
 
 import { MatInputModule } from '@angular/material/input';
 import { BestsellerListComponent } from './books/bestseller-list/bestseller-list.component';
-import { DiscoverPageComponent } from './discover-page/discover-page.component';
-import { RecommendationsComponent } from './books/recommendations/recommendations.component';
+import { CategoryListComponent } from './books/category-list/category-list.component';
+import { ErrorInterceptor } from './error-interceptor';
 
 @NgModule({
   declarations: [
@@ -37,8 +37,7 @@ import { RecommendationsComponent } from './books/recommendations/recommendation
     LibraryPageComponent,
     NotesComponent,
     BestsellerListComponent,
-    DiscoverPageComponent,
-    RecommendationsComponent,
+    CategoryListComponent,
   ],
   imports: [
     BrowserModule,
@@ -53,6 +52,7 @@ import { RecommendationsComponent } from './books/recommendations/recommendation
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },
+    { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },
   ],
   bootstrap: [AppComponent],
 })

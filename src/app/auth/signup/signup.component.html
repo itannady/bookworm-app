@@ -1,7 +1,8 @@
 <section>
   <div class="wrapper">
+    <a routerLink="/" routerLinkActive=""><h4>Bookworm</h4></a>
     <div class="formContainer">
-      <h4>Let's create your account</h4>
+      <h2>Let's create your account</h2>
       <form (submit)="onSignup(signupForm)" #signupForm="ngForm">
         <div class="column">
           <label for="name">Full Name</label>
@@ -14,6 +15,9 @@
             placeholder="John Doe"
             required
           />
+          <mat-error *ngIf="submitted && nameInput.invalid">
+            Please enter your name
+          </mat-error>
         </div>
         <div class="column">
           <label for="email">Email</label>
@@ -22,7 +26,7 @@
             name="email"
             type="email"
             ngModel
-            placeholder="johndoe@gmail.com"
+            placeholder="example@gmail.com"
             #emailInput="ngModel"
             required
             email
@@ -42,6 +46,9 @@
             #passwordInput="ngModel"
             required
           />
+          <mat-error *ngIf="submitted && passwordInput.invalid">
+            Please enter a password
+          </mat-error>
         </div>
         <button class="primaryBtn" type="submit">Sign Up</button>
       </form>

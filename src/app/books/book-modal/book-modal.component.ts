@@ -8,23 +8,22 @@ import { BooksService } from '../books.service';
   styleUrls: ['./book-modal.component.css'],
 })
 export class BookModalComponent implements OnInit {
-  @Input() bookData!: Book;
   selectedBook: any;
+  bookAdded = false;
+  @Input() bookData!: Book;
   @Output() close = new EventEmitter<void>();
 
   constructor(private booksService: BooksService) {}
 
-  ngOnInit(): void {
-    console.log('MODAL', this.bookData);
-  }
+  ngOnInit(): void {}
 
   onAddBook() {
     this.booksService.addBook(this.bookData);
-    console.log('on add book', this.bookData);
+    this.bookAdded = true;
   }
 
   onCloseClick() {
-    document.body.classList.remove('modalOpen'); // remove the CSS class from the body
+    document.body.classList.remove('modalOpen');
     this.close.emit();
   }
 }

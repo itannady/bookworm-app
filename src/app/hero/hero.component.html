@@ -1,30 +1,47 @@
 <section>
   <!-- Public hero -->
-  <div class="publicHero" *ngIf="!userIsAuthenticated">
-    <div class="publicText">
-      <h1>Find and track all your book adventures</h1>
-      <p>
-        Explore our vast collection of books and start tracking your reading
-        progress today
-      </p>
-      <a routerLink="/signup" routerLinkActive="">
-        <button class="primaryBtn">Get started</button>
-      </a>
+  <ng-container *ngIf="!userIsAuthenticated">
+    <div class="publicHero">
+      <div class="publicText">
+        <h1>Find and track all your book adventures</h1>
+        <p>
+          Explore our vast collection of books and start tracking your reading
+          progress today
+        </p>
+        <a routerLink="/signup" routerLinkActive="">
+          <button class="primaryBtn">Get started</button>
+        </a>
+      </div>
+      <img src="assets/images/heroImg.png" alt="" />
     </div>
-    <img src="assets/images/heroImg.png" alt="" />
-  </div>
+    <div class="featuresContainer">
+      <div class="featureContent">
+        <img src="assets/images/stackOfBooks.png" alt="" />
+        <h4>Browse books</h4>
+      </div>
+      <div class="featureContent">
+        <img src="assets/images/listIcon.png" alt="" />
+        <h4>Add to your reading list</h4>
+      </div>
+      <div class="featureContent">
+        <img src="assets/images/trackIcon.png" alt="" />
+        <h4>Track your progress</h4>
+      </div>
+    </div>
+  </ng-container>
   <!-- User is authenticated hero -->
-  <div class="userHero" *ngIf="userIsAuthenticated">
-    <div class="textWrapper">
-      <h1>Explore the Award Winning Books of the Year</h1>
-      <a routerLink="/" routerLinkActive="">
-        <button class="primaryBtn">See more</button>
-      </a>
+  <ng-container *ngIf="userIsAuthenticated">
+    <div class="userHero">
+      <h1>{{ greeting }}, {{ name }}</h1>
+      <p>Discover your next favorite book</p>
+      <form [formGroup]="form" (submit)="onSearch()">
+        <mat-icon>search</mat-icon>
+        <input
+          type="search"
+          formControlName="searchbar"
+          placeholder="Browse title, author, or keyword"
+        />
+      </form>
     </div>
-    <div class="heroCovers">
-      <img src="/assets/images/bookCover.jpg" alt="" />
-      <img src="/assets/images/bookCover.jpg" alt="" />
-      <img src="/assets/images/bookCover.jpg" alt="" />
-    </div>
-  </div>
+  </ng-container>
 </section>

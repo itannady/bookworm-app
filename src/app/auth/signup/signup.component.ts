@@ -9,8 +9,10 @@ import { AuthService } from '../auth.service';
   styleUrls: ['./signup.component.css'],
 })
 export class SignupComponent implements OnInit, OnDestroy {
-  submitted = false;
   isLoading = false;
+  name: string | null = null;
+  submitted = false;
+
   private authStatusSub: Subscription = new Subscription();
   constructor(public authService: AuthService) {}
 
@@ -27,7 +29,11 @@ export class SignupComponent implements OnInit, OnDestroy {
     if (form.invalid) {
       return;
     }
-    this.authService.createUser(form.value.email, form.value.password);
+    this.authService.createUser(
+      form.value.email,
+      form.value.password,
+      form.value.name
+    );
   }
 
   ngOnDestroy(): void {

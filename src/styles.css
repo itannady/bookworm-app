@@ -3,17 +3,22 @@
 
 /* Colors */
 :root {
-  --text: #5e4a43;
   --white: #fffdfb;
-  --blue: #e9f2ec;
-  --brown: #9e7353;
+  --brown-light: #7b6b65;
+  --brown: #5e4a43;
+  --teal-light: #e9f2ec;
+  --teal: #d1dcda;
+  --teal-dark: #b4cec9;
+  --tan-light: #e5d8c3;
   --tan: #d7c3a2;
-  --gray: #eaeaea;
-  --linkColor: #8a7c77;
-  --textGray: #939393;
-  --cardHover: #ececec;
-  --textHover: #a59994;
-  --btnHover: #e3d4bd;
+  --gray-light: #ececec;
+  --gray: #bcbcbc;
+  --gray-dark: #707070;
+  --red: #e02b1d;
+  --green: #bbe7c7;
+  --green-dark: #509961;
+  --yellow: #f2ecb6;
+  --yellow-dark: #876b0b;
 }
 
 body {
@@ -21,57 +26,64 @@ body {
   padding: 0;
   background-color: var(--white);
   font-family: "Libre Franklin", sans-serif;
+  scroll-behavior: smooth;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
 }
 
 body.modalOpen {
   overflow: hidden;
 }
 
+main {
+  min-height: calc(80vh - 5vh); /* subtract footer height */
+  flex: 1 0 auto;
+}
+
 /* Typography */
-h1,
-h2,
-h3 {
+h1 {
   font-family: "Merriweather", serif;
-  font-size: 3.052rem;
+  font-size: 2.441rem;
+  letter-spacing: -0.05rem;
   font-weight: 500;
-  color: var(--text);
+  color: var(--brown);
   margin: 0;
 }
 
-h4,
-h5,
-h6 {
+h2,
+h3,
+h4 {
   font-family: "Libre Franklin", sans-serif;
   font-weight: 550;
-  color: var(--text);
+  color: var(--brown);
   margin: 0;
 }
 
 h2 {
-  font-size: 3.052rem;
-}
-
-h3 {
-  font-size: 2.441rem;
-}
-
-h4 {
   font-size: 1.953rem;
 }
 
-h5 {
+h3 {
   font-size: 1.563rem;
 }
 
-h6 {
+h4 {
   font-size: 1.25rem;
 }
 
 p {
   font-size: 1rem;
   line-height: 1.6;
-  letter-spacing: 0.02rem;
-  color: var(--text);
+  letter-spacing: 0.01rem;
+  color: var(--brown);
+}
+
+p.caption {
+  font-size: 0.625rem;
+  line-height: 1.6;
+  letter-spacing: 0.01rem;
+  color: var(--brown);
 }
 
 /* Buttons */
@@ -80,7 +92,7 @@ button {
   font-family: "Libre Franklin", sans-serif;
   font-size: 1rem;
   font-weight: 550;
-  color: var(--text);
+  color: var(--brown);
   border: none;
   padding: 0.75rem 1rem;
   cursor: pointer;
@@ -95,7 +107,7 @@ button {
 }
 
 .primaryBtn:hover {
-  background-color: var(--btnHover);
+  background-color: var(--tan-light);
 }
 
 .secondaryBtn {
@@ -104,7 +116,19 @@ button {
 }
 
 .secondaryBtn:hover {
-  background-color: var(--cardHover);
+  background-color: var(--gray-light);
+}
+
+.actionBtn {
+  background-color: transparent;
+  padding: 0;
+  font-weight: 550;
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+.actionBtn:hover {
+  opacity: 0.8;
 }
 
 /* Links */
@@ -119,29 +143,35 @@ a {
   text-decoration: none;
   font-weight: 550;
   font-size: 1rem;
-  color: var(--text);
+  color: var(--brown);
+}
+
+a:hover {
+  color: var(--brown-light);
 }
 
 /* Input */
 
 input {
-  border: 1px solid var(--gray);
+  border: 2px solid var(--gray-light);
   border-radius: 0.35rem;
   transition: 0.3s ease;
   outline: none;
   padding: 0.75rem;
-  color: var(--text);
+  color: var(--brown);
+  background-color: var(--gray-light);
 }
 
 input::placeholder {
-  color: var(--textGray);
+  color: var(--gray-dark);
   font-weight: 500;
 }
 
 input:focus {
   outline: none;
-  border-color: var(--blue);
-  box-shadow: 0 0 0 4px rgba(57, 109, 146, 0.1);
+  border: 2px solid var(--teal-dark);
+  background-color: var(--white);
+  box-shadow: 0 0 0 4px rgba(225, 238, 236, 0.5);
 }
 
 /* Form */
@@ -150,14 +180,5 @@ label {
   font-weight: 500;
   font-size: 1rem;
   padding-bottom: 5px;
-  color: var(--text);
-}
-
-html,
-body {
-  height: 100%;
-}
-body {
-  margin: 0;
-  /* font-family: Roboto, "Helvetica Neue", sans-serif; */
+  color: var(--brown);
 }

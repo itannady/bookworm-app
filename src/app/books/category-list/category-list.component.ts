@@ -9,13 +9,12 @@ import { Subscription } from 'rxjs';
 import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 import { Book } from '../book.model';
 import { BooksService } from '../books.service';
-
 @Component({
-  selector: 'app-bestseller-list',
-  templateUrl: './bestseller-list.component.html',
-  styleUrls: ['./bestseller-list.component.css'],
+  selector: 'app-category-list',
+  templateUrl: './category-list.component.html',
+  styleUrls: ['./category-list.component.css'],
 })
-export class BestsellerListComponent implements OnInit, OnDestroy {
+export class CategoryListComponent implements OnInit {
   isLoading = false;
   currentGroup = 0;
   displayedBooks = 5;
@@ -30,12 +29,10 @@ export class BestsellerListComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     this.isLoading = true;
-    this.booksSub = this.booksService
-      .getBestsellerBooks()
-      .subscribe((result) => {
-        this.bestsellers = result;
-        this.isLoading = false;
-      });
+    this.booksSub = this.booksService.getCategoryBooks().subscribe((result) => {
+      this.isLoading = false;
+      this.bestsellers = result;
+    });
     // displays number of books based on screen size
     this.breakpointObserver
       .observe([

@@ -1,8 +1,8 @@
 <section>
   <div class="wrapper">
-    <!-- <h6>Bookworm</h6> -->
+    <a routerLink="/" routerLinkActive=""><h4>Bookworm</h4></a>
     <div class="formContainer">
-      <h4>Log in</h4>
+      <h2>Log in</h2>
       <form (submit)="onLogin(loginForm)" #loginForm="ngForm">
         <div class="column">
           <label for="email">Email</label>
@@ -11,7 +11,7 @@
             name="email"
             ngModel
             #emailInput="ngModel"
-            placeholder="johndoe@gmail.com"
+            placeholder="example@gmail.com"
             required
             email
           />

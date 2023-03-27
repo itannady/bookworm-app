@@ -46,10 +46,8 @@ exports.getSearchedBooks = async (req, res, next) => {
       }
       counter++;
     }
-
     res.status(200).json(books);
   } catch (error) {
-    console.log(error);
     res
       .status(500)
       .json({ message: "An error occurred while searching for books." });
@@ -60,7 +58,7 @@ exports.getSearchedBooks = async (req, res, next) => {
 exports.getBestsellerBooks = async (req, res, next) => {
   try {
     const result = await axios.get(
-      `${BASE_URL}?q=popularbooks&orderBy=relevance&maxResults=40&key=${API_KEY}&printType=books`
+      `${BASE_URL}?q=popular+books&orderBy=relevance&maxResults=40&key=${API_KEY}&printType=books`
     );
     const booksData = result.data.items;
     const bestSellers = [];
@@ -84,16 +82,15 @@ exports.getBestsellerBooks = async (req, res, next) => {
     }
     res.status(200).json(bestSellers.slice(0, 20));
   } catch (error) {
-    console.log(error);
     res.status(500).json({ message: "Failed to get bestsellers" });
   }
 };
 
-// get top rated fiction books
-exports.getFictionBooks = async (req, res, next) => {
+// get top rated non-fiction books
+exports.getCategoryBooks = async (req, res, next) => {
   try {
     const result = await axios.get(
-      `${BASE_URL}?q=topratedfiction&orderBy=relevance&maxResults=40&key=${API_KEY}&printType=books`
+      `${BASE_URL}?q=best+selling+nonfiction&orderBy=relevance&maxResults=40&key=${API_KEY}&printType=books`
     );
     const booksData = result.data.items;
     const fictionBooks = [];
@@ -117,44 +114,11 @@ exports.getFictionBooks = async (req, res, next) => {
     }
     res.status(200).json(fictionBooks.slice(0, 20));
   } catch (error) {
-    console.log(error);
-    res.status(500).json({ message: "Failed to get bestsellers" });
+    res.status(500).json({ message: "Failed to get fiction" });
   }
 };
 
-// get book recommendations
-exports.getRecommendations = async (req, res, next) => {
-  try {
-    const title = req.params.title;
-
-    const result = await axios.get(
-      `${BASE_URL}?q=related:${title}&orderBy=relevance&newest&key=${API_KEY}&maxResults=5&printType=books`
-    );
-    const booksData = result.data.items;
-    const recommendations = [];
-
-    for (let bookData of booksData) {
-      const book = new Book({
-        title: bookData.volumeInfo.title,
-        authors: bookData.volumeInfo.authors,
-        description: bookData.volumeInfo.description,
-        thumbnail: bookData.volumeInfo.imageLinks?.thumbnail,
-        categories: bookData.volumeInfo.categories,
-        averageRating: bookData.volumeInfo.averageRating,
-        ratingsCount: bookData.volumeInfo.ratingsCount,
-        totalPages: bookData.volumeInfo.pageCount,
-        pagesRead: bookData.volumeInfo.pagesRead,
-      });
-      recommendations.push(book);
-    }
-    res.status(200).json(recommendations);
-  } catch (error) {
-    console.log(error);
-    res.status(500).json({ message: "Failed to get recommendations" });
-  }
-};
-
-// save added book
+// add book
 exports.addBook = async (req, res, next) => {
   // const bookData = req.body;
   const book = new Book({
@@ -167,6 +131,8 @@ exports.addBook = async (req, res, next) => {
     ratingsCount: req.body.ratingsCount,
     totalPages: req.body.totalPages,
     pagesRead: req.body.pagesRead,
+    status: req.body.status,
+    notes: req.body.notes,
     user: req.userData.userId,
   });
   book
@@ -182,39 +148,30 @@ exports.addBook = async (req, res, next) => {
     })
     .catch((error) => {
       res.status(500).json({
-        message: "Creating a post failed!",
+        message: "An error occurred while adding book",
       });
     });
 };
 
-// update book
+// update book (for notes or progress)
 exports.updateBook = (req, res, next) => {
   const book = req.body;
   const bookId = req.params.bookId;
-  Book.findByIdAndUpdate(bookId, book, { returnDocument: "after" })
+  Book.findByIdAndUpdate(bookId, book, { new: "true" })
     .then((result) => {
       res
         .status(200)
         .json({ message: "Book updated successfully", book: result });
     })
     .catch((error) => {
-      res.status(500).json({ message: "Update book failed", error: error });
+      res.status(500).json({
+        message: "An error occurred while updating book",
+        error: error,
+      });
     });
 };
 
-// get updated book
-exports.getUpdatedBook = (req, res, next) => {
-  const bookId = req.params.bookId;
-  Book.findById(bookId).then((book) => {
-    if (book) {
-      res.status(200).json(book);
-    } else {
-      res.status(404).json({ message: "Book not found" });
-    }
-  });
-};
-
-// get saved books
+// get user books
 exports.getBooks = (req, res, next) => {
   Book.find()
     .then((savedBooks) => {
@@ -225,15 +182,16 @@ exports.getBooks = (req, res, next) => {
     })
     .catch((error) => {
       res.status(500).json({
-        message: "Fetching books failed!",
+        message: "Fetching books failed",
         error: error,
       });
     });
 };
 
+// delete book
 exports.deleteBook = (req, res, next) => {
-  Book.deleteOne({ _id: req.params.id, user: req.userData.userId }).then(
-    (result) => {
+  Book.deleteOne({ _id: req.params.id, user: req.userData.userId })
+    .then((result) => {
       console.log(result);
       if (result.n > 0) {
         res.status(200).json({
@@ -244,6 +202,10 @@ exports.deleteBook = (req, res, next) => {
           message: "Not authorized",
         });
       }
-    }
-  );
+    })
+    .catch((error) => {
+      res.status(500).json({
+        message: "An error occurred while deleting book",
+      });
+    });
 };

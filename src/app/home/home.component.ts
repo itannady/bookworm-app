@@ -1,6 +1,14 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import {
+  Component,
+  EventEmitter,
+  OnDestroy,
+  OnInit,
+  Output,
+} from '@angular/core';
+import { FormControl, FormGroup } from '@angular/forms';
 import { Subscription } from 'rxjs';
 import { AuthService } from '../auth/auth.service';
+import { BooksService } from '../books/books.service';
 
 @Component({
   selector: 'app-home',
@@ -9,10 +17,20 @@ import { AuthService } from '../auth/auth.service';
 })
 export class HomeComponent implements OnInit, OnDestroy {
   selectedBook: any;
+  form: FormGroup;
+  query: string = '';
+  showSearchResults = false;
   userIsAuthenticated = false;
   private authStatusSub: Subscription = new Subscription();
 
-  constructor(private authService: AuthService) {}
+  constructor(
+    private booksService: BooksService,
+    private authService: AuthService
+  ) {
+    this.form = new FormGroup({
+      searchbar: new FormControl(''),
+    });
+  }
 
   ngOnInit(): void {
     this.userIsAuthenticated = this.authService.getIsAuth();
@@ -21,6 +39,12 @@ export class HomeComponent implements OnInit, OnDestroy {
       .subscribe((isAuthenticated) => {
         this.userIsAuthenticated = isAuthenticated;
       });
+  }
+
+  onSearch(query: string) {
+    this.query = query;
+    this.booksService.populateBooks(query);
+    this.showSearchResults = true;
   }
 
   ngOnDestroy(): void {

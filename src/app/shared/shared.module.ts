@@ -3,6 +3,7 @@ import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { MatIconModule } from '@angular/material/icon';
 import { RouterModule } from '@angular/router';
+import { FooterComponent } from './footer/footer.component';
 import { LoaderComponent } from './loader/loader.component';
 
 import { NavbarComponent } from './navbar/navbar.component';
@@ -17,6 +18,7 @@ import { ProgressModalComponent } from './progress/progress-modal/progress-modal
     LoaderComponent,
     ProgressBarComponent,
     ProgressModalComponent,
+    FooterComponent,
   ],
   imports: [CommonModule, RouterModule, FormsModule, MatIconModule],
   exports: [
@@ -25,6 +27,7 @@ import { ProgressModalComponent } from './progress/progress-modal/progress-modal
     LoaderComponent,
     ProgressBarComponent,
     ProgressModalComponent,
+    FooterComponent,
   ],
 })
 export class SharedModule {}

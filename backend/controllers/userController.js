@@ -12,6 +12,7 @@ exports.createUser = async (req, res, next) => {
     const user = new User({
       email: req.body.email,
       password: hash,
+      name: req.body.name,
     });
     user
       .save()
@@ -23,7 +24,8 @@ exports.createUser = async (req, res, next) => {
       })
       .catch((err) => {
         res.status(500).json({
-          error: err,
+          message:
+            "Sorry, this email is already in use. Please try again with a different email address or log in if you already have an account.",
         });
       });
   });
@@ -35,7 +37,8 @@ exports.userLogin = async (req, res, next) => {
     .then((user) => {
       if (!user) {
         return res.status(401).json({
-          message: "Auth failed",
+          message:
+            "Invalid login credentials. Please check your email or password and try again.",
         });
       }
       fetchedUser = user;
@@ -44,7 +47,8 @@ exports.userLogin = async (req, res, next) => {
     .then((result) => {
       if (!result) {
         return res.status(401).json({
-          message: "Auth failed",
+          message:
+            "Invalid login credentials. Please check your email or password and try again.",
         });
       }
       const token = jwt.sign(
@@ -59,11 +63,13 @@ exports.userLogin = async (req, res, next) => {
         token: token,
         expiresIn: 3600,
         userId: fetchedUser._id,
+        name: fetchedUser.name,
       });
     })
     .catch((err) => {
       return res.status(401).json({
-        message: "Auth failed",
+        message:
+          "Invalid login credentials. Please check your email or password and try again.",
       });
     });
 };

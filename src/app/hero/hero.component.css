@@ -4,14 +4,13 @@ section {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  margin-bottom: 5rem;
 }
 
 .publicHero {
   max-width: 1200px;
   margin: 0 5%;
   padding: 1% 5%;
-  background-color: var(--blue);
+  background-color: var(--teal-light);
   border-radius: 20px;
   display: flex;
   justify-content: center;
@@ -19,38 +18,89 @@ section {
 }
 
 .publicText {
+  padding: 5% 0;
   max-width: 40%;
 }
 
-img {
+.publicHero img {
   width: 60%;
+}
+
+.featuresContainer {
+  width: 100%;
+  max-width: 1200px;
+  margin: 5%;
+  display: flex;
+  justify-content: space-between;
+}
+
+.featureContent {
+  width: calc(100% / 3);
+  display: flex;
+  padding: 0 3rem;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 1rem;
+  text-align: center;
+  border-right: 1px solid var(--tan);
+}
+
+.featureContent:nth-child(3) {
+  border-right: 0px;
+}
+
+.featureContent img {
+  width: 50%;
+  aspect-ratio: 3/2;
+  object-fit: contain;
 }
 
 /* User hero */
 
 .userHero {
+  width: 80%;
   position: relative;
   max-width: 1200px;
   margin: 0 5%;
-  padding: 1% 5%;
-  background-color: var(--blue);
+  padding: 3% 5%;
+  background-color: var(--teal);
   border-radius: 20px;
   display: flex;
-  justify-content: center;
+  flex-direction: column;
+  justify-content: flex-start;
   align-items: center;
-  overflow-x: hidden;
+  overflow: hidden;
 }
 
 .userHero:before {
   content: "";
   position: absolute;
   width: 100%;
-  height: 3rem;
-  background-image: url("/assets/images/shelf.png");
-  filter: drop-shadow(0px 10px 10px rgba(102, 76, 37, 0.81));
-  background-size: cover;
+  height: 80%;
+  background-image: url("/assets/images/bookLineArt.png");
+  background-size: contain;
   background-repeat: no-repeat;
-  bottom: 2rem;
+  mix-blend-mode: overlay;
+  transform: rotate(-15.15deg);
+  top: -9rem;
+  left: -3rem;
+  opacity: 0.3;
+}
+
+.userHero:after {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 80%;
+  background-image: url("/assets/images/bookLineArt.png");
+  background-size: contain;
+  background-repeat: no-repeat;
+  mix-blend-mode: overlay;
+  transform: matrix(-0.95, -0.32, -0.32, 0.95, 0, 0);
+  bottom: 3rem;
+  right: -8rem;
+  opacity: 0.3;
 }
 
 .textWrapper {
@@ -75,4 +125,52 @@ img {
 
 button {
   margin: 1rem 0 2rem 0;
+}
+
+form {
+  position: relative;
+}
+
+input {
+  background-color: var(--white);
+  padding-left: 2.5rem;
+  width: 25rem;
+  box-shadow: 0px 0.3px 0.7px 0px rgba(0, 0, 0, 0.066),
+    0px 1.5px 2.8px 0px rgba(0, 0, 0, 0.033),
+    0px 4px 9px 0px rgba(0, 0, 0, 0.016);
+}
+
+mat-icon {
+  color: var(--gray);
+  position: absolute;
+  left: 1rem;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+/* For screens with a max width of 680px */
+@media (max-width: 680px) {
+  .publicHero {
+    flex-direction: column;
+  }
+
+  .publicText {
+    padding: 5% 0;
+    max-width: 100%;
+  }
+
+  .publicHero img {
+    width: 100%;
+  }
+}
+
+/* For screens with a max width of 680px */
+@media (max-width: 680px) {
+  .bookGrid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .featureContent img {
+    width: 100%;
+  }
 }

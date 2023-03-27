@@ -1,9 +1,13 @@
 <section>
   <div class="wrapper">
     <header>
-      <h5>Other books you may like</h5>
+      <h3>Top Non-Fiction Novels</h3>
     </header>
-    <div class="row">
+    <app-loader *ngIf="isLoading"></app-loader>
+    <div class="row" *ngIf="!isLoading">
+      <mat-icon class="prevArrow" (click)="prevClick()"
+        >arrow_back_ios</mat-icon
+      >
       <div
         class="card"
         *ngFor="let book of visibleBooks"
@@ -20,12 +24,15 @@
                 (book.authors && book.authors.length > 0
                   ? book.authors[0]
                   : "Unknown"
-                ) | truncate : 10
+                ) | truncate : 20
               }}
             </p>
           </div>
         </div>
       </div>
+      <mat-icon class="nextArrow" (click)="nextClick()"
+        >arrow_forward_ios</mat-icon
+      >
     </div>
   </div>
 </section>

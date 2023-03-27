@@ -10,4 +10,6 @@ export interface Book {
   user?: string;
   totalPages?: number;
   pagesRead?: number;
+  status?: string;
+  notes?: string;
 }

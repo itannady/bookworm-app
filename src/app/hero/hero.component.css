@@ -19,6 +19,7 @@ section {
 }
 
 .publicText {
+  padding: 5% 0;
   max-width: 40%;
 }
 
@@ -51,7 +52,7 @@ section {
 }
 
 .featureContent img {
-  width: 7rem;
+  width: 50%;
   aspect-ratio: 3/2;
   object-fit: contain;
 }
@@ -146,4 +147,31 @@ mat-icon {
   left: 1rem;
   top: 50%;
   transform: translateY(-50%);
+}
+
+/* For screens with a max width of 680px */
+@media (max-width: 680px) {
+  .publicHero {
+    flex-direction: column;
+  }
+
+  .publicText {
+    padding: 5% 0;
+    max-width: 100%;
+  }
+
+  .publicHero img {
+    width: 100%;
+  }
+}
+
+/* For screens with a max width of 680px */
+@media (max-width: 680px) {
+  .bookGrid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .featureContent img {
+    width: 100%;
+  }
 }

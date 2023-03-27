@@ -122,7 +122,7 @@ mat-icon {
   }
 }
 
-/* For screens with a max width of 600px */
+/* For screens with a max width of 680px */
 @media (max-width: 680px) {
   .bookGrid {
     grid-template-columns: repeat(3, 1fr);

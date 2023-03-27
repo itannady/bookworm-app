@@ -5,8 +5,6 @@ import { AppRoutingModule } from './app-routing.module';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 
 import { AppComponent } from './app.component';
-import { SignupComponent } from './auth/signup/signup.component';
-import { LoginComponent } from './auth/login/login.component';
 import { HomeComponent } from './home/home.component';
 import { LibraryPageComponent } from './library-page/library-page.component';
 import { HeroComponent } from './hero/hero.component';
@@ -28,8 +26,6 @@ import { ErrorInterceptor } from './error-interceptor';
   declarations: [
     AppComponent,
     HeroComponent,
-    SignupComponent,
-    LoginComponent,
     BookListComponent,
     UserBooksComponent,
     HomeComponent,

@@ -1,4 +1,4 @@
-<nav *ngIf="currentPage !== '/login' && currentPage !== '/signup'">
+<nav *ngIf="currentPage !== '/auth/login' && currentPage !== '/auth/signup'">
   <div class="navWrapper">
     <span>
       <a routerLink="/"><h4>Bookworm</h4></a>
@@ -9,12 +9,12 @@
         <a routerLink="/library" routerLinkActive="">My Library</a>
       </li>
       <li *ngIf="!userIsAuthenticated">
-        <a routerLink="/login" routerLinkActive="">
+        <a routerLink="/auth/login" routerLinkActive="">
           <button class="secondaryBtn">Log in</button></a
         >
       </li>
       <li *ngIf="!userIsAuthenticated">
-        <a routerLink="/signup" routerLinkActive="">
+        <a routerLink="/auth/signup" routerLinkActive="">
           <button class="primaryBtn">Sign up</button></a
         >
       </li>

@@ -192,7 +192,6 @@ exports.getBooks = (req, res, next) => {
 exports.deleteBook = (req, res, next) => {
   Book.deleteOne({ _id: req.params.id, user: req.userData.userId })
     .then((result) => {
-      console.log(result);
       if (result.n > 0) {
         res.status(200).json({
           message: "Deletion successful",

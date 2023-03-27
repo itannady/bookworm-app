@@ -20,7 +20,6 @@ export class BooksService {
       .get<Book[]>(`${this.API_URL}/search/${query}`)
       .subscribe((result) => {
         this.searchBooks.next(result);
-        console.log(result);
       });
   }
 
@@ -39,8 +38,6 @@ export class BooksService {
     this.http
       .post<{ book: Book }>(`${this.API_URL}/library`, book)
       .subscribe(() => {
-        // const currentValue = this.selectedBooks.getValue();
-        // const updatedValue = [...currentValue, book];
         this.selectedBooks.next([...this.books]);
       });
   }

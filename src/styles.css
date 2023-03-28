@@ -17,6 +17,8 @@
   --red: #e02b1d;
   --green: #bbe7c7;
   --green-dark: #509961;
+  --yellow: #f2ecb6;
+  --yellow-dark: #876b0b;
 }
 
 body {
@@ -35,7 +37,7 @@ body.modalOpen {
 }
 
 main {
-  min-height: calc(100vh - 5vh); /* subtract footer height */
+  min-height: calc(80vh - 5vh); /* subtract footer height */
   flex: 1 0 auto;
 }
 
@@ -179,13 +181,4 @@ label {
   font-size: 1rem;
   padding-bottom: 5px;
   color: var(--brown);
-}
-
-html,
-body {
-  height: 100%;
-}
-body {
-  margin: 0;
-  /* font-family: Roboto, "Helvetica Neue", sans-serif; */
 }

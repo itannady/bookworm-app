@@ -10,8 +10,9 @@
           <input
             type="number"
             name="pages"
-            [ngModel]="book.pagesRead"
+            [(ngModel)]="book.pagesRead"
             #pagesInput="ngModel"
+            min="0"
           />
           <p>/ {{ book.totalPages }}</p>
         </div>

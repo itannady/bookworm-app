@@ -38,6 +38,7 @@ section {
   background-color: white;
   display: flex;
   justify-content: center;
+  transition: all 0.3s ease-in-out;
 }
 
 .modalContent {
@@ -106,4 +107,20 @@ p.category,
   margin: 0;
   display: flex;
   align-items: center;
+}
+
+/* For screens with a max width of 900px */
+@media (max-width: 900px) {
+  .bookWrapper {
+    flex-direction: column;
+  }
+
+  .modalContainer {
+    overflow-y: scroll;
+  }
+
+  .detailsContainer {
+    overflow-y: hidden;
+    max-height: 100%;
+  }
 }

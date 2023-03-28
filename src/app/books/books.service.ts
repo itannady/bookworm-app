@@ -3,25 +3,22 @@ import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
 import { Book } from './book.model';
 import { BehaviorSubject, map, Observable, Subject } from 'rxjs';
+import { environment } from 'src/environments/environment';
 
+const API_URL = environment.API_URL;
 @Injectable({ providedIn: 'root' })
 export class BooksService {
   private books: Book[] = [];
   private searchBooks = new BehaviorSubject<Book[]>([]);
   private selectedBooks = new BehaviorSubject<Book[]>([]);
 
-  API_URL = 'http://localhost:5040';
-
   constructor(private http: HttpClient, private router: Router) {}
 
   // search books
   populateBooks(query: string) {
-    this.http
-      .get<Book[]>(`${this.API_URL}/search/${query}`)
-      .subscribe((result) => {
-        this.searchBooks.next(result);
-        console.log(result);
-      });
+    this.http.get<Book[]>(`${API_URL}/search/${query}`).subscribe((result) => {
+      this.searchBooks.next(result);
+    });
   }
 
   // search book observable
@@ -36,19 +33,15 @@ export class BooksService {
 
   // add book
   addBook(book: Book) {
-    this.http
-      .post<{ book: Book }>(`${this.API_URL}/library`, book)
-      .subscribe(() => {
-        // const currentValue = this.selectedBooks.getValue();
-        // const updatedValue = [...currentValue, book];
-        this.selectedBooks.next([...this.books]);
-      });
+    this.http.post<{ book: Book }>(`${API_URL}/library`, book).subscribe(() => {
+      this.selectedBooks.next([...this.books]);
+    });
   }
 
   // get user's library list of books
   getUserBooks(userId: string) {
     return this.http
-      .get<{ message: string; books: any }>(`${this.API_URL}/library`)
+      .get<{ message: string; books: any }>(`${API_URL}/library`)
       .pipe(
         map((bookData) => {
           return bookData.books
@@ -80,22 +73,22 @@ export class BooksService {
 
   // update book
   updateBook(book: Partial<Book>): Observable<any> {
-    return this.http.put(`${this.API_URL}/library/update/${book.id}`, book);
+    return this.http.put(`${API_URL}/library/update/${book.id}`, book);
   }
 
   // get bestseller list
   getBestsellerBooks(): Observable<Book[]> {
-    return this.http.get<Book[]>(`${this.API_URL}/bestsellers`);
+    return this.http.get<Book[]>(`${API_URL}/bestsellers`);
   }
 
   // get non-fiction books for second carousel
   getCategoryBooks(): Observable<Book[]> {
-    return this.http.get<Book[]>(`${this.API_URL}/category`);
+    return this.http.get<Book[]>(`${API_URL}/category`);
   }
 
   // delete book
   deleteBook(bookId: string) {
-    this.http.delete(`${this.API_URL}/library/` + bookId).subscribe(() => {
+    this.http.delete(`${API_URL}/library/` + bookId).subscribe(() => {
       const updatedList = this.books.filter((book) => book.id !== bookId);
       this.books = updatedList;
       this.selectedBooks.next([...this.books]);

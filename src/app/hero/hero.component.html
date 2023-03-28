@@ -8,24 +8,38 @@
           Explore our vast collection of books and start tracking your reading
           progress today
         </p>
-        <a routerLink="/signup" routerLinkActive="">
+        <a routerLink="/auth/signup" routerLinkActive="">
           <button class="primaryBtn">Get started</button>
         </a>
       </div>
       <img src="assets/images/heroImg.png" alt="" />
     </div>
+    <div class="featuresContainer">
+      <div class="featureContent">
+        <img src="assets/images/stackOfBooks.png" alt="" />
+        <h4>Browse books</h4>
+      </div>
+      <div class="featureContent">
+        <img src="assets/images/listIcon.png" alt="" />
+        <h4>Add to your reading list</h4>
+      </div>
+      <div class="featureContent">
+        <img src="assets/images/trackIcon.png" alt="" />
+        <h4>Track your progress</h4>
+      </div>
+    </div>
   </ng-container>
   <!-- User is authenticated hero -->
   <ng-container *ngIf="userIsAuthenticated">
     <div class="userHero">
-      <h1>Welcome back, {{ name }}</h1>
+      <h1>{{ greeting }}, {{ name }}</h1>
       <p>Discover your next favorite book</p>
       <form [formGroup]="form" (submit)="onSearch()">
         <mat-icon>search</mat-icon>
         <input
           type="search"
           formControlName="searchbar"
-          placeholder="Search books"
+          placeholder="Browse title, author, or keyword"
         />
       </form>
     </div>

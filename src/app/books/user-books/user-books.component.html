@@ -26,8 +26,9 @@
       </ul>
       <hr />
     </header>
-    <app-loader *ngIf="isLoading"></app-loader>
+
     <div *ngIf="!isLoading" class="tableContent">
+      <app-loader *ngIf="isLoading"></app-loader>
       <p *ngIf="books.length <= 0 && !isLoading">No books added yet</p>
       <div *ngFor="let book of getFilteredBooks(filter)">
         <ng-container *ngIf="book.user === userId">
@@ -54,7 +55,10 @@
             <div class="actionItems">
               <p class="actionBtn" (click)="onNotesClick(book)">Notes</p>
             </div>
-            <mat-icon class="closeIcon" (click)="onDelete(book.id)"
+            <mat-icon
+              class="closeIcon"
+              (click)="onDelete(book.id)"
+              matTooltip="Delete book"
               >remove</mat-icon
             >
           </div>

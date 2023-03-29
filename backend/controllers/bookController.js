@@ -157,6 +157,11 @@ exports.addBook = async (req, res, next) => {
 exports.updateBook = (req, res, next) => {
   const book = req.body;
   const bookId = req.params.bookId;
+  // check if pagesRead is updated
+  if (book.pagesRead) {
+    // update lastUpdated field to current date
+    book.lastUpdated = new Date();
+  }
   Book.findByIdAndUpdate(bookId, book, { new: "true" })
     .then((result) => {
       res

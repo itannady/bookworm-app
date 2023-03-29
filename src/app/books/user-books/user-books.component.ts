@@ -7,6 +7,7 @@ import {
 } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { AuthService } from 'src/app/auth/auth.service';
+import { ReadingLogService } from 'src/app/readingLog/readingLog.service';
 import { Book } from '../book.model';
 import { BooksService } from '../books.service';
 
@@ -30,6 +31,7 @@ export class UserBooksComponent implements OnInit, OnDestroy {
 
   constructor(
     private booksService: BooksService,
+    private readingLogService: ReadingLogService,
     private authService: AuthService
   ) {}
 
@@ -80,6 +82,19 @@ export class UserBooksComponent implements OnInit, OnDestroy {
     document.body.classList.add('modalOpen');
     this.selectedBook = book;
     this.showNotesModal = true;
+  }
+
+  checkLog() {
+    if (this.userId !== null) {
+      this.readingLogService.getTotalPages(this.userId).subscribe(
+        (res) => {
+          console.log(res.streak);
+        },
+        (error) => {
+          console.log(error);
+        }
+      );
+    }
   }
 
   ngOnDestroy(): void {

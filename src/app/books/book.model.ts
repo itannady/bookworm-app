@@ -12,5 +12,5 @@ export interface Book {
   pagesRead?: number;
   status?: string;
   notes?: string;
-  date?: Date;
+  lastUpdated?: Date;
 }

@@ -10,12 +10,12 @@ const readingLogSchema = mongoose.Schema({
     type: mongoose.Schema.Types.ObjectId,
     ref: "Book",
   },
-  totalPages: {
+  totalPagesRead: {
     type: Number,
   },
   date: {
     type: Date,
-    default: Date.now,
+    default: Date.now(),
   },
   streak: {
     type: Number,

@@ -1,57 +1,89 @@
+const Book = require("../models/Book");
 const ReadingLog = require("../models/ReadingLog");
 const User = require("../models/User");
 
-exports.getStreak = async (req, res, next) => {
-  try {
-    const userId = req.user._id;
-    const user = await User.findById(userId);
-    res.status(200).json({ streak: user.streak });
-  } catch (err) {
-    console.error(err);
-    res.status(500).json({ error: "Server error" });
+exports.getTotalPages = async (req, res, next) => {
+  let streak = 0;
+
+  let today = new Date();
+  let yesterday = new Date(today);
+  yesterday.setDate(yesterday.getDate() - 1);
+  let updatedToday = false;
+  let updatedYesterday = false;
+
+  console.log("today", today.toLocaleString());
+  console.log("yesterday", yesterday.toLocaleString());
+
+  let readingLog = await ReadingLog.findOne({ user: req.params.userId }).exec();
+  if (!readingLog) {
+    readingLog = new ReadingLog(user);
   }
-};
+  console.log("reading log", readingLog.date.toLocaleString());
 
-exports.updateReadingStreak = async (req, res, next) => {
-  try {
-    const userId = req.user._id;
-    const today = new Date().setHours(0, 0, 0, 0);
-    let yesterday = new Date(today);
-    yesterday.setDate(today.getDate() - 1);
+  const books = await Book.find({ user: req.params.userId }).exec();
+  // books.sort((a, b) => b.lastUpdated - a.lastUpdated);
 
-    // find all reading logs for the user for the last two days
-    const readingLogs = await ReadingLog.find({
-      user: userId,
-      date: { $gte: yesterday, $lte: today },
-    });
-
-    let streak = 0;
-    let totalPagesRead = 0;
-
-    // calculate the reading streak and total pages read
-    for (let i = 0; i < readingLogs.length; i++) {
-      const readingLog = readingLogs[i];
-      if (readingLog.totalPages) {
-        totalPagesRead += readingLog.totalPages;
+  books.forEach((book) => {
+    if (book.lastUpdated >= yesterday && book.pagesRead > 0) {
+      if (book.lastUpdated >= today) {
+        if (!updatedToday) {
+          streak++;
+          updatedToday = true;
+          // Update reading log date if streak was incremented
+          readingLog.date = new Date();
+        }
+      } else if (book.lastUpdated >= yesterday) {
+        if (!updatedYesterday) {
+          if (readingLog.lastUpdated && readingLog.lastUpdated >= yesterday) {
+            streak++;
+            // Update reading log date if streak was incremented
+            readingLog.date = new Date();
+          } else {
+            streak = 0;
+          }
+          updatedYesterday = true;
+        }
       }
     }
-    for (let i = readingLogs.length - 1; i >= 0; i--) {
-      const readingLog = readingLogs[i];
-      if (readingLog.totalPages) {
-        streak++;
-      } else {
-        break;
-      }
-    }
+  });
 
-    // Save the updated streak and total pages read in the user document
-    await User.findByIdAndUpdate(userId, {
-      $set: { readingStreak: streak, totalPagesRead: totalPagesRead },
+  const user = { user: req.params.userId };
+  // const update = { totalPagesRead: totalPagesRead };
+  const update = { streak: streak, date: readingLog.date };
+  const options = { new: true, upsert: true };
+  ReadingLog.findOneAndUpdate(user, update, options)
+    .then((result) => {
+      res.status(200).json({
+        message: "Total pages updated successfully",
+        streak: result.streak,
+      });
+    })
+    .catch((error) => {
+      res.status(500).json({
+        message: "An error occurred while updating reading log",
+        error: error,
+      });
     });
-
-    res.status(200).json({ success: true });
-  } catch (err) {
-    console.error(err);
-    res.status(500).json({ error: "Server error" });
-  }
 };
+
+// const compareDates = (userDate: Date, todayDate: Date) => {
+//   if (remainingTime !== undefined) {
+//     return;
+//   }
+
+//   var diff = todayDate.getTime() - userDate.getTime();
+
+//   var msec = diff;
+//   var hh = Math.floor(msec / 1000 / 60 / 60);
+//   msec -= hh * 1000 * 60 * 60;
+//   var mm = Math.floor(msec / 1000 / 60);
+//   msec -= mm * 1000 * 60;
+//   var ss = Math.floor(msec / 1000);
+//   msec -= ss * 1000;
+
+//   if (hh < 12) {
+//     setRemainingTime(12 - hh);
+//   }
+// };
+
+// if (lastUserWinkDate)

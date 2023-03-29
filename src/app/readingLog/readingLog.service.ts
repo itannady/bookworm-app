@@ -4,13 +4,17 @@ import { Router } from '@angular/router';
 import { ReadingLog } from './readingLog.model';
 import { BehaviorSubject, map, Observable, Subject } from 'rxjs';
 
+import { environment } from 'src/environments/environment';
+
+const API_URL = environment.API_URL;
+
 @Injectable({ providedIn: 'root' })
 export class ReadingLogService {
-  API_URL = 'http://localhost:5040';
   constructor(private http: HttpClient, private router: Router) {}
-}
 
-// get streak
-// getStreak() {
-//   return this.http.get(`${this.API_URL}/log/streak`);
-// }
+  getTotalPages(userId: string) {
+    return this.http.get<{ message: string; streak: number }>(
+      `${API_URL}/log/total-pages/${userId}`
+    );
+  }
+}

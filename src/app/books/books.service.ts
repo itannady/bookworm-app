@@ -60,6 +60,7 @@ export class BooksService {
                 pagesRead: book.pagesRead,
                 status: book.status,
                 notes: book.notes,
+                lastUpdated: book.lastUpdated,
                 user: book.user,
               };
             });

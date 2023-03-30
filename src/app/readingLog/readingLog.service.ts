@@ -12,9 +12,9 @@ const API_URL = environment.API_URL;
 export class ReadingLogService {
   constructor(private http: HttpClient, private router: Router) {}
 
-  getTotalPages(userId: string) {
+  getStreak(userId: string) {
     return this.http.get<{ message: string; streak: number }>(
-      `${API_URL}/log/total-pages/${userId}`
+      `${API_URL}/log/streak/${userId}`
     );
   }
 }

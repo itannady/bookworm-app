@@ -87,7 +87,7 @@ export class UserBooksComponent implements OnInit, OnDestroy {
 
   checkLog() {
     if (this.userId !== null) {
-      this.readingLogService.getTotalPages(this.userId).subscribe(
+      this.readingLogService.getStreak(this.userId).subscribe(
         (res) => {
           console.log(res.streak);
         },

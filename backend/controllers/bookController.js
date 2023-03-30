@@ -159,49 +159,6 @@ exports.updateBook = async (req, res, next) => {
   const book = req.body;
   const bookId = req.params.bookId;
 
-  // check if pagesRead is updated
-  // if (book.pagesRead) {
-  //   let today = new Date();
-
-  //   let readingLog = await ReadingLog.findOne({
-  //     user: book.userId,
-  //   }).exec();
-  //   if (!readingLog) {
-  //     readingLog = new ReadingLog(book.userId);
-  //   }
-
-  //   let diff = today - readingLog.date;
-
-  //   var msec = diff;
-  //   var hh = Math.floor(msec / 1000 / 60 / 60);
-  //   msec -= hh * 1000 * 60 * 60;
-  //   var mm = Math.floor(msec / 1000 / 60);
-  //   msec -= mm * 1000 * 60;
-  //   var ss = Math.floor(msec / 1000);
-  //   msec -= ss * 1000;
-
-  //   console.log("hours since last", hh);
-  //   console.log("today", today);
-  //   console.log("reading log", readingLog.date);
-
-  //   const user = { user: book.userId };
-  //   const update = { streak: readingLog.streak + 1, date: new Date() };
-  //   const options = { new: true, upsert: true };
-
-  //   if (hh > 24 && hh < 48) {
-  //     ReadingLog.findOneAndUpdate(user, update, options)
-  //       .then((result) => {
-  //         console.log("this works", result);
-  //       })
-  //       .catch((error) => {
-  //         res.status(500).json({
-  //           message: "An error occurred while updating reading log",
-  //           error: error,
-  //         });
-  //       });
-  //   }
-  // }
-
   Book.findByIdAndUpdate(bookId, book, { new: "true" })
     .then((result) => {
       res

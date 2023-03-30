@@ -1,0 +1,17 @@
+section {
+  display: flex;
+}
+
+.streakContainer {
+  background-color: var(--teal-light);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 8px;
+  padding: 3%;
+  gap: 1rem;
+}
+
+section img {
+  width: 4rem;
+}

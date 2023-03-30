@@ -6,8 +6,19 @@ section {
   margin: 2rem 0;
 }
 
-.table {
+.wrapper {
   max-width: 1200px;
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+app-streak {
+  margin-top: 10%;
+}
+
+.table {
+  width: 100%;
 }
 
 .table p {
@@ -28,7 +39,7 @@ ul {
 
 ul li {
   text-align: center;
-  width: 10%;
+  width: 100%;
   padding-bottom: 1rem;
   font-weight: 500;
   opacity: 0.8;

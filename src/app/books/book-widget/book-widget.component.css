@@ -1,0 +1,101 @@
+.widgetContainer {
+  display: flex;
+  flex-direction: column;
+  border-radius: 5px;
+  padding: 3% 5%;
+  width: 100%;
+  background-color: var(--tan-light);
+}
+
+.widgetContainer p {
+  margin: 0.3rem 0;
+}
+
+.wrapper {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.bookContent {
+  position: relative;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: 1fr;
+  align-items: flex-start;
+  border-radius: 8px;
+}
+
+.coverContainer {
+  grid-area: 1 / 1 / 2 / 2;
+  margin: auto;
+}
+
+.bookCover {
+  width: 6rem;
+  border-radius: 5px;
+  box-shadow: rgba(0, 0, 0, 0.28) 4px 4px 12px 0px;
+  cursor: pointer;
+}
+
+.detailsContainer {
+  grid-area: 1 / 2 / 2 / 5;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  margin-left: 1rem;
+}
+
+.title {
+  font-weight: 500;
+  cursor: pointer;
+}
+
+.author {
+  color: var(--gray-dark);
+}
+
+.actionItems {
+  grid-area: 1 / 4 / 2 / 5;
+  display: flex;
+  justify-content: space-around;
+  align-self: center;
+  gap: 1rem;
+}
+
+.hidden {
+  display: none;
+}
+
+/* For screens with a max width of 900px */
+@media (max-width: 900px) {
+  ul li {
+    width: 100%;
+  }
+
+  .detailsContainer {
+    margin-left: 1rem;
+  }
+}
+
+app-progress-bar {
+  width: 100%;
+}
+
+.bookCarousel {
+  position: relative;
+}
+
+.bookCarousel > div {
+  display: none;
+}
+
+.bookCarousel > div.active {
+  display: block;
+}
+
+.carouselControls {
+  display: flex;
+  justify-content: space-between;
+}

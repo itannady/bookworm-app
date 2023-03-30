@@ -1,70 +1,73 @@
 <section>
-  <div class="table">
-    <header>
-      <ul>
-        <li [class.active]="filter === 'All'" (click)="setFilter('All')">
-          All
-        </li>
-        <li
-          [class.active]="filter === 'Reading Now'"
-          (click)="setFilter('Reading Now')"
-        >
-          Reading Now
-        </li>
-        <li
-          [class.active]="filter === 'To Read'"
-          (click)="setFilter('To Read')"
-        >
-          To Read
-        </li>
-        <li
-          [class.active]="filter === 'Have Read'"
-          (click)="setFilter('Have Read')"
-        >
-          Have Read
-        </li>
-      </ul>
-      <hr />
-    </header>
+  <div class="wrapper">
+    <div class="table">
+      <header>
+        <ul>
+          <li [class.active]="filter === 'All'" (click)="setFilter('All')">
+            All
+          </li>
+          <li
+            [class.active]="filter === 'Reading Now'"
+            (click)="setFilter('Reading Now')"
+          >
+            Reading Now
+          </li>
+          <li
+            [class.active]="filter === 'To Read'"
+            (click)="setFilter('To Read')"
+          >
+            To Read
+          </li>
+          <li
+            [class.active]="filter === 'Have Read'"
+            (click)="setFilter('Have Read')"
+          >
+            Have Read
+          </li>
+        </ul>
+        <hr />
+      </header>
 
-    <div *ngIf="!isLoading" class="tableContent">
-      <app-loader *ngIf="isLoading"></app-loader>
-      <p *ngIf="books.length <= 0 && !isLoading">No books added yet</p>
-      <div *ngFor="let book of getFilteredBooks(filter)">
-        <ng-container *ngIf="book.user === userId">
-          <div class="bookRow" [class.hidden]="book.user !== userId">
-            <div class="coverContainer">
-              <img
-                class="bookCover"
-                (click)="onBookClick(book)"
-                src="{{ book.thumbnail }}"
-                alt="{{ book.title }}"
-              />
-            </div>
-            <div class="detailsContainer">
-              <div>
-                <p class="title" (click)="onBookClick(book)">
-                  {{ book.title }}
-                </p>
-                <p class="author">
-                  {{ book.authors ? book.authors[0] : "No authors listed" }}
-                </p>
+      <div *ngIf="!isLoading" class="tableContent">
+        <app-loader *ngIf="isLoading"></app-loader>
+        <p *ngIf="books.length <= 0 && !isLoading">No books added yet</p>
+        <div *ngFor="let book of getFilteredBooks(filter)">
+          <ng-container *ngIf="book.user === userId">
+            <div class="bookRow" [class.hidden]="book.user !== userId">
+              <div class="coverContainer">
+                <img
+                  class="bookCover"
+                  (click)="onBookClick(book)"
+                  src="{{ book.thumbnail }}"
+                  alt="{{ book.title }}"
+                />
               </div>
-              <app-progress-bar [book]="book"></app-progress-bar>
+              <div class="detailsContainer">
+                <div>
+                  <p class="title" (click)="onBookClick(book)">
+                    {{ book.title }}
+                  </p>
+                  <p class="author">
+                    {{ book.authors ? book.authors[0] : "No authors listed" }}
+                  </p>
+                </div>
+                <app-progress-bar [book]="book"></app-progress-bar>
+              </div>
+              <div class="actionItems">
+                <p class="actionBtn" (click)="onNotesClick(book)">Notes</p>
+              </div>
+              <mat-icon
+                class="closeIcon"
+                (click)="onDelete(book.id)"
+                matTooltip="Delete book"
+                >remove</mat-icon
+              >
             </div>
-            <div class="actionItems">
-              <p class="actionBtn" (click)="onNotesClick(book)">Notes</p>
-            </div>
-            <mat-icon
-              class="closeIcon"
-              (click)="onDelete(book.id)"
-              matTooltip="Delete book"
-              >remove</mat-icon
-            >
-          </div>
-        </ng-container>
+          </ng-container>
+        </div>
       </div>
     </div>
+    <app-streak></app-streak>
   </div>
 </section>
 <button (click)="checkLog()">Testing</button>

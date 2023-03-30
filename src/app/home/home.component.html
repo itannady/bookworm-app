@@ -1,5 +1,10 @@
 <app-hero (query)="onSearch($event)"></app-hero>
-<app-streak></app-streak>
+<div class="widgetSection">
+  <div class="wrapper">
+    <app-book-widget *ngIf="userIsAuthenticated"></app-book-widget>
+    <app-streak></app-streak>
+  </div>
+</div>
 <app-book-list
   [query]="query"
   *ngIf="showSearchResults"

@@ -1,0 +1,13 @@
+.widgetSection {
+  width: 100vw;
+  margin: 2% 0;
+}
+
+.wrapper {
+  max-width: 1200px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: 0 5%;
+  gap: 1rem;
+}

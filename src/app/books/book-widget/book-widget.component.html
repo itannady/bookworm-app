@@ -1,0 +1,40 @@
+<div class="widgetContainer">
+  <div class="wrapper">
+    <h4>Currently Reading</h4>
+    <div *ngIf="books.length > 1" class="carouselControls">
+      <button *ngIf="currentIndex > 0" (click)="prevBook()">Prev</button>
+      <button *ngIf="currentIndex < books.length - 1" (click)="nextBook()">
+        Next
+      </button>
+    </div>
+  </div>
+  <div class="bookCarousel">
+    <div
+      *ngFor="let book of books; let i = index"
+      [class.active]="i === currentIndex"
+    >
+      <div class="bookContent">
+        <div class="coverContainer">
+          <img
+            class="bookCover"
+            (click)="onBookClick(book)"
+            src="{{ book.thumbnail }}"
+            alt="{{ book.title }}"
+          />
+        </div>
+        <div class="detailsContainer">
+          <div>
+            <p class="title" (click)="onBookClick(book)">{{ book.title }}</p>
+            <p class="author">
+              {{ book.authors ? book.authors[0] : "No authors listed" }}
+            </p>
+          </div>
+          <app-progress-bar [book]="book"></app-progress-bar>
+        </div>
+        <div class="actionItems">
+          <p class="actionBtn" (click)="onNotesClick(book)">Notes</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

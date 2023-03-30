@@ -1,6 +1,7 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
+import { AuthService } from 'src/app/auth/auth.service';
 import { Book } from 'src/app/books/book.model';
 import { BooksService } from 'src/app/books/books.service';
 
@@ -10,16 +11,19 @@ import { BooksService } from 'src/app/books/books.service';
   styleUrls: ['./progress-modal.component.css'],
 })
 export class ProgressModalComponent implements OnInit {
+  userId: string | null = null;
   @Input() book!: Book;
   @Output() close = new EventEmitter<void>();
   @Output() progressUpdate = new EventEmitter<number>();
 
   constructor(
     private booksService: BooksService,
-    public route: ActivatedRoute
+    public route: ActivatedRoute,
+    private authService: AuthService
   ) {}
 
   ngOnInit(): void {
+    this.userId = this.authService.getUserId();
     document.body.classList.add('modalOpen');
   }
 
@@ -31,7 +35,12 @@ export class ProgressModalComponent implements OnInit {
       const totalPages = this.book?.totalPages;
       if (totalPages !== undefined) {
         this.booksService
-          .updateBook({ id: this.book.id, pagesRead: pagesRead })
+          .updateBook({
+            userId: this.userId,
+            id: this.book.id,
+            pagesRead: pagesRead,
+            lastUpdated: this.book.lastUpdated,
+          })
           .subscribe((res) => {
             pagesRead = res.book.pagesRead;
             // calculate percentage

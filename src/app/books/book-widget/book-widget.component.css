@@ -2,9 +2,14 @@
   display: flex;
   flex-direction: column;
   border-radius: 5px;
-  padding: 3% 5%;
-  width: 100%;
-  background-color: var(--tan-light);
+  padding: 0.5rem 1rem;
+  width: 50vw;
+  background-color: var(--gray-light);
+}
+
+.widgetHeader {
+  font-weight: 550;
+  display: flex;
 }
 
 .widgetContainer p {
@@ -19,28 +24,27 @@
 
 .bookContent {
   position: relative;
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  grid-template-rows: 1fr;
-  align-items: flex-start;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
   border-radius: 8px;
+  min-height: 6rem;
 }
 
 .coverContainer {
-  grid-area: 1 / 1 / 2 / 2;
   margin: auto;
 }
 
 .bookCover {
-  width: 6rem;
+  width: 3rem;
   border-radius: 5px;
   box-shadow: rgba(0, 0, 0, 0.28) 4px 4px 12px 0px;
   cursor: pointer;
 }
 
 .detailsContainer {
-  grid-area: 1 / 2 / 2 / 5;
   height: 100%;
+  width: 50%;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -57,11 +61,10 @@
 }
 
 .actionItems {
-  grid-area: 1 / 4 / 2 / 5;
   display: flex;
-  justify-content: space-around;
+  width: 100%;
+  justify-content: center;
   align-self: center;
-  gap: 1rem;
 }
 
 .hidden {
@@ -97,5 +100,11 @@ app-progress-bar {
 
 .carouselControls {
   display: flex;
+  align-items: center;
   justify-content: space-between;
+}
+
+.carouselControls mat-icon {
+  color: var(--brown);
+  cursor: pointer;
 }

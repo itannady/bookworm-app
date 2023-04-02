@@ -1,5 +1,5 @@
 .progressContainer {
-  width: 50%;
+  width: 80%;
   margin-bottom: 0.5rem;
 }
 
@@ -21,9 +21,15 @@ progress {
 
 progress::-webkit-progress-bar {
   border-radius: 50px;
-  background-color: var(--gray-light);
 }
 
+.whiteProgressBg::-webkit-progress-bar {
+  background-color: var(--white);
+}
+
+.grayProgressBg::-webkit-progress-bar {
+  background-color: var(--gray-light);
+}
 progress::-webkit-progress-value {
   position: relative;
   border-radius: 10px;

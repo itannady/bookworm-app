@@ -66,14 +66,13 @@ export class BookWidgetComponent implements OnInit {
     this.showNotesModal = true;
   }
 
-  prevBook() {
-    this.currentIndex--;
-  }
-
   nextBook() {
-    this.currentIndex++;
+    if (this.currentIndex === this.books.length - 1) {
+      this.currentIndex = 0; // start the carousel from the beginning
+    } else {
+      this.currentIndex++;
+    }
   }
-
   ngOnDestroy(): void {
     this.booksSub.unsubscribe();
   }

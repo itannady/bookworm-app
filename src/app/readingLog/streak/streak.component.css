@@ -1,18 +1,31 @@
 section {
-  width: 100%;
   display: flex;
 }
 
 .streakContainer {
+  min-height: 8rem;
   background-color: var(--teal-light);
   display: flex;
   justify-content: center;
   align-items: center;
   border-radius: 8px;
-  padding: 5%;
+  padding: 0.5rem 1rem;
   gap: 1rem;
 }
 
 section img {
-  width: 4rem;
+  width: 3rem;
+}
+
+.streakContent {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.streakContent p {
+  margin: 0;
+  font-weight: 500;
+  text-align: center;
 }

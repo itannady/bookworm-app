@@ -6,17 +6,6 @@ section {
   margin: 2rem 0;
 }
 
-.wrapper {
-  max-width: 1200px;
-  display: flex;
-  justify-content: space-between;
-  gap: 1rem;
-}
-
-app-streak {
-  margin-top: 10%;
-}
-
 .table {
   width: 100%;
 }

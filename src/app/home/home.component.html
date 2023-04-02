@@ -2,6 +2,7 @@
 <div class="widgetSection">
   <div class="wrapper">
     <app-book-widget *ngIf="userIsAuthenticated"></app-book-widget>
+    <app-streak *ngIf="userIsAuthenticated"></app-streak>
     <app-streak></app-streak>
   </div>
 </div>

@@ -11,7 +11,12 @@
         Update
       </button>
     </p>
-    <progress [max]="100" [value]="progress.toFixed(0)"></progress>
+    <progress
+      class="whiteProgressBg"
+      [ngClass]="getCurrentProgressClass()"
+      [max]="100"
+      [value]="progress.toFixed(0)"
+    ></progress>
   </ng-container>
   <ng-container *ngIf="book.status === 'Have Read'">
     <div class="tag">

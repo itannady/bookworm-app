@@ -1,11 +1,10 @@
 <div class="widgetContainer">
   <div class="wrapper">
-    <h4>Currently Reading</h4>
+    <p class="widgetHeader">Currently Reading</p>
     <div *ngIf="books.length > 1" class="carouselControls">
-      <button *ngIf="currentIndex > 0" (click)="prevBook()">Prev</button>
-      <button *ngIf="currentIndex < books.length - 1" (click)="nextBook()">
-        Next
-      </button>
+      <mat-icon *ngIf="books.length > 1" (click)="nextBook()"
+        >navigate_next</mat-icon
+      >
     </div>
   </div>
   <div class="bookCarousel">
@@ -29,10 +28,10 @@
               {{ book.authors ? book.authors[0] : "No authors listed" }}
             </p>
           </div>
-          <app-progress-bar [book]="book"></app-progress-bar>
         </div>
         <div class="actionItems">
-          <p class="actionBtn" (click)="onNotesClick(book)">Notes</p>
+          <app-progress-bar [book]="book"></app-progress-bar>
+          <!-- <p class="actionBtn" (click)="onNotesClick(book)">Notes</p> -->
         </div>
       </div>
     </div>

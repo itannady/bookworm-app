@@ -1,8 +1,8 @@
 <app-hero (query)="onSearch($event)"></app-hero>
-<div class="widgetSection">
+<div class="widgetSection" *ngIf="userIsAuthenticated">
   <div class="wrapper">
-    <app-book-widget *ngIf="userIsAuthenticated"></app-book-widget>
-    <app-streak *ngIf="userIsAuthenticated"></app-streak>
+    <app-book-widget></app-book-widget>
+    <app-total-pages></app-total-pages>
     <app-streak></app-streak>
   </div>
 </div>

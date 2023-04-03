@@ -23,6 +23,7 @@ import { AuthInterceptor } from './auth/auth-interceptor';
 import { ErrorInterceptor } from './error-interceptor';
 import { StreakComponent } from './readingLog/streak/streak.component';
 import { BookWidgetComponent } from './books/book-widget/book-widget.component';
+import { TotalPagesComponent } from './readingLog/total-pages/total-pages.component';
 
 @NgModule({
   declarations: [
@@ -38,6 +39,7 @@ import { BookWidgetComponent } from './books/book-widget/book-widget.component';
     CategoryListComponent,
     StreakComponent,
     BookWidgetComponent,
+    TotalPagesComponent,
   ],
   imports: [
     BrowserModule,

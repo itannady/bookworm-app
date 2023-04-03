@@ -17,4 +17,10 @@ export class ReadingLogService {
       `${API_URL}/log/streak/${userId}`
     );
   }
+
+  getTotalPages(userId: string, month: number) {
+    return this.http.get<{ message: string; totalPagesRead: number }>(
+      `${API_URL}/log/total-pages/${userId}/${month}`
+    );
+  }
 }

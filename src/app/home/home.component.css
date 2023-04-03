@@ -7,7 +7,7 @@
 }
 
 .wrapper {
-  width: 90%;
+  width: calc(100% - 5%);
   max-width: 1200px;
   display: flex;
   align-items: center;
@@ -15,3 +15,12 @@
   margin: 1% 5%;
   gap: 1rem;
 }
+
+app-book-widget {
+  flex-grow: 1;
+  display: flex;
+}
+
+/* .wrapper > * {
+  flex-grow: 1;
+} */

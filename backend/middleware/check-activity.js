@@ -10,6 +10,8 @@ module.exports = async (req, res, next) => {
   if (book.pagesRead) {
     let currentDate = new Date();
 
+    book.lastUpdated = currentDate;
+
     let readingLog = await ReadingLog.findOne({
       user: book.userId,
     }).exec();

@@ -4,17 +4,35 @@ const Book = require("../models/Book");
 exports.getStreak = (req, res, next) => {
   const userId = req.params.userId;
 
+  console.log("userId:", userId);
+
   ReadingLog.findOne({ user: userId })
     .then((readingLog) => {
+      console.log("readingLog:", readingLog);
+
       if (!readingLog) {
-        res.status(404).json({
-          message: "Reading log not found",
-        });
+        console.log("no reading log found");
       } else {
+        // checks reading log last updated date - updates streak
+        const lastUpdated = readingLog.date;
+        const currentTime = Date.now();
+        const timeDiffInHours = (currentTime - lastUpdated) / (1000 * 60 * 60);
+
+        console.log("lastUpdated:", lastUpdated);
+        console.log("currentTime:", currentTime);
+        console.log("timeDiffInHours:", timeDiffInHours);
+
+        if (timeDiffInHours > 48) {
+          // streak is broken if no activity in last 48 hours
+          readingLog.streak = 0;
+          readingLog.save();
+        }
+
         res.status(200).json({ streak: readingLog.streak });
       }
     })
     .catch((error) => {
+      console.log("error:", error);
       res.status(500).json({
         message: "Getting streak failed",
         error: error,

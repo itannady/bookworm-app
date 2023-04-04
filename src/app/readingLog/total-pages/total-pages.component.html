@@ -1,9 +1,14 @@
 <section>
   <div class="container">
     <img src="assets/images/pagesIcon.png" alt="" />
-    <div class="pagesContent">
+    <div class="pagesContent" *ngIf="totalPages > 0">
       <h2>{{ totalPages }}</h2>
-      <p>total pages read in {{ this.monthName }}</p>
+      <p>
+        pages read <br /><span>in {{ this.monthName }}</span>
+      </p>
     </div>
+    <ng-container *ngIf="totalPages == 0">
+      <p>No pages read yet for {{ this.monthName }}</p></ng-container
+    >
   </div>
 </section>

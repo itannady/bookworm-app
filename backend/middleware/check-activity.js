@@ -55,7 +55,7 @@ module.exports = async (req, res, next) => {
     }
     // reset streak
     else {
-      const update = { streak: 1, date: new Date() };
+      const update = { streak: 0, date: new Date() };
       ReadingLog.findOneAndUpdate(user, update, options)
         .then((result) => {
           console.log("reading log update was successful");

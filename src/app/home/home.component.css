@@ -1,26 +1,43 @@
 .widgetSection {
   width: 100vw;
+  height: 18vh;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  margin: 0.5rem 0;
 }
 
 .wrapper {
-  width: calc(100% - 5%);
-  max-width: 1200px;
+  width: calc(100% - 10%);
+  height: 100%;
+  max-width: 1350px;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  margin: 1% 5%;
   gap: 1rem;
 }
 
 app-book-widget {
-  flex-grow: 1;
+  height: 100%;
   display: flex;
+  flex-grow: 1;
+}
+
+app-streak,
+app-total-pages {
+  height: 100%;
 }
 
 /* .wrapper > * {
   flex-grow: 1;
 } */
+
+/* For screens with a max width of 900px */
+@media (max-width: 900px) {
+  app-book-widget,
+  app-streak,
+  app-total-pages {
+    height: 100%;
+  }
+}

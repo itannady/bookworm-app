@@ -52,7 +52,6 @@ export class UserBooksComponent implements OnInit, OnDestroy {
       .subscribe((books) => {
         this.isLoading = false;
         this.books = books;
-        console.log('user books', this.books);
       });
   }
 
@@ -83,19 +82,6 @@ export class UserBooksComponent implements OnInit, OnDestroy {
     document.body.classList.add('modalOpen');
     this.selectedBook = book;
     this.showNotesModal = true;
-  }
-
-  checkLog() {
-    if (this.userId !== null) {
-      this.readingLogService.getStreak(this.userId).subscribe(
-        (res) => {
-          console.log(res.streak);
-        },
-        (error) => {
-          console.log(error);
-        }
-      );
-    }
   }
 
   ngOnDestroy(): void {

@@ -46,7 +46,7 @@ export class ProgressBarComponent implements OnInit {
   }
 
   getCurrentProgressClass() {
-    return this.currentPage == '/' ? 'whiteProgressBg' : 'grayProgressBg';
+    return this.currentPage == '/' ? 'widgetProgress' : 'libraryProgress';
   }
 
   updateProgress(progress: number) {

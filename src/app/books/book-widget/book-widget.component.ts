@@ -36,6 +36,7 @@ export class BookWidgetComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
+    this.isLoading = true;
     this.userId = this.authService.getUserId();
     this.authStatusSub = this.authService
       .getAuthStatusListener()
@@ -49,21 +50,14 @@ export class BookWidgetComponent implements OnInit {
     this.booksSub = this.booksService
       .getSelectedBooksListener()
       .subscribe((books) => {
-        this.isLoading = false;
         this.books = books.filter((book) => book.status === 'Reading Now');
-        console.log('user books', this.books);
+        this.isLoading = false;
       });
   }
 
   onBookClick(book: Book) {
     document.body.classList.add('modalOpen');
     this.bookSelected.emit(book);
-  }
-
-  onNotesClick(book: Book) {
-    document.body.classList.add('modalOpen');
-    this.selectedBook = book;
-    this.showNotesModal = true;
   }
 
   nextBook() {

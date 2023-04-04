@@ -1,9 +1,11 @@
 <section>
-  <div class="streakContainer">
+  <app-loader *ngIf="isLoading"></app-loader>
+  <div *ngIf="!isLoading" class="streakContainer">
     <img src="assets/images/fire.png" alt="" />
-    <div class="streakContent">
+    <div class="streakContent" *ngIf="streak > 0">
       <h2>{{ streak }}</h2>
-      <p>day reading streak</p>
+      <p>day streak</p>
     </div>
+    <ng-container *ngIf="streak === 0"><p>No reading streak</p></ng-container>
   </div>
 </section>

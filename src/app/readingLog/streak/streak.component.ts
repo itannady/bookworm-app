@@ -8,19 +8,22 @@ import { ReadingLogService } from '../readingLog.service';
   styleUrls: ['./streak.component.css'],
 })
 export class StreakComponent implements OnInit {
+  isLoading = false;
   userId: string | null = null;
-  streak: number = 1;
+  streak: number = 0;
   constructor(
     private readingLogService: ReadingLogService,
     private authService: AuthService
   ) {}
 
   ngOnInit(): void {
+    this.isLoading = true;
     this.userId = this.authService.getUserId();
     if (this.userId !== null) {
       this.readingLogService.getStreak(this.userId).subscribe(
         (result) => {
           this.streak = result.streak;
+          this.isLoading = false;
         },
         (error) => {
           console.log(error);

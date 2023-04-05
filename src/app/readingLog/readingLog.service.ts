@@ -12,13 +12,13 @@ const API_URL = environment.API_URL;
 export class ReadingLogService {
   constructor(private http: HttpClient, private router: Router) {}
 
-  getStreak(userId: string) {
+  getStreak(userId: string): Observable<any> {
     return this.http.get<{ message: string; streak: number }>(
       `${API_URL}/log/streak/${userId}`
     );
   }
 
-  getTotalBooks(userId: string, month: number) {
+  getTotalBooks(userId: string, month: number): Observable<any> {
     return this.http.get<{ message: string; totalBooksRead: number }>(
       `${API_URL}/log/total-books/${userId}/${month}`
     );

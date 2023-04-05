@@ -52,7 +52,6 @@ export class UserBooksComponent implements OnInit, OnDestroy {
       .subscribe((books) => {
         this.isLoading = false;
         this.books = books;
-        console.log(this.books);
       });
   }
 

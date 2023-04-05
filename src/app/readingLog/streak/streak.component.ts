@@ -20,15 +20,15 @@ export class StreakComponent implements OnInit {
     this.isLoading = true;
     this.userId = this.authService.getUserId();
     if (this.userId !== null) {
-      this.readingLogService.getStreak(this.userId).subscribe(
-        (result) => {
+      this.readingLogService.getStreak(this.userId).subscribe({
+        next: (result) => {
           this.streak = result.streak;
           this.isLoading = false;
         },
-        (error) => {
+        error: (error) => {
           console.log(error);
-        }
-      );
+        },
+      });
     }
   }
 }

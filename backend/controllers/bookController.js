@@ -159,7 +159,7 @@ exports.updateBook = async (req, res, next) => {
   const book = req.body;
   const bookId = req.params.bookId;
 
-  Book.findByIdAndUpdate(bookId, book, { new: "true" })
+  Book.findByIdAndUpdate(bookId, book, { new: true })
     .then((result) => {
       res
         .status(200)

@@ -22,14 +22,14 @@ export class TotalPagesComponent implements OnInit {
     this.monthName = new Date().toLocaleString('default', { month: 'long' });
     if (this.userId !== null) {
       console.log(this.monthName);
-      this.readingLogService.getTotalPages(this.userId, month).subscribe(
-        (result) => {
+      this.readingLogService.getTotalPages(this.userId, month).subscribe({
+        next: (result) => {
           this.totalPages = result.totalPagesRead;
         },
-        (error) => {
+        error: (error) => {
           console.log(error);
-        }
-      );
+        },
+      });
     }
   }
 }

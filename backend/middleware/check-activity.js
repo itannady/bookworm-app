@@ -44,7 +44,6 @@ module.exports = async (req, res, next) => {
 
     if (hoursSinceLast < 24) {
       console.log("no streak update");
-      next();
     }
     // if user maintains consecutive activity - increment streak
     else if (hoursSinceLast > 24 && hoursSinceLast < 48) {

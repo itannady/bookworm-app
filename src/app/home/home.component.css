@@ -25,7 +25,7 @@ app-book-widget {
 }
 
 app-streak,
-app-total-pages {
+app-total-books {
   height: 100%;
 }
 
@@ -37,7 +37,7 @@ app-total-pages {
 @media (max-width: 900px) {
   app-book-widget,
   app-streak,
-  app-total-pages {
+  app-total-books {
     height: 100%;
   }
 }

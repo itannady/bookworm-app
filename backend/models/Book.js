@@ -44,6 +44,9 @@ const bookSchema = mongoose.Schema({
   lastUpdated: {
     type: Date,
   },
+  finishedDate: {
+    type: Date,
+  },
   user: {
     type: mongoose.Schema.Types.ObjectId,
     ref: "User",

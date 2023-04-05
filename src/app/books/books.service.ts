@@ -65,6 +65,7 @@ export class BooksService {
                 status: book.status,
                 notes: book.notes,
                 lastUpdated: book.lastUpdated,
+                finishedDate: book.finishedDate,
                 user: book.user,
               };
             });

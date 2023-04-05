@@ -18,9 +18,9 @@ export class ReadingLogService {
     );
   }
 
-  getTotalPages(userId: string, month: number) {
-    return this.http.get<{ message: string; totalPagesRead: number }>(
-      `${API_URL}/log/total-pages/${userId}/${month}`
+  getTotalBooks(userId: string, month: number) {
+    return this.http.get<{ message: string; totalBooksRead: number }>(
+      `${API_URL}/log/total-books/${userId}/${month}`
     );
   }
 }

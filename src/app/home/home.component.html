@@ -2,7 +2,7 @@
 <div class="widgetSection" *ngIf="userIsAuthenticated">
   <div class="wrapper">
     <app-book-widget (bookSelected)="selectedBook = $event"></app-book-widget>
-    <app-total-pages></app-total-pages>
+    <app-total-books></app-total-books>
     <app-streak></app-streak>
   </div>
 </div>

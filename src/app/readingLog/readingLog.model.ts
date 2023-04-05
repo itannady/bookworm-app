@@ -3,4 +3,5 @@ export interface ReadingLog {
   totalPages: number;
   date: Date;
   streak: number;
+  totalBooksRead: number;
 }

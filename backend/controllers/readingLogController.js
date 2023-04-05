@@ -40,17 +40,17 @@ exports.getStreak = (req, res, next) => {
     });
 };
 
-exports.getTotalPages = async (req, res, next) => {
+exports.getTotalBooks = async (req, res, next) => {
   const userId = req.params.userId;
   const month = req.params.month;
 
-  let totalPagesRead = 0;
+  let totalBooksRead = 0;
   const books = await Book.find({ user: req.params.userId }).exec();
   books.forEach((book) => {
-    if (book.lastUpdated) {
+    if (book.status === "Have Read") {
       // only add pages read in the specified month
       if (book.lastUpdated.getMonth() === month - 1) {
-        totalPagesRead += book.pagesRead;
+        totalBooksRead++;
       }
     }
   });
@@ -62,13 +62,13 @@ exports.getTotalPages = async (req, res, next) => {
           message: "Reading log not found",
         });
       } else {
-        readingLog.totalPagesRead = totalPagesRead;
-        console.log("reading log", totalPagesRead);
+        readingLog.totalBooksRead = totalBooksRead;
+        console.log("reading log", totalBooksRead);
         return readingLog.save();
       }
     })
     .then(() => {
-      res.status(200).json({ totalPagesRead: totalPagesRead });
+      res.status(200).json({ totalBooksRead: totalBooksRead });
     })
     .catch((error) => {
       res.status(500).json({

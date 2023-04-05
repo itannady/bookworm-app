@@ -2,13 +2,13 @@
   <app-loader *ngIf="isLoading"></app-loader>
   <div *ngIf="!isLoading" class="container">
     <img src="assets/images/pagesIcon.png" alt="" />
-    <div class="pagesContent" *ngIf="totalPages > 0">
-      <h2>{{ totalPages }}</h2>
+    <div class="totalBooks" *ngIf="totalBooks > 0">
+      <h2>{{ totalBooks }}</h2>
       <p>
-        pages read <br /><span>in {{ this.monthName }}</span>
+        books read <br /><span>in {{ this.monthName }}</span>
       </p>
     </div>
-    <ng-container *ngIf="totalPages == 0">
+    <ng-container *ngIf="totalBooks == 0">
       <p>No pages read yet for {{ this.monthName }}</p></ng-container
     >
   </div>

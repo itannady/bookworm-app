@@ -20,14 +20,14 @@ section img {
   width: 4rem;
 }
 
-.pagesContent {
+.totalBooks {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: flex-start;
 }
 
-.pagesContent p {
+.totalBooks p {
   margin: 0;
   font-weight: 500;
   text-align: left;
@@ -45,11 +45,11 @@ section img {
     flex-direction: column;
   }
 
-  .pagesContent {
+  .totalBooks {
     align-items: center;
   }
 
-  .pagesContent p {
+  .totalBooks p {
     text-align: center;
   }
 }

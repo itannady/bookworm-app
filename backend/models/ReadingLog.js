@@ -21,6 +21,9 @@ const readingLogSchema = mongoose.Schema({
     type: Number,
     default: 0,
   },
+  totalBooksRead: {
+    type: Number,
+  },
 });
 
 module.exports = mongoose.model("ReadingLog", readingLogSchema);

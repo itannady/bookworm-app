@@ -3,14 +3,14 @@ import { AuthService } from 'src/app/auth/auth.service';
 import { ReadingLogService } from '../readingLog.service';
 
 @Component({
-  selector: 'app-total-pages',
-  templateUrl: './total-pages.component.html',
-  styleUrls: ['./total-pages.component.css'],
+  selector: 'app-total-books',
+  templateUrl: './total-books.component.html',
+  styleUrls: ['./total-books.component.css'],
 })
-export class TotalPagesComponent implements OnInit {
+export class TotalBooksComponent implements OnInit {
   isLoading = false;
   userId: string | null = null;
-  totalPages: number = 0;
+  totalBooks: number = 0;
   monthName: string = '';
   constructor(
     private readingLogService: ReadingLogService,
@@ -23,9 +23,9 @@ export class TotalPagesComponent implements OnInit {
     const month = new Date().getMonth() + 1;
     this.monthName = new Date().toLocaleString('default', { month: 'long' });
     if (this.userId !== null) {
-      this.readingLogService.getTotalPages(this.userId, month).subscribe({
+      this.readingLogService.getTotalBooks(this.userId, month).subscribe({
         next: (result) => {
-          this.totalPages = result.totalPagesRead;
+          this.totalBooks = result.totalBooksRead;
           this.isLoading = false;
         },
         error: (error) => {

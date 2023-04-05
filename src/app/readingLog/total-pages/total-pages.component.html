@@ -1,5 +1,6 @@
 <section>
-  <div class="container">
+  <app-loader *ngIf="isLoading"></app-loader>
+  <div *ngIf="!isLoading" class="container">
     <img src="assets/images/pagesIcon.png" alt="" />
     <div class="pagesContent" *ngIf="totalPages > 0">
       <h2>{{ totalPages }}</h2>

@@ -8,6 +8,7 @@ import { ReadingLogService } from '../readingLog.service';
   styleUrls: ['./total-pages.component.css'],
 })
 export class TotalPagesComponent implements OnInit {
+  isLoading = false;
   userId: string | null = null;
   totalPages: number = 0;
   monthName: string = '';
@@ -17,14 +18,15 @@ export class TotalPagesComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
+    this.isLoading = true;
     this.userId = this.authService.getUserId();
     const month = new Date().getMonth() + 1;
     this.monthName = new Date().toLocaleString('default', { month: 'long' });
     if (this.userId !== null) {
-      console.log(this.monthName);
       this.readingLogService.getTotalPages(this.userId, month).subscribe({
         next: (result) => {
           this.totalPages = result.totalPagesRead;
+          this.isLoading = false;
         },
         error: (error) => {
           console.log(error);

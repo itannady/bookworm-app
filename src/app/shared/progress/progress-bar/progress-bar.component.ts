@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, EventEmitter, Output } from '@angular/core';
 import { NavigationEnd, Router } from '@angular/router';
 import { Book } from 'src/app/books/book.model';
 import { BooksService } from 'src/app/books/books.service';
@@ -13,6 +13,7 @@ export class ProgressBarComponent implements OnInit {
   showProgressModal = false;
   progress: number = 0;
   @Input() book!: Book;
+  @Output() updateStreak = new EventEmitter<boolean>();
 
   constructor(private booksService: BooksService, private router: Router) {
     this.router.events.subscribe((val) => {
@@ -47,6 +48,11 @@ export class ProgressBarComponent implements OnInit {
 
   getCurrentProgressClass() {
     return this.currentPage == '/' ? 'widgetProgress' : 'libraryProgress';
+  }
+
+  updateStreakEvent(value: boolean) {
+    console.log('progress bar', value);
+    this.updateStreak.emit(value);
   }
 
   updateProgress(progress: number) {

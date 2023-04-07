@@ -31,5 +31,6 @@
   *ngIf="showProgressModal"
   [book]="book"
   (progressUpdate)="updateProgress($event)"
+  (updateStreak)="updateStreakEvent($event)"
   (close)="showProgressModal = false"
 ></app-progress-modal>

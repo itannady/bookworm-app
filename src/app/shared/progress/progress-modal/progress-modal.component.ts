@@ -15,6 +15,7 @@ export class ProgressModalComponent implements OnInit {
   @Input() book!: Book;
   @Output() close = new EventEmitter<void>();
   @Output() progressUpdate = new EventEmitter<number>();
+  @Output() updateStreak = new EventEmitter<boolean>();
 
   constructor(
     private booksService: BooksService,
@@ -51,6 +52,7 @@ export class ProgressModalComponent implements OnInit {
               this.book.status = 'Reading Now';
             }
             this.progressUpdate.emit(progress);
+            this.updateStreak.emit(true);
             document.body.classList.remove('modalOpen');
             this.close.emit();
           });

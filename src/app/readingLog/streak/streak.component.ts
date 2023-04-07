@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit, OnChanges } from '@angular/core';
 import { AuthService } from 'src/app/auth/auth.service';
 import { ReadingLogService } from '../readingLog.service';
 
@@ -11,12 +11,24 @@ export class StreakComponent implements OnInit {
   isLoading = false;
   userId: string | null = null;
   streak: number = 0;
+  @Input() shouldReload: boolean = false;
+
   constructor(
     private readingLogService: ReadingLogService,
     private authService: AuthService
   ) {}
 
   ngOnInit(): void {
+    this.getStreak();
+  }
+
+  ngOnChanges(changes: any) {
+    if (changes.shouldReload && changes.shouldReload.currentValue) {
+      this.getStreak();
+    }
+  }
+
+  private getStreak(): void {
     this.isLoading = true;
     this.userId = this.authService.getUserId();
     if (this.userId !== null) {

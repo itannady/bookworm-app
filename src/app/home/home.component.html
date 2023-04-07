@@ -1,9 +1,12 @@
 <app-hero (query)="onSearch($event)"></app-hero>
 <div class="widgetSection" *ngIf="userIsAuthenticated">
   <div class="wrapper">
-    <app-book-widget (bookSelected)="selectedBook = $event"></app-book-widget>
+    <app-book-widget
+      (bookSelected)="selectedBook = $event"
+      (shouldReloadEvent)="shouldReloadStreak = $event"
+    ></app-book-widget>
     <app-total-books></app-total-books>
-    <app-streak></app-streak>
+    <app-streak [shouldReload]="shouldReloadStreak"></app-streak>
   </div>
 </div>
 <app-book-list

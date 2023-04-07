@@ -34,7 +34,10 @@
           </div>
         </div>
         <div class="actionItems">
-          <app-progress-bar [book]="book"></app-progress-bar>
+          <app-progress-bar
+            [book]="book"
+            (updateStreak)="handleUpdateStreak($event)"
+          ></app-progress-bar>
         </div>
       </div>
     </div>

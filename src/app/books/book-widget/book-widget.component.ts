@@ -19,6 +19,7 @@ import { BooksService } from '../books.service';
 })
 export class BookWidgetComponent implements OnInit {
   isLoading = false;
+  shouldReload = false;
   books: Book[] = [];
   selectedBook: Book | null = null;
   userIsAuthenticated = false;
@@ -28,6 +29,8 @@ export class BookWidgetComponent implements OnInit {
   filter: string = 'All';
   currentIndex = 0;
   @Output() bookSelected = new EventEmitter<Book>();
+  @Output() shouldReloadEvent = new EventEmitter<boolean>();
+  updateStreak = new EventEmitter<boolean>();
   private booksSub: Subscription = new Subscription();
   private authStatusSub: Subscription = new Subscription();
   constructor(
@@ -67,6 +70,13 @@ export class BookWidgetComponent implements OnInit {
       this.currentIndex++;
     }
   }
+
+  handleUpdateStreak(value: boolean) {
+    console.log('book widget', value);
+    this.shouldReload = value;
+    this.shouldReloadEvent.emit(this.shouldReload);
+  }
+
   ngOnDestroy(): void {
     this.booksSub.unsubscribe();
   }

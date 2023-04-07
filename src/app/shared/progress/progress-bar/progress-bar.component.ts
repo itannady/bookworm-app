@@ -51,7 +51,6 @@ export class ProgressBarComponent implements OnInit {
   }
 
   updateStreakEvent(value: boolean) {
-    console.log('progress bar', value);
     this.updateStreak.emit(value);
   }
 

@@ -51,5 +51,6 @@ section img {
 
   .totalBooks p {
     text-align: center;
+    white-space: nowrap;
   }
 }

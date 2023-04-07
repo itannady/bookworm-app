@@ -41,15 +41,24 @@ section img {
   }
 
   .streakContainer {
-    gap: 0.5rem;
+    gap: 0rem;
     flex-direction: column;
   }
 
-  .streakContent {
+  .imgContainer {
+    display: flex;
     align-items: center;
+    height: 50%;
+  }
+
+  .streakContent {
+    justify-content: flex-start;
+    align-items: center;
+    height: 100%;
   }
 
   .streakContent p {
     text-align: center;
+    white-space: nowrap;
   }
 }

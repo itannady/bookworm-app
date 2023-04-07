@@ -72,7 +72,6 @@ export class BookWidgetComponent implements OnInit {
   }
 
   handleUpdateStreak(value: boolean) {
-    console.log('book widget', value);
     this.shouldReload = value;
     this.shouldReloadEvent.emit(this.shouldReload);
   }

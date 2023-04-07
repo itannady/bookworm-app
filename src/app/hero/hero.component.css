@@ -180,4 +180,8 @@ mat-icon {
   .featureContent img {
     width: 100%;
   }
+
+  .publicText {
+    text-align: center;
+  }
 }

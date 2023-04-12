@@ -1,27 +1,80 @@
-# BookwormApp
 
+# Bookworm - Book App
+
+Bookworm is a full-stack web application that allows users to browse for books using Google's Books API. Users can save books to their personal reading list, take notes, and track their progress for each book. 
+
+## Features
+- New user registration
+- Search for books
+- Save books to personal reading list
+- Add and edit notes for each book
+- Track progress for each book
+- Responsive design
+- Login and logout
+
+## Tech stack
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 13.3.10.
 
-## Development server
+- ![Angular](https://img.shields.io/badge/angular-%23DD0031.svg?style=for-the-badge&logo=angular&logoColor=white)
+- ![TypeScript](https://img.shields.io/badge/typescript-%23007ACC.svg?style=for-the-badge&logo=typescript&logoColor=white)
+- ![HTML5](https://img.shields.io/badge/html5-%23E34F26.svg?style=for-the-badge&logo=html5&logoColor=white)
+- ![CSS3](https://img.shields.io/badge/css3-%231572B6.svg?style=for-the-badge&logo=css3&logoColor=white)
+- ![NodeJS](https://img.shields.io/badge/node.js-6DA55F?style=for-the-badge&logo=node.js&logoColor=white)
+- ![Express.js](https://img.shields.io/badge/express.js-%23404d59.svg?style=for-the-badge&logo=express&logoColor=%2361DAFB)
+- ![MongoDB](https://img.shields.io/badge/MongoDB-%234ea94b.svg?style=for-the-badge&logo=mongodb&logoColor=white)
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
 
-## Code scaffolding
+## Installation
+To run this app locally, you'll need to have Node.js installed on your machine. You will also need to obtain a Google Books API key. More information on how can be found on [Google Books API Guide](https://developers.google.com/books/docs/v1/getting_started). 
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+Clone or fork this repo:
+```bash
+  git clone https://github.com/itannady/bookworm-app.git
+```
 
-## Build
+Install dependencies
+```bash
+  npm install
+```
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+Create a `.env` file in the root directory of the project. Add the following variables, replacing the value with your own:
 
-## Running unit tests
+```bash
+API_KEY=<YOUR GOOGLE BOOK API KEY>
+MONGODB_URL=<YOUR MONGODB CONNECTION STRING>
+API_URL=<YOUR LOCAL DEVELOPMENT SERVER>
+JWT_SECRET=<YOUR SECRET KEY>
+```
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+Update the `API_URL` variable in the `environment.ts` file located in `src/enviornments/` directory to match the URL of your development server. 
 
-## Running end-to-end tests
+To run the backend server:
+```bash
+  npm run dev
+```
+To run the front-end server:
+```bash
+  ng serve
+```
+Navigate to `http://localhost:4200/`.
+    
+    
+## Using Bookworm
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+**Register as a new user or login to your account**
 
-## Further help
+**Browse for books**
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+**Add books to your reading list**
+
+**Track your reading progress and take notes for each book**
+
+**View all your books in one place**
+
+
+
+## Author
+
+Isabella Tannady
+
+[![linkedin](https://img.shields.io/badge/linkedin-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white)]()

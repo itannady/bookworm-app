@@ -1,0 +1,56 @@
+section {
+  height: 100%;
+  display: flex;
+}
+
+.container {
+  width: 100%;
+  min-height: 8rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0.5rem 1rem;
+  gap: 1.5rem;
+  background-color: var(--gray-light);
+  border: 1px solid var(--teal-light);
+  border-radius: 8px;
+}
+
+section img {
+  width: 4rem;
+}
+
+.totalBooks {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+.totalBooks p {
+  margin: 0;
+  font-weight: 500;
+  text-align: left;
+  color: var(--gray-dark);
+}
+
+/* For screens with a max width of 900px */
+@media (max-width: 900px) {
+  section img {
+    width: 2rem;
+  }
+
+  .container {
+    gap: 0.5rem;
+    flex-direction: column;
+  }
+
+  .totalBooks {
+    align-items: center;
+  }
+
+  .totalBooks p {
+    text-align: center;
+    white-space: nowrap;
+  }
+}

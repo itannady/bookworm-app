@@ -1,5 +1,6 @@
 const axios = require("axios");
 const Book = require("../models/Book");
+const ReadingLog = require("../models/ReadingLog");
 const BASE_URL = "https://www.googleapis.com/books/v1/volumes";
 require("dotenv").config();
 const API_KEY = process.env.API_KEY;
@@ -154,11 +155,13 @@ exports.addBook = async (req, res, next) => {
 };
 
 // update book (for notes or progress)
-exports.updateBook = (req, res, next) => {
+exports.updateBook = async (req, res, next) => {
   const book = req.body;
   const bookId = req.params.bookId;
-  Book.findByIdAndUpdate(bookId, book, { new: "true" })
+
+  Book.findByIdAndUpdate(bookId, book, { new: true })
     .then((result) => {
+      console.log("update", result);
       res
         .status(200)
         .json({ message: "Book updated successfully", book: result });

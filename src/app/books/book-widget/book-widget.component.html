@@ -1,0 +1,52 @@
+<div class="widgetContainer">
+  <app-loader *ngIf="isLoading"></app-loader>
+  <div class="wrapper">
+    <p class="widgetHeader" *ngIf="books.length > 0">Currently Reading</p>
+    <div *ngIf="books.length > 1" class="carouselControls">
+      <mat-icon
+        *ngIf="books.length > 1"
+        (click)="nextBook()"
+        matTooltip="Next book"
+        >navigate_next</mat-icon
+      >
+    </div>
+  </div>
+  <div class="bookCarousel">
+    <div
+      *ngFor="let book of books; let i = index"
+      [class.active]="i === currentIndex"
+    >
+      <div class="bookContent" *ngIf="!isLoading">
+        <div class="coverContainer">
+          <img
+            class="bookCover"
+            (click)="onBookClick(book)"
+            src="{{ book.thumbnail }}"
+            alt="{{ book.title }}"
+          />
+        </div>
+        <div class="detailsContainer">
+          <div>
+            <p class="title" (click)="onBookClick(book)">{{ book.title }}</p>
+            <p class="author">
+              {{ book.authors ? book.authors[0] : "No authors listed" }}
+            </p>
+          </div>
+        </div>
+        <div class="actionItems">
+          <app-progress-bar
+            [book]="book"
+            (updateStreak)="handleUpdateStreak($event)"
+          ></app-progress-bar>
+        </div>
+      </div>
+    </div>
+    <!-- If user is currently not reading any books -->
+    <ng-container *ngIf="books.length === 0"
+      ><p class="noBooksMsg">
+        You're not currently reading any books. <br />Start by adding a new book
+        to your list!
+      </p></ng-container
+    >
+  </div>
+</div>

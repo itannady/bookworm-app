@@ -19,11 +19,17 @@ section {
 
 .publicText {
   padding: 5% 0;
-  max-width: 40%;
+  max-width: 50%;
+}
+
+.publicText h4 {
+  font-weight: 400;
+  line-height: 1.4;
+  margin: 1rem 0;
 }
 
 .publicHero img {
-  width: 60%;
+  width: 50%;
 }
 
 .featuresContainer {
@@ -51,7 +57,8 @@ section {
 }
 
 .featureContent img {
-  width: 50%;
+  width: 40%;
+  min-width: 5rem;
   aspect-ratio: 3/2;
   object-fit: contain;
 }
@@ -172,5 +179,9 @@ mat-icon {
 
   .featureContent img {
     width: 100%;
+  }
+
+  .publicText {
+    text-align: center;
   }
 }

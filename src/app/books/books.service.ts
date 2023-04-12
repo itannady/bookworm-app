@@ -6,6 +6,10 @@ import { BehaviorSubject, map, Observable, Subject } from 'rxjs';
 import { environment } from 'src/environments/environment';
 
 const API_URL = environment.API_URL;
+
+interface bookWithUserId extends Book {
+  userId: string | null;
+}
 @Injectable({ providedIn: 'root' })
 export class BooksService {
   private books: Book[] = [];
@@ -60,6 +64,8 @@ export class BooksService {
                 pagesRead: book.pagesRead,
                 status: book.status,
                 notes: book.notes,
+                lastUpdated: book.lastUpdated,
+                finishedDate: book.finishedDate,
                 user: book.user,
               };
             });
@@ -72,8 +78,8 @@ export class BooksService {
   }
 
   // update book
-  updateBook(book: Partial<Book>): Observable<any> {
-    return this.http.put(`${API_URL}/library/update/${book.id}`, book);
+  updateBook(book: Partial<bookWithUserId>): Observable<any> {
+    return this.http.patch(`${API_URL}/library/update/${book.id}`, book);
   }
 
   // get bestseller list

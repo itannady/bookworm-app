@@ -18,6 +18,7 @@ import { BooksService } from '../books/books.service';
 export class HomeComponent implements OnInit, OnDestroy {
   selectedBook: any;
   form: FormGroup;
+  shouldReloadStreak: boolean = false;
   query: string = '';
   showSearchResults = false;
   userIsAuthenticated = false;

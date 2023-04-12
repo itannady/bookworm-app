@@ -30,18 +30,8 @@ export class ProgressBarComponent implements OnInit {
       this.progress = Math.min((pagesRead / totalPages) * 100, 100);
       if (this.progress >= 100) {
         this.book.status = 'Have Read';
-        this.booksService
-          .updateBook({ id: this.book.id, status: this.book.status })
-          .subscribe((res) => {
-            this.book.status = res.book.status;
-          });
       } else if (this.progress > 0) {
         this.book.status = 'Reading Now';
-        this.booksService
-          .updateBook({ id: this.book.id, status: this.book.status })
-          .subscribe((res) => {
-            this.book.status = res.book.status;
-          });
       }
     }
   }

@@ -48,8 +48,18 @@ export class ProgressModalComponent implements OnInit {
             const progress = Math.min((pagesRead / totalPages) * 100, 100);
             if (progress >= 100) {
               this.book.status = 'Have Read';
+              this.booksService
+                .updateBook({ id: this.book.id, status: this.book.status })
+                .subscribe((res) => {
+                  this.book.status = res.book.status;
+                });
             } else {
               this.book.status = 'Reading Now';
+              this.booksService
+                .updateBook({ id: this.book.id, status: this.book.status })
+                .subscribe((res) => {
+                  this.book.status = res.book.status;
+                });
             }
             this.progressUpdate.emit(progress);
             this.updateStreak.emit(true);

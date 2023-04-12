@@ -161,6 +161,7 @@ exports.updateBook = async (req, res, next) => {
 
   Book.findByIdAndUpdate(bookId, book, { new: true })
     .then((result) => {
+      console.log("update", result);
       res
         .status(200)
         .json({ message: "Book updated successfully", book: result });

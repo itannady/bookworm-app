@@ -9,7 +9,7 @@ router.get("/search/:query", BookController.getSearchedBooks);
 router.get("/bestsellers", BookController.getBestsellerBooks);
 router.get("/category", BookController.getCategoryBooks);
 router.post("/library/", checkAuth, BookController.addBook);
-router.put(
+router.patch(
   "/library/update/:bookId",
   checkAuth,
   checkActivity,

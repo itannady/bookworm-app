@@ -79,7 +79,7 @@ export class BooksService {
 
   // update book
   updateBook(book: Partial<bookWithUserId>): Observable<any> {
-    return this.http.put(`${API_URL}/library/update/${book.id}`, book);
+    return this.http.patch(`${API_URL}/library/update/${book.id}`, book);
   }
 
   // get bestseller list

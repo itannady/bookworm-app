@@ -20,23 +20,8 @@ module.exports = async (req, res, next) => {
       readingLog.streak = 1;
     }
 
-    // check if reading log date is the same as current date
-    // if (
-    //   readingLog.date.getDate() === currentDate.getDate() &&
-    //   readingLog.date.getMonth() === currentDate.getMonth() &&
-    //   readingLog.date.getFullYear() === currentDate.getFullYear()
-    // ) {
-    //   console.log("no streak update, already updated for today");
-    //   next();
-    //   return;
-    // }
-
     const diff = currentDate.getTime() - readingLog.date.getTime();
     const hoursSinceLast = Math.floor(diff / (1000 * 60 * 60));
-    // let diff = currentDate.getTime() - readingLog.date.getTime();
-    // let hh = Math.floor(diff / (1000 * 60 * 60));
-    // let mm = Math.floor(diff / (1000 * 60)) % 60;
-    // let ss = Math.floor(diff / 1000) % 60;
 
     console.log("hours since last", hoursSinceLast);
     console.log("current date", currentDate);

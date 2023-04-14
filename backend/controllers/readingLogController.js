@@ -35,39 +35,33 @@ exports.getStreak = async (req, res, next) => {
 };
 
 exports.getTotalBooks = async (req, res, next) => {
-  const userId = req.params.userId;
-  const month = req.params.month;
+  try {
+    const userId = req.params.userId;
+    const month = req.params.month;
 
-  let totalBooksRead = 0;
-  const books = await Book.find({ user: req.params.userId }).exec();
-  books.forEach((book) => {
-    if (book.status === "Have Read") {
+    const readingLog = await ReadingLog.findOne({ user: userId }).exec();
+    if (!readingLog) {
+      res.status(404).json({ message: "Reading log not found" });
+      return;
+    }
+
+    let totalBooksRead = 0;
+    const books = await Book.find({ user: req.params.userId }).exec();
+    books.forEach((book) => {
       // only add pages read in the specified month
-      if (book.lastUpdated.getMonth() === month - 1) {
+      if (
+        book.status === "Have Read" &&
+        book.lastUpdated.getMonth() === month - 1
+      ) {
         totalBooksRead++;
       }
-    }
-  });
-
-  ReadingLog.findOne({ user: userId })
-    .then((readingLog) => {
-      if (!readingLog) {
-        res.status(404).json({
-          message: "Reading log not found",
-        });
-      } else {
-        readingLog.totalBooksRead = totalBooksRead;
-        console.log("reading log", totalBooksRead);
-        return readingLog.save();
-      }
-    })
-    .then(() => {
-      res.status(200).json({ totalBooksRead: totalBooksRead });
-    })
-    .catch((error) => {
-      res.status(500).json({
-        message: "Getting total pages failed",
-        error: error,
-      });
     });
+
+    readingLog.totalBooksRead = totalBooksRead;
+    console.log("reading log", totalBooksRead);
+    await readingLog.save();
+    res.status(200).json({ totalBooksRead });
+  } catch (error) {
+    res.status(500).json({ message: "Getting total pages failed", error });
+  }
 };

@@ -121,93 +121,91 @@ exports.getCategoryBooks = async (req, res, next) => {
 
 // add book
 exports.addBook = async (req, res, next) => {
-  // const bookData = req.body;
-  const book = new Book({
-    title: req.body.title,
-    authors: req.body.authors,
-    description: req.body.description,
-    thumbnail: req.body.thumbnail,
-    categories: req.body.categories,
-    averageRating: req.body.averageRating,
-    ratingsCount: req.body.ratingsCount,
-    totalPages: req.body.totalPages,
-    pagesRead: req.body.pagesRead,
-    status: req.body.status,
-    notes: req.body.notes,
-    user: req.userData.userId,
-  });
-  book
-    .save()
-    .then((addedBook) => {
-      res.status(201).json({
-        message: "Book added successfully",
-        book: {
-          ...addedBook,
-          id: addedBook._id,
-        },
-      });
-    })
-    .catch((error) => {
-      res.status(500).json({
-        message: "An error occurred while adding book",
-      });
+  try {
+    const book = new Book({
+      title: req.body.title,
+      authors: req.body.authors,
+      description: req.body.description,
+      thumbnail: req.body.thumbnail,
+      categories: req.body.categories,
+      averageRating: req.body.averageRating,
+      ratingsCount: req.body.ratingsCount,
+      totalPages: req.body.totalPages,
+      pagesRead: req.body.pagesRead,
+      status: req.body.status,
+      notes: req.body.notes,
+      user: req.userData.userId,
     });
+    const addedBook = await book.save();
+    res.status(201).json({
+      message: "Book added successfully",
+      book: {
+        ...addedBook,
+        id: addedBook._id,
+      },
+    });
+  } catch (error) {
+    res.status(500).json({
+      message: "An error occurred while adding book",
+    });
+  }
 };
 
 // update book (for notes or progress)
 exports.updateBook = async (req, res, next) => {
-  const book = req.body;
-  const bookId = req.params.bookId;
+  try {
+    const book = req.body;
+    const bookId = req.params.bookId;
 
-  Book.findByIdAndUpdate(bookId, book, { new: true })
-    .then((result) => {
-      console.log("update", result);
-      res
-        .status(200)
-        .json({ message: "Book updated successfully", book: result });
-    })
-    .catch((error) => {
-      res.status(500).json({
-        message: "An error occurred while updating book",
-        error: error,
-      });
+    const result = await Book.findByIdAndUpdate(bookId, book, { new: true });
+
+    console.log("update", result);
+    res
+      .status(200)
+      .json({ message: "Book updated successfully", book: result });
+  } catch (error) {
+    res.status(500).json({
+      message: "An error occurred while updating book",
+      error: error,
     });
+  }
 };
 
 // get user books
-exports.getBooks = (req, res, next) => {
-  Book.find()
-    .then((savedBooks) => {
-      res.status(200).json({
-        message: "Books fetched successfully",
-        books: savedBooks,
-      });
-    })
-    .catch((error) => {
-      res.status(500).json({
-        message: "Fetching books failed",
-        error: error,
-      });
+exports.getBooks = async (req, res, next) => {
+  try {
+    const savedBooks = await Book.find();
+    res.status(200).json({
+      message: "Books fetched successfully",
+      books: savedBooks,
     });
+  } catch (error) {
+    res.status(500).json({
+      message: "Fetching books failed",
+      error: error,
+    });
+  }
 };
 
 // delete book
-exports.deleteBook = (req, res, next) => {
-  Book.deleteOne({ _id: req.params.id, user: req.userData.userId })
-    .then((result) => {
-      if (result.n > 0) {
-        res.status(200).json({
-          message: "Deletion successful",
-        });
-      } else {
-        res.status(200).json({
-          message: "Not authorized",
-        });
-      }
-    })
-    .catch((error) => {
-      res.status(500).json({
-        message: "An error occurred while deleting book",
-      });
+exports.deleteBook = async (req, res, next) => {
+  try {
+    const result = await Book.deleteOne({
+      _id: req.params.id,
+      user: req.userData.userId,
     });
+    if (result.n > 0) {
+      res.status(200).json({
+        message: "Deletion successful",
+      });
+    } else {
+      res.status(200).json({
+        message: "Not authorized",
+      });
+    }
+  } catch (error) {
+    res.status(500).json({
+      message: "An error occurred while deleting book",
+    });
+  }
 };

@@ -158,8 +158,6 @@ exports.updateBook = async (req, res, next) => {
     const bookId = req.params.bookId;
 
     const result = await Book.findByIdAndUpdate(bookId, book, { new: true });
-
-    console.log("update", result);
     res
       .status(200)
       .json({ message: "Book updated successfully", book: result });

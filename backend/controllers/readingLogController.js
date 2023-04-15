@@ -12,12 +12,14 @@ exports.getStreak = async (req, res, next) => {
     } else {
       // checks reading log last updated date - updates streak
       const lastUpdated = readingLog.date;
-      const currentTime = Date.now();
-      const timeDiffInHours = (currentTime - lastUpdated) / (1000 * 60 * 60);
+      const currentDate = new Date();
+      const diffInDays = Math.round(
+        Math.abs((currentDate - lastUpdated) / (24 * 60 * 60 * 1000))
+      );
 
-      console.log("timeDiffInHours:", timeDiffInHours);
+      console.log("diff in days:", diffInDays);
 
-      if (timeDiffInHours > 48) {
+      if (diffInDays > 1) {
         // streak is broken if no activity in last 48 hours
         readingLog.streak = 0;
         await readingLog.save();

@@ -8,12 +8,12 @@ import { BooksService } from '../books.service';
   styleUrls: ['./book-list.component.css'],
 })
 export class BookListComponent implements OnInit {
-  isLoading = true;
-  currentGroup = 0;
-  books: Book[] = [];
   @Input() query: string = '';
   @Output() bookSelected = new EventEmitter<Book>();
   @Output() close = new EventEmitter<void>();
+  isLoading = true;
+  currentGroup = 0;
+  books: Book[] = [];
 
   constructor(private booksService: BooksService) {}
 

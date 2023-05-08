@@ -1,10 +1,4 @@
-import {
-  Component,
-  EventEmitter,
-  OnDestroy,
-  OnInit,
-  Output,
-} from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 import { Book } from '../book.model';
@@ -15,11 +9,11 @@ import { BooksService } from '../books.service';
   styleUrls: ['./category-list.component.css'],
 })
 export class CategoryListComponent implements OnInit {
+  @Output() bookSelected = new EventEmitter<Book>();
   isLoading = false;
   currentGroup = 0;
   displayedBooks = 5;
   bestsellers: Book[] = [];
-  @Output() bookSelected = new EventEmitter<Book>();
   private booksSub: Subscription = new Subscription();
 
   constructor(

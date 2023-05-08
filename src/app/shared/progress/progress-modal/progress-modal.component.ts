@@ -11,11 +11,11 @@ import { BooksService } from 'src/app/books/books.service';
   styleUrls: ['./progress-modal.component.css'],
 })
 export class ProgressModalComponent implements OnInit {
-  userId: string | null = null;
   @Input() book!: Book;
   @Output() close = new EventEmitter<void>();
   @Output() progressUpdate = new EventEmitter<number>();
   @Output() updateStreak = new EventEmitter<boolean>();
+  userId: string | null = null;
 
   constructor(
     private booksService: BooksService,

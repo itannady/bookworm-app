@@ -1,12 +1,4 @@
-import {
-  Component,
-  ElementRef,
-  EventEmitter,
-  OnDestroy,
-  OnInit,
-  Output,
-  ViewChild,
-} from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { AuthService } from 'src/app/auth/auth.service';
 import { Book } from '../book.model';
@@ -18,6 +10,8 @@ import { BooksService } from '../books.service';
   styleUrls: ['./book-widget.component.css'],
 })
 export class BookWidgetComponent implements OnInit {
+  @Output() bookSelected = new EventEmitter<Book>();
+  @Output() shouldReloadEvent = new EventEmitter<boolean>();
   isLoading = false;
   shouldReload = false;
   books: Book[] = [];
@@ -28,11 +22,10 @@ export class BookWidgetComponent implements OnInit {
   showNotesModal = false;
   filter: string = 'All';
   currentIndex = 0;
-  @Output() bookSelected = new EventEmitter<Book>();
-  @Output() shouldReloadEvent = new EventEmitter<boolean>();
   updateStreak = new EventEmitter<boolean>();
   private booksSub: Subscription = new Subscription();
   private authStatusSub: Subscription = new Subscription();
+
   constructor(
     private booksService: BooksService,
     private authService: AuthService
@@ -65,7 +58,8 @@ export class BookWidgetComponent implements OnInit {
 
   nextBook() {
     if (this.currentIndex === this.books.length - 1) {
-      this.currentIndex = 0; // start the carousel from the beginning
+      // start the carousel from the beginning
+      this.currentIndex = 0;
     } else {
       this.currentIndex++;
     }

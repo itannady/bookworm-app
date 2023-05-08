@@ -9,11 +9,11 @@ import { BooksService } from 'src/app/books/books.service';
   styleUrls: ['./progress-bar.component.css'],
 })
 export class ProgressBarComponent implements OnInit {
+  @Input() book!: Book;
+  @Output() updateStreak = new EventEmitter<boolean>();
   currentPage: string = this.router.url;
   showProgressModal = false;
   progress: number = 0;
-  @Input() book!: Book;
-  @Output() updateStreak = new EventEmitter<boolean>();
 
   constructor(private booksService: BooksService, private router: Router) {
     this.router.events.subscribe((val) => {

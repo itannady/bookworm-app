@@ -17,6 +17,7 @@ import { BooksService } from '../books.service';
   styleUrls: ['./user-books.component.css'],
 })
 export class UserBooksComponent implements OnInit, OnDestroy {
+  @Output() bookSelected = new EventEmitter<Book>();
   isLoading = false;
   books: Book[] = [];
   selectedBook: Book | null = null;
@@ -25,7 +26,6 @@ export class UserBooksComponent implements OnInit, OnDestroy {
   showProgressModal = false;
   showNotesModal = false;
   filter: string = 'All';
-  @Output() bookSelected = new EventEmitter<Book>();
   private booksSub: Subscription = new Subscription();
   private authStatusSub: Subscription = new Subscription();
 

@@ -28,9 +28,7 @@ module.exports = async (req, res, next) => {
     const currentDateStr = currentDate.toISOString().slice(0, 10);
     const lastUpdated = readingLog.date.toISOString().slice(0, 10);
 
-    console.log("currentDateStr:", currentDateStr);
-    console.log("lastUpdated:", lastUpdated);
-
+    // updates streak for new users
     if (currentDateStr == lastUpdated && readingLog.streak === 0) {
       const update = { streak: readingLog.streak + 1, date: currentDate };
       try {
@@ -94,6 +92,5 @@ module.exports = async (req, res, next) => {
       }
     }
   }
-
   next();
 };

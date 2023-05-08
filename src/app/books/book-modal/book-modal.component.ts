@@ -8,10 +8,10 @@ import { BooksService } from '../books.service';
   styleUrls: ['./book-modal.component.css'],
 })
 export class BookModalComponent implements OnInit {
-  selectedBook: any;
-  bookAdded = false;
   @Input() bookData!: Book;
   @Output() close = new EventEmitter<void>();
+  selectedBook: any;
+  bookAdded = false;
 
   constructor(private booksService: BooksService) {}
 

@@ -16,12 +16,12 @@ import { BooksService } from '../books/books.service';
   styleUrls: ['./hero.component.css'],
 })
 export class HeroComponent implements OnInit, OnDestroy {
+  @Output() query = new EventEmitter<string>();
   name: string | null = null;
   greeting: string = 'Welcome back';
   form: FormGroup;
   showSearchResults = false;
   userIsAuthenticated = false;
-  @Output() query = new EventEmitter<string>();
   private authStatusSub: Subscription = new Subscription();
 
   constructor(

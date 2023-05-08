@@ -2,7 +2,6 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { Subject } from 'rxjs';
-
 import { AuthData } from './auth-data.model';
 import { environment } from 'src/environments/environment';
 
@@ -42,7 +41,7 @@ export class AuthService {
     const authData: AuthData = { email: email, password: password, name: name };
     return this.http.post(`${API_URL}/user/signup`, authData).subscribe(
       () => {
-        this.router.navigate(['/login']);
+        this.router.navigate(['auth/login']);
       },
       (error) => {
         this.authStatusListener.next(false);

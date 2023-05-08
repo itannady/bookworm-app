@@ -8,10 +8,10 @@ import { BooksService } from '../books/books.service';
   styleUrls: ['./notes.component.css'],
 })
 export class NotesComponent implements OnInit {
-  notesForm!: FormGroup;
-  editing: boolean = false;
   @Input() book!: Book;
   @Output() close = new EventEmitter<void>();
+  notesForm!: FormGroup;
+  editing: boolean = false;
   constructor(private booksService: BooksService) {}
 
   ngOnInit(): void {

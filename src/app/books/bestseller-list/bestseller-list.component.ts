@@ -16,11 +16,11 @@ import { BooksService } from '../books.service';
   styleUrls: ['./bestseller-list.component.css'],
 })
 export class BestsellerListComponent implements OnInit, OnDestroy {
+  @Output() bookSelected = new EventEmitter<Book>();
   isLoading = false;
   currentGroup = 0;
   displayedBooks = 5;
   bestsellers: Book[] = [];
-  @Output() bookSelected = new EventEmitter<Book>();
   private booksSub: Subscription = new Subscription();
 
   constructor(

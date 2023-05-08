@@ -1,24 +1,19 @@
-import {
-  Component,
-  EventEmitter,
-  OnDestroy,
-  OnInit,
-  Output,
-} from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { AuthService } from 'src/app/auth/auth.service';
-import { ReadingLogService } from 'src/app/readingLog/readingLog.service';
 import { Book } from '../book.model';
 import { BooksService } from '../books.service';
 
 @Component({
-  selector: 'app-user-books',
-  templateUrl: './user-books.component.html',
-  styleUrls: ['./user-books.component.css'],
+  selector: 'app-book-widget',
+  templateUrl: './book-widget.component.html',
+  styleUrls: ['./book-widget.component.css'],
 })
-export class UserBooksComponent implements OnInit, OnDestroy {
+export class BookWidgetComponent implements OnInit {
   @Output() bookSelected = new EventEmitter<Book>();
+  @Output() shouldReloadEvent = new EventEmitter<boolean>();
   isLoading = false;
+  shouldReload = false;
   books: Book[] = [];
   selectedBook: Book | null = null;
   userIsAuthenticated = false;
@@ -26,12 +21,13 @@ export class UserBooksComponent implements OnInit, OnDestroy {
   showProgressModal = false;
   showNotesModal = false;
   filter: string = 'All';
+  currentIndex = 0;
+  updateStreak = new EventEmitter<boolean>();
   private booksSub: Subscription = new Subscription();
   private authStatusSub: Subscription = new Subscription();
 
   constructor(
     private booksService: BooksService,
-    private readingLogService: ReadingLogService,
     private authService: AuthService
   ) {}
 
@@ -50,28 +46,9 @@ export class UserBooksComponent implements OnInit, OnDestroy {
     this.booksSub = this.booksService
       .getSelectedBooksListener()
       .subscribe((books) => {
+        this.books = books.filter((book) => book.status === 'Reading Now');
         this.isLoading = false;
-        this.books = books;
-        console.log('user books', this.books);
       });
-  }
-
-  // shows books based on filter
-  setFilter(status: string) {
-    this.filter = status;
-  }
-
-  // shows all books
-  getFilteredBooks(filter: string): Book[] {
-    if (filter === 'All') {
-      return this.books;
-    } else {
-      return this.books.filter((book) => book.status === filter);
-    }
-  }
-
-  onDelete(bookId: string) {
-    this.booksService.deleteBook(bookId);
   }
 
   onBookClick(book: Book) {
@@ -79,10 +56,18 @@ export class UserBooksComponent implements OnInit, OnDestroy {
     this.bookSelected.emit(book);
   }
 
-  onNotesClick(book: Book) {
-    document.body.classList.add('modalOpen');
-    this.selectedBook = book;
-    this.showNotesModal = true;
+  nextBook() {
+    if (this.currentIndex === this.books.length - 1) {
+      // start the carousel from the beginning
+      this.currentIndex = 0;
+    } else {
+      this.currentIndex++;
+    }
+  }
+
+  handleUpdateStreak(value: boolean) {
+    this.shouldReload = value;
+    this.shouldReloadEvent.emit(this.shouldReload);
   }
 
   ngOnDestroy(): void {

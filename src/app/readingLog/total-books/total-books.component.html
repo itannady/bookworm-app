@@ -1,0 +1,15 @@
+<section>
+  <app-loader *ngIf="isLoading"></app-loader>
+  <div *ngIf="!isLoading" class="container">
+    <img src="assets/images/pagesIcon.png" alt="" />
+    <div class="totalBooks" *ngIf="totalBooks > 0">
+      <h2>{{ totalBooks }}</h2>
+      <p>
+        books read <br /><span>in {{ this.monthName }}</span>
+      </p>
+    </div>
+    <ng-container *ngIf="totalBooks == 0">
+      <p>No books read yet for {{ this.monthName }}</p></ng-container
+    >
+  </div>
+</section>

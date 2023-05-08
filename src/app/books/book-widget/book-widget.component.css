@@ -1,0 +1,110 @@
+.widgetContainer {
+  width: 100%;
+  min-height: 8rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  border-radius: 8px;
+  padding: 0.5rem 1rem;
+  background-color: var(--gray-light);
+  border: 1px solid var(--teal-light);
+}
+
+.widgetContainer p {
+  margin: 0.3rem 0;
+}
+
+.widgetHeader {
+  font-weight: 550;
+  display: flex;
+}
+
+.wrapper {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.bookContent {
+  min-height: 6rem;
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 0.5rem;
+  border-radius: 8px;
+}
+
+.coverContainer {
+  margin: auto;
+}
+
+.bookCover {
+  width: 3rem;
+  border-radius: 5px;
+  box-shadow: rgba(0, 0, 0, 0.28) 4px 4px 12px 0px;
+  cursor: pointer;
+}
+
+.detailsContainer {
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  margin-left: 1rem;
+}
+
+.title {
+  font-weight: 500;
+  cursor: pointer;
+}
+
+.author {
+  color: var(--gray-dark);
+}
+
+.actionItems {
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  align-self: center;
+}
+
+app-progress-bar {
+  width: 100%;
+}
+
+/* Carousel if more than one book */
+.bookCarousel {
+  position: relative;
+}
+
+.bookCarousel > div {
+  display: none;
+}
+
+.bookCarousel > div.active {
+  display: block;
+}
+
+.carouselControls {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.carouselControls mat-icon {
+  color: var(--brown);
+  cursor: pointer;
+}
+
+.noBooksMsg {
+  margin-top: 5%;
+  color: var(--gray-dark);
+  font-weight: 500;
+  text-align: center;
+}
+
+/* For screens with a max width of 900px */
+@media (max-width: 900px) {
+}

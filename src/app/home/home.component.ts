@@ -1,10 +1,4 @@
-import {
-  Component,
-  EventEmitter,
-  OnDestroy,
-  OnInit,
-  Output,
-} from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { Subscription } from 'rxjs';
 import { AuthService } from '../auth/auth.service';
@@ -18,6 +12,7 @@ import { BooksService } from '../books/books.service';
 export class HomeComponent implements OnInit, OnDestroy {
   selectedBook: any;
   form: FormGroup;
+  shouldReloadStreak: boolean = false;
   query: string = '';
   showSearchResults = false;
   userIsAuthenticated = false;

@@ -1,4 +1,7 @@
-<div class="progressContainer">
+<div
+  class="progressContainer widgetProgress"
+  [ngClass]="getCurrentProgressClass()"
+>
   <ng-container *ngIf="book.status === 'To Read'">
     <button class="actionBtn" (click)="showProgressModal = true">
       Update progress
@@ -11,7 +14,12 @@
         Update
       </button>
     </p>
-    <progress [max]="100" [value]="progress.toFixed(0)"></progress>
+    <progress
+      class="widgetProgress"
+      [ngClass]="getCurrentProgressClass()"
+      [max]="100"
+      [value]="progress.toFixed(0)"
+    ></progress>
   </ng-container>
   <ng-container *ngIf="book.status === 'Have Read'">
     <div class="tag">
@@ -23,5 +31,6 @@
   *ngIf="showProgressModal"
   [book]="book"
   (progressUpdate)="updateProgress($event)"
+  (updateStreak)="updateStreakEvent($event)"
   (close)="showProgressModal = false"
 ></app-progress-modal>

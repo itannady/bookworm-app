@@ -21,6 +21,9 @@ import { AngularMaterialModule } from './angular-material.module';
 
 import { AuthInterceptor } from './auth/auth-interceptor';
 import { ErrorInterceptor } from './error-interceptor';
+import { StreakComponent } from './readingLog/streak/streak.component';
+import { BookWidgetComponent } from './books/book-widget/book-widget.component';
+import { TotalBooksComponent } from './readingLog/total-books/total-books.component';
 
 @NgModule({
   declarations: [
@@ -34,6 +37,9 @@ import { ErrorInterceptor } from './error-interceptor';
     NotesComponent,
     BestsellerListComponent,
     CategoryListComponent,
+    StreakComponent,
+    BookWidgetComponent,
+    TotalBooksComponent,
   ],
   imports: [
     BrowserModule,

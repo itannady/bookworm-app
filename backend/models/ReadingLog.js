@@ -10,9 +10,6 @@ const readingLogSchema = mongoose.Schema({
     type: mongoose.Schema.Types.ObjectId,
     ref: "Book",
   },
-  totalPagesRead: {
-    type: Number,
-  },
   date: {
     type: Date,
     default: Date.now(),

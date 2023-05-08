@@ -1,4 +1,3 @@
-const Book = require("../models/Book");
 const ReadingLog = require("../models/ReadingLog");
 
 module.exports = async (req, res, next) => {

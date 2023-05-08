@@ -64,6 +64,6 @@ exports.getTotalBooks = async (req, res, next) => {
     await readingLog.save();
     res.status(200).json({ totalBooksRead });
   } catch (error) {
-    res.status(500).json({ message: "Getting total pages failed", error });
+    res.status(500).json({ message: "Getting total books failed", error });
   }
 };

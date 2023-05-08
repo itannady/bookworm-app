@@ -1,6 +1,5 @@
 const axios = require("axios");
 const Book = require("../models/Book");
-const ReadingLog = require("../models/ReadingLog");
 const BASE_URL = "https://www.googleapis.com/books/v1/volumes";
 require("dotenv").config();
 const API_KEY = process.env.API_KEY;

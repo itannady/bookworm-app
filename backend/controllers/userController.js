@@ -23,7 +23,7 @@ exports.createUser = async (req, res, next) => {
     }).exec();
     // create reading log for user
     if (!readingLog) {
-      readingLog = new ReadingLog({ user: result._id, date: new Date() });
+      readingLog = new ReadingLog({ user: result._id });
       console.log("New reading log created for user", result._id);
       await readingLog.save();
     }

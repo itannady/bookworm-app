@@ -7,7 +7,6 @@ import {
 } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { AuthService } from 'src/app/auth/auth.service';
-import { ReadingLogService } from 'src/app/readingLog/readingLog.service';
 import { Book } from '../book.model';
 import { BooksService } from '../books.service';
 
@@ -31,7 +30,6 @@ export class UserBooksComponent implements OnInit, OnDestroy {
 
   constructor(
     private booksService: BooksService,
-    private readingLogService: ReadingLogService,
     private authService: AuthService
   ) {}
 
@@ -52,7 +50,6 @@ export class UserBooksComponent implements OnInit, OnDestroy {
       .subscribe((books) => {
         this.isLoading = false;
         this.books = books;
-        console.log('user books', this.books);
       });
   }
 

@@ -8,7 +8,7 @@ exports.getStreak = async (req, res, next) => {
     const readingLog = await ReadingLog.findOne({ user: userId });
 
     if (!readingLog) {
-      console.log("No reading log found");
+      res.status(404).json({ message: "No reading log found" });
     } else {
       // checks reading log last updated date - updates streak
       const lastUpdated = readingLog.date;
@@ -17,18 +17,14 @@ exports.getStreak = async (req, res, next) => {
         Math.abs((currentDate - lastUpdated) / (24 * 60 * 60 * 1000))
       );
 
-      console.log("diff in days:", diffInDays);
-
       if (diffInDays > 1) {
         // streak is broken if no activity in last 48 hours
         readingLog.streak = 0;
         await readingLog.save();
       }
-
       res.status(200).json({ streak: readingLog.streak });
     }
   } catch (error) {
-    console.log("error:", error);
     res.status(500).json({
       message: "Getting streak failed",
       error: error,
@@ -60,7 +56,6 @@ exports.getTotalBooks = async (req, res, next) => {
     });
 
     readingLog.totalBooksRead = totalBooksRead;
-    console.log("reading log", totalBooksRead);
     await readingLog.save();
     res.status(200).json({ totalBooksRead });
   } catch (error) {

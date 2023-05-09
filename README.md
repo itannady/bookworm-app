@@ -1,7 +1,7 @@
 
 # Bookworm - Book App
 
-Bookworm is a full-stack web application that allows users to browse for books using Google's Books API. Users can save books to their personal reading list, take notes, and track their progress for each book. 
+Bookworm is a full-stack web application that helps users manage their books. It was inspired by my passion for reading and my desire to help others build good reading habits. With Bookworm, you can browse a vast collection of books through Google's Book API, save them to your reading list, and track your progress. To encourage reading habits, I developed a daily reading streak and a monthly book count stat. Most of the components in the app were custom-built to add a touch of cohesiveness and ensure a seamless experience throughout the app.
 
 ## Features
 - New user registration
@@ -9,6 +9,7 @@ Bookworm is a full-stack web application that allows users to browse for books u
 - Save books to personal reading list
 - Add and edit notes for each book
 - Track progress for each book
+- View reading streak and monthly book count
 - Responsive design
 - Login and logout
 
@@ -62,20 +63,20 @@ Navigate to `http://localhost:4200/`.
     
 ## Using Bookworm
 
-**Register as a new user or login to your account**
+**1. Register as a new user or login to your account**
 
 ![sign-in_AdobeExpress](https://github.com/itannady/bookworm-app/assets/93556334/ac34a42a-56fc-4f49-8540-cc0e0de56ced)
 
-**Browse and add books to your reading list**
+**2. Browse and add books to your reading list**
 
 ![browse-books_AdobeExpress](https://github.com/itannady/bookworm-app/assets/93556334/6baff7d6-0c85-46e5-b17e-de81b6fa335f)
 
-**View and manage all your books in one place**
+**3. View and manage all your books in one place**
 
 ![view-books_AdobeExpress](https://github.com/itannady/bookworm-app/assets/93556334/d7eda9ee-1adf-4eb8-b7c2-65fdee94be0d)
 
 
-**Track your reading progress and take notes for each book**
+**4. Track your reading progress and take notes for each book**
 
 ![track-books_AdobeExpress (1)](https://github.com/itannady/bookworm-app/assets/93556334/b87647a5-f661-4fec-9f81-a7dbfb52c3e9)
 

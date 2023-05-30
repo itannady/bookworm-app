@@ -1,4 +1,4 @@
-const bcrypt = require("bcrypt");
+const bcrypt = require("bcryptjs");
 const ReadingLog = require("../models/ReadingLog");
 const jwt = require("jsonwebtoken");
 

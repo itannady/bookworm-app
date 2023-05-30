@@ -24,7 +24,6 @@ exports.createUser = async (req, res, next) => {
     // create reading log for user
     if (!readingLog) {
       readingLog = new ReadingLog({ user: result._id });
-      console.log("New reading log created for user", result._id);
       await readingLog.save();
     }
     res.status(201).json({

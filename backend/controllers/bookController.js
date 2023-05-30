@@ -90,10 +90,10 @@ exports.getBestsellerBooks = async (req, res, next) => {
 exports.getCategoryBooks = async (req, res, next) => {
   try {
     const result = await axios.get(
-      `${BASE_URL}?q=best+selling+nonfiction&orderBy=relevance&maxResults=40&key=${API_KEY}&printType=books`
+      `${BASE_URL}?q=bestseller+non-fiction&orderBy=relevance&maxResults=40&key=${API_KEY}&printType=books`
     );
     const booksData = result.data.items;
-    const fictionBooks = [];
+    const nonfictionBooks = [];
 
     for (let bookData of booksData) {
       // Only add the book to the list if it has a pageCount property
@@ -109,12 +109,12 @@ exports.getCategoryBooks = async (req, res, next) => {
           totalPages: bookData.volumeInfo.pageCount,
           pagesRead: bookData.volumeInfo.pagesRead,
         });
-        fictionBooks.push(book);
+        nonfictionBooks.push(book);
       }
     }
-    res.status(200).json(fictionBooks.slice(0, 20));
+    res.status(200).json(nonfictionBooks.slice(0, 20));
   } catch (error) {
-    res.status(500).json({ message: "Failed to get fiction" });
+    res.status(500).json({ message: "Failed to get nonfiction books" });
   }
 };
 

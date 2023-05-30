@@ -20,8 +20,6 @@ module.exports = async (req, res, next) => {
     if (!readingLog) {
       readingLog = new ReadingLog({ user: book.userId, date: currentDate });
       readingLog.streak = 1;
-      console.log("new reading log created:", readingLog);
-      console.log("book userID", book.userId);
     }
 
     // set dates to string for day comparison
@@ -34,10 +32,7 @@ module.exports = async (req, res, next) => {
       try {
         const result = await ReadingLog.findOneAndUpdate(user, update, options);
         readingLog.streak = result.streak;
-        console.log("reading log streak maintained");
-      } catch (error) {
-        console.log("An error occurred");
-      }
+      } catch (error) {}
     }
 
     // if update is not on the same day
@@ -57,9 +52,11 @@ module.exports = async (req, res, next) => {
             options
           );
           readingLog.streak = result.streak;
-          console.log("reading log streak maintained");
         } catch (error) {
-          console.log("An error occurred");
+          res.status(500).json({
+            message: "An error occurred while updating reading log",
+            error: error,
+          });
         }
       } else if (diffInDays > 1) {
         const update = { streak: 1, date: currentDate };
@@ -70,9 +67,11 @@ module.exports = async (req, res, next) => {
             options
           );
           readingLog.streak = result.streak;
-          console.log("reading log update was successful");
         } catch (error) {
-          console.log("An error occurred");
+          res.status(500).json({
+            message: "An error occurred while updating reading log",
+            error: error,
+          });
         }
       }
       // reset streak
@@ -85,9 +84,11 @@ module.exports = async (req, res, next) => {
             options
           );
           readingLog.streak = result.streak;
-          console.log("reading log was reset");
         } catch (error) {
-          console.log("An error occurred");
+          res.status(500).json({
+            message: "An error occurred while updating reading log",
+            error: error,
+          });
         }
       }
     }

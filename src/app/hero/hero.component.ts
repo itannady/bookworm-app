@@ -17,7 +17,7 @@ import { BooksService } from '../books/books.service';
 })
 export class HeroComponent implements OnInit, OnDestroy {
   @Output() query = new EventEmitter<string>();
-  name: string | null = null;
+  firstName: string | null = null;
   greeting: string = 'Welcome back';
   form: FormGroup;
   showSearchResults = false;
@@ -40,9 +40,13 @@ export class HeroComponent implements OnInit, OnDestroy {
       .subscribe((isAuthenticated) => {
         this.userIsAuthenticated = isAuthenticated;
       });
-    this.name = this.authService.getName();
+    const name = this.authService.getName();
+
     // Update the message based on the current time
     const currentHour = new Date().getHours();
+    if (name) {
+      this.firstName = name.split(' ')[0];
+    }
 
     if (currentHour >= 5 && currentHour < 12) {
       this.greeting = 'Good morning';

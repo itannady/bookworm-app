@@ -40,7 +40,8 @@ hr {
 }
 
 textarea {
-  width: 95%;
+  width: calc(100% - 10%);
+
   padding: 0.75rem 1rem;
   resize: none;
   border: none;
@@ -66,4 +67,11 @@ mat-icon {
   right: 1rem;
   color: var(--gray-dark);
   cursor: pointer;
+}
+
+/* For screens with a max width of 428px */
+@media screen and (max-width: 428px) {
+  .modalContainer {
+    min-width: 100%;
+  }
 }

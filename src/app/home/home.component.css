@@ -29,15 +29,27 @@ app-total-books {
   height: 100%;
 }
 
-/* .wrapper > * {
-  flex-grow: 1;
-} */
-
 /* For screens with a max width of 900px */
 @media (max-width: 900px) {
   app-book-widget,
   app-streak,
   app-total-books {
     height: 100%;
+  }
+}
+
+/* For screens with a max width of 428px */
+@media screen and (max-width: 428px) {
+  .widgetSection {
+    height: 100%;
+  }
+  .wrapper {
+    flex-direction: column;
+  }
+
+  app-book-widget,
+  app-streak,
+  app-total-books {
+    width: 100%;
   }
 }

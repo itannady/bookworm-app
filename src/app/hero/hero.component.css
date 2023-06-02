@@ -164,15 +164,13 @@ mat-icon {
   .publicText {
     padding: 5% 0;
     max-width: 100%;
+    text-align: center;
   }
 
   .publicHero img {
     width: 100%;
   }
-}
 
-/* For screens with a max width of 680px */
-@media (max-width: 680px) {
   .bookGrid {
     grid-template-columns: repeat(3, 1fr);
   }
@@ -180,8 +178,27 @@ mat-icon {
   .featureContent img {
     width: 100%;
   }
+}
 
-  .publicText {
+/* For screens with a max width of 428px */
+@media screen and (max-width: 428px) {
+  .featuresContainer {
+    flex-direction: column;
+    align-items: center;
+    gap: 5rem;
+  }
+
+  .featureContent {
+    padding-bottom: 3rem;
+    border-bottom: 1px solid var(--tan);
+    border-right: none;
+  }
+
+  input {
+    width: 20rem;
+  }
+
+  .userHero {
     text-align: center;
   }
 }

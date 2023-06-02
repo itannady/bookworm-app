@@ -104,6 +104,7 @@ section {
   color: var(--brown);
   margin: 0;
 }
+
 .detailContainer p.author {
   font-weight: 400;
   color: var(--brown);
@@ -126,5 +127,24 @@ mat-icon {
 @media (max-width: 680px) {
   .bookGrid {
     grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+/* For screens with a max width of 428px */
+@media screen and (max-width: 428px) {
+  .coverContainer img {
+    width: 7rem;
+  }
+
+  .card {
+    min-width: 8rem;
+  }
+
+  .wrapper h1 {
+    font-size: 1.953rem;
+  }
+
+  .bookGrid {
+    grid-row-gap: 1.5rem;
   }
 }

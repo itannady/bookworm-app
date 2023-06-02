@@ -102,3 +102,34 @@ mat-icon:hover {
 .prevArrow {
   left: -1rem;
 }
+
+/* For screens with a max width of 428px */
+@media screen and (max-width: 428px) {
+  .nextArrow {
+    right: -0.5rem;
+  }
+
+  .prevArrow {
+    left: -0.5rem;
+  }
+
+  .coverContainer img {
+    width: 6rem;
+  }
+
+  .row {
+    height: 100%;
+    gap: 0.5rem;
+  }
+
+  .card {
+    width: calc(100% / 3);
+    min-width: 6rem;
+    min-height: 15rem;
+  }
+
+  .coverContainer {
+    display: flex;
+    justify-content: center;
+  }
+}

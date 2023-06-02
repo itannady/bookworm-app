@@ -136,3 +136,10 @@ hr {
     margin-left: 1rem;
   }
 }
+
+/* For screens with a max width of 428px */
+@media screen and (max-width: 428px) {
+  .bookCover {
+    width: 4rem;
+  }
+}

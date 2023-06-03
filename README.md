@@ -65,20 +65,21 @@ Navigate to `http://localhost:4200/`.
 
 **1. Register as a new user or login to your account**
 
-![sign-in_AdobeExpress](https://github.com/itannady/bookworm-app/assets/93556334/ac34a42a-56fc-4f49-8540-cc0e0de56ced)
+![sign-in_AdobeExpress](https://github.com/itannady/bookworm-app/assets/93556334/5517bffd-69ab-449d-968b-6287552eae0e)
 
 **2. Browse and add books to your reading list**
 
-![browse-books_AdobeExpress](https://github.com/itannady/bookworm-app/assets/93556334/6baff7d6-0c85-46e5-b17e-de81b6fa335f)
+![browse-books_AdobeExpress](https://github.com/itannady/bookworm-app/assets/93556334/01dc82ab-2978-4b1b-b021-b0c0d927d150)
+
 
 **3. View and manage all your books in one place**
 
-![view-books_AdobeExpress](https://github.com/itannady/bookworm-app/assets/93556334/d7eda9ee-1adf-4eb8-b7c2-65fdee94be0d)
+![view-books_12_51_33_PM_AdobeExpress (1)](https://github.com/itannady/bookworm-app/assets/93556334/3a35868a-1cdb-4ab4-a442-a61b75aca8fa)
 
 
 **4. Track your reading progress and take notes for each book**
 
-![track-books_AdobeExpress (1)](https://github.com/itannady/bookworm-app/assets/93556334/b87647a5-f661-4fec-9f81-a7dbfb52c3e9)
+![track-books_AdobeExpress](https://github.com/itannady/bookworm-app/assets/93556334/054e3a01-c62a-41a7-bd54-46f3c467b416)
 
 
 

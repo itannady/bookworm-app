@@ -1,7 +1,7 @@
 
 # Bookworm - Book App
 
-Bookworm is a full-stack web application that helps users manage their books. It was inspired by my passion for reading and my desire to help others build good reading habits. With Bookworm, you can browse a vast collection of books through Google's Book API, save them to your reading list, and track your progress. To encourage reading habits, I developed a daily reading streak and a monthly book count stat. Most of the components in the app were custom-built to add a touch of cohesiveness and ensure a seamless experience throughout the app.
+Bookworm is a full-stack web application that helps users manage their books. It was inspired by my passion for reading and my desire to help others build good reading habits. With Bookworm, you can browse a vast collection of books through Google's Book API, save them to your reading list, and track your progress. To encourage reading habits, I developed a daily reading streak and a monthly book count stat, aiming to gamify the reading experience. Most of the components in the app were custom-built to add a touch of cohesiveness and ensure a seamless experience throughout the app.
 
 ## Features
 - New user registration
